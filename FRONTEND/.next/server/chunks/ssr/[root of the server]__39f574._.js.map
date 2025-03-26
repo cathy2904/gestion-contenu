@@ -1,0 +1,11 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file://C%3A/Users/komba/AIBTZ/components/Principal.tsx"],"sourcesContent":["export default function Principal({titre, children}: {titre:string, children: React.ReactNode}) {\r\n  return (\r\n    <div className=\" w-full md:w-5/6 bg-[#121313] p-3 md:p-6  space-y-4 overflow-hidden h-auto\">\r\n        <h1 className=\"text-3xl font-bold\">{titre} </h1>\r\n        <div className=\"bg-[#121313] h-[90%]\">{children}</div>\r\n    </div>\r\n  )\r\n}\r\n"],"names":[],"mappings":";;;;;AAAe,SAAS,UAAU,EAAC,KAAK,EAAE,QAAQ,EAA4C;IAC5F,qBACE,8OAAC;QAAI,WAAU;;0BACX,8OAAC;gBAAG,WAAU;;oBAAsB;oBAAM;;;;;;;0BAC1C,8OAAC;gBAAI,WAAU;0BAAwB;;;;;;;;;;;;AAG/C"}},
+    {"offset": {"line": 42, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}},
+    {"offset": {"line": 120, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":""}},
+    {"offset": {"line": 124, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}},
+    {"offset": {"line": 135, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":""}},
+    {"offset": {"line": 135, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+}
