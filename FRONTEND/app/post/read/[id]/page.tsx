@@ -28,6 +28,7 @@ interface Post {
   title: string;
   content: string;
   author: string;
+  imagePath?: string;
   created_at: string;
 }
 
@@ -62,12 +63,33 @@ export default function ReadPost() {
         ← Retour
       </Link>
       <h1 className="text-2xl font-bold mb-4">{post.title}</h1>
-      <div className="bg-white p-6 rounded shadow">
+      <div className="bg-black p-6 rounded shadow">
         <div className="mb-4 text-gray-600">
           <span className="font-semibold">Auteur :</span> {post.author}
         </div>
-        <div className="mb-4 text-gray-600">
+        
+        {/* <div className="mb-4 text-gray-600">
+          <span className="font-semibold">contenu :</span> {post.content}
+        </div> */}
+        {/* <div className="mb-4 text-gray-600">
           <span className="font-semibold">Date :</span> {new Date(post.created_at).toLocaleDateString()}
+        </div> */}
+        <div className="mb-4 ">
+        {post.imagePath ? (
+                    <img
+                      src={`http://localhost:3003${post.imagePath}`}
+                      alt={post.title}
+                      className="h-16 w-16 object-cover rounded"
+                      onError={(e) => {
+                        (e.currentTarget as HTMLImageElement).style.display = 'none';
+                      }}
+                    />
+                  ) : (
+                    <div className="h-16 w-16 bg-white-200 rounded flex items-center justify-center text-xs">
+                      Pas d'Image
+                    </div>
+                  )}
+
         </div>
         <div className="prose max-w-none">
           {post.content}

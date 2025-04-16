@@ -1,0 +1,87 @@
+// src/modules/articles/articles.schema.ts
+export interface Article {
+  _id?: string;
+  title: string;
+  content: string;
+  author: string;  // user ID
+  comments: string[]; // comment IDs
+}
+
+// src/modules/articles/articles.service.ts
+import { Injectable } from '@nestjs/common';
+import { MongoClient, ObjectId } from 'mongodb';
+@Injectable()
+export class ArticlesService {
+  private readonly client = new MongoClient(process.env.MONGO_URI);
+  private readonly db = this.client.db('nestjs_project');
+  private readonly articles = this.db.collection('articles');
+
+  async createArticle(article: Article) {
+    await this.client.connect();
+    return this.articles.insertOne(article);
+  }
+
+  async findAll() {
+    await this.client.connect();
+    return this.articles.find().toArray();
+  }
+
+  async findOne(id: string) {
+    await this.client.connect();
+    return this.articles.findOne({ _id: new ObjectId(id) });
+  }
+
+  async update(id: string, article: Partial<Article>) {
+    await this.client.connect();
+    return this.articles.updateOne({ _id: new ObjectId(id) }, { $set: article });
+  }
+
+  async remove(id: string) {
+    await this.client.connect();
+    return this.articles.deleteOne({ _id: new ObjectId(id) });
+  }
+}
+
+// src/modules/articles/articles.controller.ts
+import { Controller, Get, Post, Body, Param, Put, Delete } from '@nestjs/common';
+import { ArticlesService } from './articles.service';
+@Controller('articles')
+export class ArticlesController {
+  constructor(private readonly articlesService: ArticlesService) {}
+
+  @Post()
+  create(@Body() article) {
+    return this.articlesService.createArticle(article);
+  }
+
+  @Get()
+  findAll() {
+    return this.articlesService.findAll();
+  }
+
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.articlesService.findOne(id);
+  }
+
+  @Put(':id')
+  update(@Param('id') id: string, @Body() article) {
+    return this.articlesService.update(id, article);
+  }
+
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.articlesService.remove(id);
+  }
+}
+
+// src/modules/articles/articles.module.ts
+import { Module } from '@nestjs/common';
+import { ArticlesService } from './articles.service';
+import { ArticlesController } from './articles.controller';
+@Module({
+  controllers: [ArticlesController],
+  providers: [ArticlesService],
+  exports: [ArticlesService],
+})
+export class ArticlesModule {}

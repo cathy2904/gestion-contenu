@@ -61,7 +61,7 @@ function ReadPost() {
         children: "Chargement..."
     }, void 0, false, {
         fileName: "[project]/app/post/read/[id]/page.tsx",
-        lineNumber: 56,
+        lineNumber: 57,
         columnNumber: 23
     }, this);
     if (!post) return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -69,7 +69,7 @@ function ReadPost() {
         children: "Article introuvable"
     }, void 0, false, {
         fileName: "[project]/app/post/read/[id]/page.tsx",
-        lineNumber: 57,
+        lineNumber: 58,
         columnNumber: 21
     }, this);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -81,7 +81,7 @@ function ReadPost() {
                 children: "← Retour"
             }, void 0, false, {
                 fileName: "[project]/app/post/read/[id]/page.tsx",
-                lineNumber: 61,
+                lineNumber: 62,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -89,11 +89,11 @@ function ReadPost() {
                 children: post.title
             }, void 0, false, {
                 fileName: "[project]/app/post/read/[id]/page.tsx",
-                lineNumber: 64,
+                lineNumber: 65,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "bg-white p-6 rounded shadow",
+                className: "bg-black p-6 rounded shadow",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "mb-4 text-gray-600",
@@ -103,7 +103,7 @@ function ReadPost() {
                                 children: "Auteur :"
                             }, void 0, false, {
                                 fileName: "[project]/app/post/read/[id]/page.tsx",
-                                lineNumber: 67,
+                                lineNumber: 68,
                                 columnNumber: 11
                             }, this),
                             " ",
@@ -111,26 +111,33 @@ function ReadPost() {
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/post/read/[id]/page.tsx",
-                        lineNumber: 66,
+                        lineNumber: 67,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "mb-4 text-gray-600",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                className: "font-semibold",
-                                children: "Date :"
-                            }, void 0, false, {
-                                fileName: "[project]/app/post/read/[id]/page.tsx",
-                                lineNumber: 70,
-                                columnNumber: 11
-                            }, this),
-                            " ",
-                            new Date(post.created_at).toLocaleDateString()
-                        ]
-                    }, void 0, true, {
+                        className: "mb-4 ",
+                        children: post.imagePath ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                            src: `http://localhost:3003${post.imagePath}`,
+                            alt: post.title,
+                            className: "h-16 w-16 object-cover rounded",
+                            onError: (e)=>{
+                                e.currentTarget.style.display = 'none';
+                            }
+                        }, void 0, false, {
+                            fileName: "[project]/app/post/read/[id]/page.tsx",
+                            lineNumber: 79,
+                            columnNumber: 21
+                        }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "h-16 w-16 bg-white-200 rounded flex items-center justify-center text-xs",
+                            children: "Pas d'Image"
+                        }, void 0, false, {
+                            fileName: "[project]/app/post/read/[id]/page.tsx",
+                            lineNumber: 88,
+                            columnNumber: 21
+                        }, this)
+                    }, void 0, false, {
                         fileName: "[project]/app/post/read/[id]/page.tsx",
-                        lineNumber: 69,
+                        lineNumber: 77,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -138,19 +145,19 @@ function ReadPost() {
                         children: post.content
                     }, void 0, false, {
                         fileName: "[project]/app/post/read/[id]/page.tsx",
-                        lineNumber: 72,
+                        lineNumber: 94,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/post/read/[id]/page.tsx",
-                lineNumber: 65,
+                lineNumber: 66,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/post/read/[id]/page.tsx",
-        lineNumber: 60,
+        lineNumber: 61,
         columnNumber: 5
     }, this);
 }

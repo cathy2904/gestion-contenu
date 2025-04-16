@@ -1,9 +1,1 @@
-{
-  "/api/posts/route": "app/api/posts/route.js",
-  "/articles/page": "app/articles/page.js",
-  "/contenu/analyze/page": "app/contenu/analyze/page.js",
-  "/contenu/page": "app/contenu/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/page": "app/page.js",
-  "/post/page": "app/post/page.js"
-}
+{}
