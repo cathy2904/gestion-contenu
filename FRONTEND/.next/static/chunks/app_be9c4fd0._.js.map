@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file://C%3A/Users/komba/Gestion-contenu/FRONTEND/app/contexts/authContext.tsx"],"sourcesContent":["'use client';\r\n\r\nimport { createContext, useContext } from 'react';\r\n\r\ntype AuthContextType = {\r\n  user: any;\r\n  login: (email: string, password: string) => Promise<boolean>;\r\n  register: (username: string, email: string, password: string) => Promise<boolean>;\r\n  logout: () => void;\r\n};\r\n\r\nexport const AuthContext = createContext<AuthContextType | undefined>(undefined);\r\n\r\nexport const useAuth = () => {\r\n  const context = useContext(AuthContext);\r\n  if (context === undefined) {\r\n    throw new Error('useAuth must be used within an AuthProvider');\r\n  }\r\n  return context;\r\n};\r\n"],"names":[],"mappings":";;;;AAEA;;AAFA;;AAWO,MAAM,4BAAc,CAAA,GAAA,6JAAA,CAAA,gBAAa,AAAD,EAA+B;AAE/D,MAAM,UAAU;;IACrB,MAAM,UAAU,CAAA,GAAA,6JAAA,CAAA,aAAU,AAAD,EAAE;IAC3B,IAAI,YAAY,WAAW;QACzB,MAAM,IAAI,MAAM;IAClB;IACA,OAAO;AACT;GANa","debugId":null}}]
+}

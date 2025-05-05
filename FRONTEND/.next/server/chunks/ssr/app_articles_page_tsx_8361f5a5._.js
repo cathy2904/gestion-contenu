@@ -170,7 +170,7 @@ function ArticlesPage() {
                             children: "Titre"
                         }, void 0, false, {
                             fileName: "[project]/app/articles/page.tsx",
-                            lineNumber: 178,
+                            lineNumber: 177,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -178,7 +178,7 @@ function ArticlesPage() {
                             children: "Contenu"
                         }, void 0, false, {
                             fileName: "[project]/app/articles/page.tsx",
-                            lineNumber: 179,
+                            lineNumber: 178,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -186,7 +186,7 @@ function ArticlesPage() {
                             children: "Auteur"
                         }, void 0, false, {
                             fileName: "[project]/app/articles/page.tsx",
-                            lineNumber: 180,
+                            lineNumber: 179,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -194,18 +194,18 @@ function ArticlesPage() {
                             children: "Actions"
                         }, void 0, false, {
                             fileName: "[project]/app/articles/page.tsx",
-                            lineNumber: 181,
+                            lineNumber: 180,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/articles/page.tsx",
-                    lineNumber: 177,
+                    lineNumber: 176,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/articles/page.tsx",
-                lineNumber: 176,
+                lineNumber: 175,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -217,7 +217,7 @@ function ArticlesPage() {
                                 children: article.title
                             }, void 0, false, {
                                 fileName: "[project]/app/articles/page.tsx",
-                                lineNumber: 187,
+                                lineNumber: 186,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -225,7 +225,7 @@ function ArticlesPage() {
                                 children: article.content
                             }, void 0, false, {
                                 fileName: "[project]/app/articles/page.tsx",
-                                lineNumber: 188,
+                                lineNumber: 187,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -233,7 +233,7 @@ function ArticlesPage() {
                                 children: article.author
                             }, void 0, false, {
                                 fileName: "[project]/app/articles/page.tsx",
-                                lineNumber: 189,
+                                lineNumber: 188,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -245,7 +245,7 @@ function ArticlesPage() {
                                         children: "Modifier"
                                     }, void 0, false, {
                                         fileName: "[project]/app/articles/page.tsx",
-                                        lineNumber: 191,
+                                        lineNumber: 190,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -254,30 +254,30 @@ function ArticlesPage() {
                                         children: "Supprimer"
                                     }, void 0, false, {
                                         fileName: "[project]/app/articles/page.tsx",
-                                        lineNumber: 197,
+                                        lineNumber: 196,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/articles/page.tsx",
-                                lineNumber: 190,
+                                lineNumber: 189,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, article._id, true, {
                         fileName: "[project]/app/articles/page.tsx",
-                        lineNumber: 186,
+                        lineNumber: 185,
                         columnNumber: 11
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/app/articles/page.tsx",
-                lineNumber: 184,
+                lineNumber: 183,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/articles/page.tsx",
-        lineNumber: 175,
+        lineNumber: 174,
         columnNumber: 5
     }, this);
 }

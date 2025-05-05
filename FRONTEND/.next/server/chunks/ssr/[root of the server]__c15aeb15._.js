@@ -118,6 +118,7 @@ __turbopack_context__.s({
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/axios/lib/axios.js [app-ssr] (ecmascript)");
 ;
+//import { CreatePostData, Post, UpdatePostData } from '../../types/post';
 const api = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].create({
     baseURL: 'http://localhost:3003/api'
 });
@@ -128,10 +129,11 @@ const createPost = (postData)=>api.post('/posts', postData, {
             'Content-Type': 'multipart/form-data'
         }
     });
-const updatePost = (id, postData)=>__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].put(`http://localhost:3003/api/posts/${id}`, postData, {
+const updatePost = (id, postData)=>api.put(`/posts/${id}`, postData, {
         headers: {
             'Content-Type': 'multipart/form-data'
-        }
+        },
+        method: 'PUT'
     });
 const deletePost = (id)=>api.delete(`/posts/${id}`); // export const getPosts = () => api.get('/posts');
  // export const getPost = (id: string) => api.get(`/posts/${id}`);
@@ -139,15 +141,379 @@ const deletePost = (id)=>api.delete(`/posts/${id}`); // export const getPosts = 
  // export const updatePost = (id: string, postData: any) => api.put(`/posts/${id}`, postData);
  // export const deletePost = (id: string) => api.delete(`/posts/${id}`);
 }}),
-"[project]/app/post/edit/[id]/page.tsx [app-ssr] (ecmascript)": (function(__turbopack_context__) {
+"[project]/app/post/edit/[id]/page.tsx [app-ssr] (ecmascript)": ((__turbopack_context__) => {
+"use strict";
 
-var { g: global, __dirname, m: module, e: exports } = __turbopack_context__;
+var { g: global, __dirname } = __turbopack_context__;
 {
-const e = new Error(`Could not parse module '[project]/app/post/edit/[id]/page.tsx'
-
-Expected ',', got 'import'`);
-e.code = 'MODULE_UNPARSEABLE';
-throw e;}}),
+__turbopack_context__.s({
+    "default": (()=>EditPostPage)
+});
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/navigation.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$post$2f$service$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/app/post/service/api.ts [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/client/app-dir/link.js [app-ssr] (ecmascript)");
+'use client';
+;
+;
+;
+;
+;
+function EditPostPage() {
+    const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRouter"])();
+    const { id } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useParams"])();
+    const postId = Array.isArray(id) ? id[0] : id;
+    // const [post, setPost] = useState<any>(null);
+    const [isSubmitting, setIsSubmitting] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [isLoading, setIsLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(true);
+    const [post, setPost] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [title, setTitle] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("");
+    const [content, setContent] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("");
+    const [imagePath, setImagePath] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        fetch(`http://localhost:3000/posts/${id}`).then((res)=>res.json()).then((data)=>{
+            setPost(data);
+            setTitle(data.title);
+            setContent(data.content);
+        });
+    }, [
+        id
+    ]);
+    const handleSubmit = async (e)=>{
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append("title", title);
+        formData.append("content", content);
+        if (imagePath) formData.append("image", imagePath);
+        const response = await fetch(`http://localhost:3000/posts/${id}`, {
+            method: "PATCH",
+            body: formData
+        });
+        if (response.ok) {
+            router.push("/posts");
+        } else {
+            console.error("Erreur lors de la mise à jour");
+        }
+    };
+    const fetchPost = async ()=>{
+        if (!postId) return;
+        try {
+            setIsLoading(true);
+            const response = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$post$2f$service$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["getPost"])(postId);
+            setPost(response.data);
+        } catch (err) {
+            setError('Erreur lors du chargement du post');
+            console.error(err);
+        } finally{
+            setIsLoading(false);
+        }
+    };
+    const onSubmit = async (formData)=>{
+        try {
+            setIsSubmitting(true);
+            setError(null);
+            await (0, __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$post$2f$service$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["updatePost"])(id, formData);
+            router.push('/post');
+        } catch (err) {
+            setError('Erreur lors de la mise à jour du post');
+            console.error(err);
+        } finally{
+            setIsSubmitting(false);
+        }
+    };
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        fetchPost();
+    }, [
+        id
+    ]);
+    if (isLoading) {
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "flex justify-center items-center h-64",
+            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"
+            }, void 0, false, {
+                fileName: "[project]/app/post/edit/[id]/page.tsx",
+                lineNumber: 89,
+                columnNumber: 9
+            }, this)
+        }, void 0, false, {
+            fileName: "[project]/app/post/edit/[id]/page.tsx",
+            lineNumber: 88,
+            columnNumber: 7
+        }, this);
+    }
+    if (error) {
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative",
+            role: "alert",
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                    className: "font-bold",
+                    children: "Erreur ! "
+                }, void 0, false, {
+                    fileName: "[project]/app/post/edit/[id]/page.tsx",
+                    lineNumber: 97,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                    className: "block sm:inline",
+                    children: error
+                }, void 0, false, {
+                    fileName: "[project]/app/post/edit/[id]/page.tsx",
+                    lineNumber: 98,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "[project]/app/post/edit/[id]/page.tsx",
+            lineNumber: 96,
+            columnNumber: 7
+        }, this);
+    }
+    if (!post) {
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "bg-white p-8 rounded-lg shadow text-center",
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                    className: "text-gray-500",
+                    children: "Post non trouvé"
+                }, void 0, false, {
+                    fileName: "[project]/app/post/edit/[id]/page.tsx",
+                    lineNumber: 106,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                    href: "/posts",
+                    className: "inline-block mt-4 text-blue-600 hover:text-blue-800",
+                    children: "Retour à la liste"
+                }, void 0, false, {
+                    fileName: "[project]/app/post/edit/[id]/page.tsx",
+                    lineNumber: 107,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "[project]/app/post/edit/[id]/page.tsx",
+            lineNumber: 105,
+            columnNumber: 7
+        }, this);
+    }
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        className: "container mx-auto px-4 py-8",
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "mb-8",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
+                        className: "text-3xl font-bold text-gray-800",
+                        children: "Modifier le Post"
+                    }, void 0, false, {
+                        fileName: "[project]/app/post/edit/[id]/page.tsx",
+                        lineNumber: 120,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        className: "text-gray-600 mt-2",
+                        children: "Modifiez les champs nécessaires"
+                    }, void 0, false, {
+                        fileName: "[project]/app/post/edit/[id]/page.tsx",
+                        lineNumber: 121,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/app/post/edit/[id]/page.tsx",
+                lineNumber: 119,
+                columnNumber: 7
+            }, this),
+            error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6",
+                children: error
+            }, void 0, false, {
+                fileName: "[project]/app/post/edit/[id]/page.tsx",
+                lineNumber: 125,
+                columnNumber: 9
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
+                onSubmit: handleSubmit,
+                className: "flex flex-col gap-4 max-w-xl mx-auto",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
+                        className: "text-2xl font-bold",
+                        children: "Modifier un article"
+                    }, void 0, false, {
+                        fileName: "[project]/app/post/edit/[id]/page.tsx",
+                        lineNumber: 131,
+                        columnNumber: 7
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                        type: "text",
+                        value: title,
+                        onChange: (e)=>setTitle(e.target.value),
+                        placeholder: "Titre",
+                        className: "border p-2 rounded"
+                    }, void 0, false, {
+                        fileName: "[project]/app/post/edit/[id]/page.tsx",
+                        lineNumber: 132,
+                        columnNumber: 7
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
+                        value: content,
+                        onChange: (e)=>setContent(e.target.value),
+                        placeholder: "Contenu",
+                        className: "border p-2 rounded"
+                    }, void 0, false, {
+                        fileName: "[project]/app/post/edit/[id]/page.tsx",
+                        lineNumber: 139,
+                        columnNumber: 7
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                        type: "file",
+                        accept: "image/*",
+                        onChange: (e)=>setImagePath(e.target.files?.[0] || null),
+                        className: "border p-2 rounded"
+                    }, void 0, false, {
+                        fileName: "[project]/app/post/edit/[id]/page.tsx",
+                        lineNumber: 145,
+                        columnNumber: 7
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                        type: "submit",
+                        className: "bg-blue-600 text-white py-2 px-4 rounded",
+                        children: "Mettre à jour"
+                    }, void 0, false, {
+                        fileName: "[project]/app/post/edit/[id]/page.tsx",
+                        lineNumber: 151,
+                        columnNumber: 7
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/app/post/edit/[id]/page.tsx",
+                lineNumber: 130,
+                columnNumber: 1
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "[project]/app/post/edit/[id]/page.tsx",
+        lineNumber: 118,
+        columnNumber: 5
+    }, this);
+} // import { useRouter } from 'next/router';
+ // import { useState, useEffect } from 'react';
+ // import { getPost, updatePost } from '../../service/api';
+ // import PostForm from '@/app/components/PostForm';
+ // export default function EditPostPage() {
+ //   const router = useRouter();
+ //   const { id } = router.query;
+ //   const [post, setPost] = useState<any>(null);
+ //   const [isSubmitting, setIsSubmitting] = useState(false);
+ //   const [error, setError] = useState<string | null>(null);
+ //   const [isLoading, setIsLoading] = useState(true);
+ //   const fetchPost = async () => {
+ //     if (!id) return;
+ //     try {
+ //       setIsLoading(true);
+ //       const response = await getPost(id as string);
+ //       setPost(response.data);
+ //     } catch (err) {
+ //       setError('Erreur lors du chargement du post');
+ //       console.error(err);
+ //     } finally {
+ //       setIsLoading(false);
+ //     }
+ //   };
+ //   const onSubmit = async (data: any) => {
+ //     try {
+ //       setIsSubmitting(true);
+ //       setError(null);
+ //       await updatePost(id as string, data);
+ //       router.push('/posts');
+ //     } catch (err) {
+ //       setError('Erreur lors de la mise à jour du post');
+ //       console.error(err);
+ //     } finally {
+ //       setIsSubmitting(false);
+ //     }
+ //   };
+ //   useEffect(() => {
+ //     fetchPost();
+ //   }, [id]);
+ //   if (isLoading) return <div className="text-center py-8">Chargement...</div>;
+ //   if (error) return <div className="text-center py-8 text-red-500">{error}</div>;
+ //   if (!post) return <div className="text-center py-8">Post non trouvé</div>;
+ //   return (
+ //     <div className="container mx-auto px-4 py-8">
+ //       <div className="flex items-center mb-6">
+ //         <h1 className="text-2xl font-bold">Modifier le Post</h1>
+ //       </div>
+ //       {error && (
+ //         <div className="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
+ //           {error}
+ //         </div>
+ //       )}
+ //       <PostForm onSubmit={onSubmit} initialData={post} isSubmitting={isSubmitting} />
+ //     </div>
+ //   );
+ // }
+ // "use client"
+ // import React, {useState,useEffect } from 'react'
+ // import { useRouter } from 'next/navigation'
+ // import { fetcher } from '@/app/libs'
+ // import useSWR from 'swr'
+ // export default function PostEdit({params} :{params:{id:number}}) {
+ //   const router = useRouter()
+ //   const {data : post,isLoading, error} = useSWR(`/api/posts/${params.id}`,fetcher)
+ //   const [title, setTitle] =useState<string>('');
+ //   const [body, setBody] = useState<string>('');
+ //   useEffect(()=>{
+ //      if(post){
+ //          setTitle(post.result.title)
+ //          setBody(post.result.content)
+ //      }
+ //   },[post, isLoading])
+ //   const updatePost = async (e: any) => {
+ //     e.preventDefault()
+ //     if (title!="" && body!="") {
+ //       const formData = {
+ //           title: title,
+ //           content: body
+ //       }
+ //       const res = await fetch(`/api/posts/${params.id}`, {
+ //         method: 'PUT',
+ //         headers: {
+ //           'Content-Type': 'application/json'
+ //         },
+ //         body: JSON.stringify(formData)
+ //       });
+ //       const content = await res.json();
+ //       if(content.success>0)
+ //       {
+ //         router.push('/post');
+ //       }
+ //     }
+ //   };
+ //   if(isLoading) return <div><span>Loading...</span></div>
+ //   if (!post) return null;
+ //   return (
+ //     <form className='w-full' onSubmit={updatePost}>
+ //         <span className='font-bold text-yellow-500 py-2 block underline text-2xl'>Form Add</span>
+ //         <div className='w-full py-2'>
+ //              <label htmlFor="" className='text-sm font-bold py-2 block'>Title</label>
+ //              <input type='text' name='title' className='w-full border-[1px] border-gray-200 p-2 rounded-sm' value={title} onChange={(e:any)=>setTitle(e.target.value)}/>
+ //         </div>
+ //         <div className='w-full py-2'>
+ //              <label htmlFor="" className='text-sm font-bold py-2 block'>Content</label>
+ //              <textarea name='title' className='w-full border-[1px] border-gray-200 p-2 rounded-sm' value={body} onChange={(e:any)=>setBody(e.target.value)} />
+ //         </div>
+ //         <div className='w-full py-2'>
+ //           <button className="w-20 p-2 text-white border-gray-200 border-[1px] rounded-sm bg-green-400">Submit</button>
+ //         </div>
+ //     </form>
+ //   )
+ // }
+}}),
 
 };
 

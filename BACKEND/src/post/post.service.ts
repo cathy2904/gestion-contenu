@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { MongoService } from 'src/database/mongo.service';
 import { ObjectId } from 'mongodb';
 import { InjectModel } from '@nestjs/mongoose';
@@ -11,6 +11,7 @@ import { NotFoundException } from '@nestjs/common';
 
 @Injectable()
 export class PostService {
+  postModel: any;
 
   constructor(private readonly mongoService: MongoService) {}
 
@@ -41,15 +42,62 @@ export class PostService {
       return post;
     }
   
-    async update(id: string, updatePostDto: any) {
-      const collection = await this.getCollection();
-      await collection.updateOne(
-        { _id: new ObjectId(id) },
-        { $set: updatePostDto },
-      );
-      
-      return this.findOne(id);
+    async update(id: string, updatePostDto: UpdatePostDto, imageUrl?: string) {
+      const updateData = {
+        ...updatePostDto,
+        ...(imageUrl && { imageUrl }), // ajoute imageUrl seulement si elle existe
+      };
+      return await this.postModel.findByIdAndUpdate(id, updateData, { new: true });
     }
+    
+    // async update(id: string, updatePostDto: any, imageUrl: string | undefined) {
+    //   const collection = await this.getCollection();
+    //   await collection.updateOne(
+    //     { _id: new ObjectId(id) },
+    //     { $set: updatePostDto },
+    //   );
+      
+    //   return this.findOne(id);
+    // }
+
+    // async update(id: string, updateData: any) {
+    //   const collection = await this.getCollection();
+    //   const objectId = new ObjectId(id);
+  
+    //   // Préparer les données de mise à jour
+    //   const updateDoc: any = {
+    //     $set: {
+    //       title: updateData.title,
+    //       content: updateData.content,
+    //       author: updateData.author,
+    //       updatedAt: new Date(),
+    //     }
+    //   };
+  
+    //   // Gestion spécifique de l'image
+    //   if (updateData.imagePath !== undefined) {
+    //     if (updateData.imagePath === null) {
+    //       updateDoc.$unset = { imagePath: "" };
+    //     } else {
+    //       updateDoc.$set.imagePath = updateData.imagePath;
+    //     }
+    //   }
+  
+    //   try {
+    //     const result = await collection.updateOne(
+    //       { _id: objectId },
+    //       updateDoc
+    //     );
+  
+    //     if (result.modifiedCount === 0) {
+    //       throw new Error('Post not found or no changes made');
+    //     }
+  
+    //     return this.findOne(id);
+    //   } catch (error) {
+    //     throw new InternalServerErrorException('Failed to update post');
+    //   }
+    // }
   
     async remove(id: string) {
       const collection = await this.getCollection();

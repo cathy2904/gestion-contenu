@@ -1,99 +1,137 @@
-'use client';
+import EditPostForm from "../../../components/EditPostForm";
 
-import { useRouter, useParams } from 'next/navigation';
-import { useState, useEffect } from 'react';
-import { getPost, updatePost } from '../../service/api';
-import EditPostForm from '@/app/components/EditPostForm';
-import Link from 'next/link';
 
-export default function EditPostPage() {
-  const router = useRouter();
-  const { id } = useParams();
-  const [post, setPost] = useState<any>(null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  const fetchPost = async () => {
-    if (!id) return;
-    try {
-      setIsLoading(true);
-      const response = await getPost(id as string);
-      setPost(response.data);
-    } catch (err) {
-      setError('Erreur lors du chargement du post');
-      console.error(err);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const onSubmit = async (formData: FormData) => {
-    try {
-      setIsSubmitting(true);
-      setError(null);
-      await updatePost(id as string, formData);
-      router.push('/post');
-    } catch (err) {
-      setError('Erreur lors de la mise à jour du post');
-      console.error(err);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchPost();
-  }, [id]);
-
-  if (isLoading) {
-    return (
-      <div className="flex justify-center items-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-        <strong className="font-bold">Erreur ! </strong>
-        <span className="block sm:inline">{error}</span>
-      </div>
-    );
-  }
-
-  if (!post) {
-    return (
-      <div className="bg-white p-8 rounded-lg shadow text-center">
-        <p className="text-gray-500">Post non trouvé</p>
-        <Link 
-          href="/posts"
-          className="inline-block mt-4 text-blue-600 hover:text-blue-800"
-        >
-          Retour à la liste
-        </Link>
-      </div>
-    );
-  }
-
+export default function EditPage({ params }: { params: { id: string } }) {
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-800">Modifier le Post</h1>
-        <p className="text-gray-600 mt-2">Modifiez les champs nécessaires</p>
-      </div>
-
-      {error && (
-        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
-          {error}
-        </div>
-      )}
-
-      <EditPostForm onSubmit={onSubmit} initialData={post} isSubmitting={isSubmitting} />
+    <div>
+      <h1>Édition du Post</h1>
+      <EditPostForm id={params.id} />
     </div>
   );
 }
+
+
+// async function getPost(id: string) {
+//   const res = await fetch(`http://localhost:3003/api/posts/${id}`, {
+//     cache: "no-store",
+//   });
+
+//   if (!res.ok) {
+//     throw new Error("Erreur lors de la récupération du post");
+//   }
+
+//   return res.json();
+// }
+
+// export default async function EditPostPage({ params }: { params: { id: string } }) {
+//   // const post = await getPost(params.id);
+
+//   return ( 
+//   <div> 
+//     <EditPostForm postId={params.id} />
+//   </div>
+//   );
+// }
+
+
+
+// 'use client';
+
+// import { useRouter, useParams } from 'next/navigation';
+// import { useState, useEffect } from 'react';
+// import { getPost, updatePost } from '../../service/api';
+// import EditPostForm from '@/app/components/EditPostForm';
+// import Link from 'next/link';
+
+// export default function EditPostPage() {
+//   const router = useRouter();
+//   const { id } = useParams();
+//   const postId = Array.isArray(id) ? id[0] : id;
+//   const [post, setPost] = useState<any>(null);
+//   const [isSubmitting, setIsSubmitting] = useState(false);
+//   const [error, setError] = useState<string | null>(null);
+//   const [isLoading, setIsLoading] = useState(true);
+
+//   const fetchPost = async () => {
+//     if (!postId) return;
+//     try {
+//       setIsLoading(true);
+//       const response = await getPost(postId);
+//       setPost(response.data);
+//     } catch (err) {
+//       setError('Erreur lors du chargement du post');
+//       console.error(err);
+//     } finally {
+//       setIsLoading(false);
+//     }
+//   };
+
+//   const onSubmit = async (formData: FormData) => {
+//     try {
+//       setIsSubmitting(true);
+//       setError(null);
+//       await updatePost(id as string, formData);
+//       router.push('/post');
+//     } catch (err) {
+//       setError('Erreur lors de la mise à jour du post');
+//       console.error(err);
+//     } finally {
+//       setIsSubmitting(false);
+//     }
+//   };
+
+//   useEffect(() => {
+//     fetchPost();
+//   }, [id]);
+
+//   if (isLoading) {
+//     return (
+//       <div className="flex justify-center items-center h-64">
+//         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+//       </div>
+//     );
+//   }
+
+//   if (error) {
+//     return (
+//       <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+//         <strong className="font-bold">Erreur ! </strong>
+//         <span className="block sm:inline">{error}</span>
+//       </div>
+//     );
+//   }
+
+//   if (!post) {
+//     return (
+//       <div className="bg-white p-8 rounded-lg shadow text-center">
+//         <p className="text-gray-500">Post non trouvé</p>
+//         <Link 
+//           href="/posts"
+//           className="inline-block mt-4 text-blue-600 hover:text-blue-800"
+//         >
+//           Retour à la liste
+//         </Link>
+//       </div>
+//     );
+//   }
+
+//   return (
+//     <div className="container mx-auto px-4 py-8">
+//       <div className="mb-8">
+//         <h1 className="text-3xl font-bold text-gray-800">Modifier le Post</h1>
+//         <p className="text-gray-600 mt-2">Modifiez les champs nécessaires</p>
+//       </div>
+
+//       {error && (
+//         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
+//           {error}
+//         </div>
+//       )}
+
+//       <EditPostForm onSubmit={onSubmit} initialData={post} isSubmitting={isSubmitting} />
+//     </div>
+//   );
+// }
 
 
 

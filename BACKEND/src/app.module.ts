@@ -13,6 +13,12 @@ import { AnalyzeModule } from './analyze/analyze.module';
 import { MulterModule } from '@nestjs/platform-express';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { AuthModule } from './auth/auth.module';
+import { UsersService } from './users/users.service';
+import { UsersController } from './users/users.controller';
+import { UsersModule } from './users/users.module';
+import { FilesModule } from './files/files.module';
+import { FilesController } from './files/files.controller';
 
 
 
@@ -34,11 +40,14 @@ import { join } from 'path';
       inject: [ConfigService],
     }),
     PostModule,
+    FilesModule,
     AnalyzeModule,
+    AuthModule,
+    UsersModule,
     
    
   ],
-  providers: [AnalyzeService],
-  controllers: [AnalyzeController],
+  providers: [AnalyzeService, UsersService],
+  controllers: [AnalyzeController, UsersController, FilesController],
 })
 export class AppModule {}

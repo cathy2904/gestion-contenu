@@ -118,6 +118,7 @@ __turbopack_context__.s({
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/axios/lib/axios.js [app-ssr] (ecmascript)");
 ;
+//import { CreatePostData, Post, UpdatePostData } from '../../types/post';
 const api = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].create({
     baseURL: 'http://localhost:3003/api'
 });
@@ -128,10 +129,11 @@ const createPost = (postData)=>api.post('/posts', postData, {
             'Content-Type': 'multipart/form-data'
         }
     });
-const updatePost = (id, postData)=>__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].put(`http://localhost:3003/api/posts/${id}`, postData, {
+const updatePost = (id, postData)=>api.put(`/posts/${id}`, postData, {
         headers: {
             'Content-Type': 'multipart/form-data'
-        }
+        },
+        method: 'PUT'
     });
 const deletePost = (id)=>api.delete(`/posts/${id}`); // export const getPosts = () => api.get('/posts');
  // export const getPost = (id: string) => api.get(`/posts/${id}`);

@@ -7,9 +7,11 @@ import { FaRegUser } from "react-icons/fa";
 
 import { FaBell } from 'react-icons/fa'; 
 import { menunav } from "@/data/data";
+import { useAuth } from "@/app/contexts/authProvider";
 
 
 export default function Nav() {
+  
   return (
     <nav className="w-full flex p-4">
       <div className="flex justify-start items-center w-1/3 space-x-4">

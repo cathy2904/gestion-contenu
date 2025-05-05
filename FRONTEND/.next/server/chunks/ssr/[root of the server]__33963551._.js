@@ -118,6 +118,7 @@ __turbopack_context__.s({
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/axios/lib/axios.js [app-ssr] (ecmascript)");
 ;
+//import { CreatePostData, Post, UpdatePostData } from '../../types/post';
 const api = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].create({
     baseURL: 'http://localhost:3003/api'
 });
@@ -128,10 +129,11 @@ const createPost = (postData)=>api.post('/posts', postData, {
             'Content-Type': 'multipart/form-data'
         }
     });
-const updatePost = (id, postData)=>__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].put(`http://localhost:3003/api/posts/${id}`, postData, {
+const updatePost = (id, postData)=>api.put(`/posts/${id}`, postData, {
         headers: {
             'Content-Type': 'multipart/form-data'
-        }
+        },
+        method: 'PUT'
     });
 const deletePost = (id)=>api.delete(`/posts/${id}`); // export const getPosts = () => api.get('/posts');
  // export const getPost = (id: string) => api.get(`/posts/${id}`);
@@ -148,233 +150,216 @@ __turbopack_context__.s({
     "default": (()=>EditPostForm)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hook$2d$form$2f$dist$2f$index$2e$esm$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react-hook-form/dist/index.esm.mjs [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/navigation.js [app-ssr] (ecmascript)");
+"use client";
 ;
 ;
 ;
-function EditPostForm({ onSubmit, initialData, isSubmitting = false }) {
-    const { register, handleSubmit, formState: { errors } } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hook$2d$form$2f$dist$2f$index$2e$esm$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useForm"])({
-        defaultValues: {
-            ...initialData,
-            image: null
-        }
-    });
-    const [previewImage, setPreviewImage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
-    const handleFormSubmit = async (data)=>{
+function EditPostForm({ post }) {
+    const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRouter"])();
+    const [title, setTitle] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(post.title);
+    const [content, setContent] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(post.content);
+    const [image, setImage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
+    const handleSubmit = async (e)=>{
+        e.preventDefault();
         const formData = new FormData();
-        formData.append('title', data.title);
-        formData.append('content', data.content);
-        formData.append('author', data.author);
-        if (data.image && data.image[0]) {
-            // Append the new image if it exists
-            formData.append('image', data.image[0]);
-        } else if (initialData.imagePath) {
-            // Retain the existing image path if no new image is uploaded
-            formData.append('imagePath', initialData.imagePath);
-        }
-        onSubmit(formData);
-    };
-    const handleImageChange = (e)=>{
-        const file = e.target.files?.[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onloadend = ()=>{
-                setPreviewImage(reader.result);
-            };
-            reader.readAsDataURL(file);
+        formData.append("title", title);
+        formData.append("content", content);
+        if (image) formData.append("image", image);
+        const response = await fetch(`http://localhost:3000/posts/${post._id}`, {
+            method: "PATCH",
+            body: formData
+        });
+        if (response.ok) {
+            router.push("/posts");
+        } else {
+            console.error("Échec de la modification");
         }
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
-        onSubmit: handleSubmit(handleFormSubmit),
-        className: "space-y-4 max-w-2xl mx-auto",
+        onSubmit: handleSubmit,
+        className: "flex flex-col gap-4 max-w-xl mx-auto",
         children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                        className: "block text-sm font-medium text-gray-700",
-                        children: "Titre *"
-                    }, void 0, false, {
-                        fileName: "[project]/app/components/EditPostForm.tsx",
-                        lineNumber: 52,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                        ...register('title', {
-                            required: 'Le titre est requis'
-                        }),
-                        className: `mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 ${errors.title ? 'border-red-500' : 'border'} p-2`
-                    }, void 0, false, {
-                        fileName: "[project]/app/components/EditPostForm.tsx",
-                        lineNumber: 53,
-                        columnNumber: 9
-                    }, this),
-                    errors.title && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "mt-1 text-sm text-red-600",
-                        children: errors.title.message
-                    }, void 0, false, {
-                        fileName: "[project]/app/components/EditPostForm.tsx",
-                        lineNumber: 60,
-                        columnNumber: 11
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/app/components/EditPostForm.tsx",
-                lineNumber: 51,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                        className: "block text-sm font-medium text-gray-700",
-                        children: "Contenu *"
-                    }, void 0, false, {
-                        fileName: "[project]/app/components/EditPostForm.tsx",
-                        lineNumber: 65,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
-                        ...register('content', {
-                            required: 'Le contenu est requis'
-                        }),
-                        rows: 4,
-                        className: `mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 ${errors.content ? 'border-red-500' : 'border'} p-2`
-                    }, void 0, false, {
-                        fileName: "[project]/app/components/EditPostForm.tsx",
-                        lineNumber: 66,
-                        columnNumber: 9
-                    }, this),
-                    errors.content && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "mt-1 text-sm text-red-600",
-                        children: errors.content.message
-                    }, void 0, false, {
-                        fileName: "[project]/app/components/EditPostForm.tsx",
-                        lineNumber: 74,
-                        columnNumber: 11
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/app/components/EditPostForm.tsx",
-                lineNumber: 64,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                        className: "block text-sm font-medium text-gray-700",
-                        children: "Auteur *"
-                    }, void 0, false, {
-                        fileName: "[project]/app/components/EditPostForm.tsx",
-                        lineNumber: 79,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                        ...register('author', {
-                            required: "L'auteur est requis"
-                        }),
-                        className: `mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 ${errors.author ? 'border-red-500' : 'border'} p-2`
-                    }, void 0, false, {
-                        fileName: "[project]/app/components/EditPostForm.tsx",
-                        lineNumber: 80,
-                        columnNumber: 9
-                    }, this),
-                    errors.author && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "mt-1 text-sm text-red-600",
-                        children: errors.author.message
-                    }, void 0, false, {
-                        fileName: "[project]/app/components/EditPostForm.tsx",
-                        lineNumber: 87,
-                        columnNumber: 11
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/app/components/EditPostForm.tsx",
-                lineNumber: 78,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                        className: "block text-sm font-medium text-gray-700",
-                        children: "Image"
-                    }, void 0, false, {
-                        fileName: "[project]/app/components/EditPostForm.tsx",
-                        lineNumber: 92,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                        type: "file",
-                        id: "image",
-                        ...register('image'),
-                        accept: "image/*",
-                        onChange: handleImageChange,
-                        className: "mt-1 block w-full text-sm text-gray-500   file:mr-4 file:py-2 file:px-4   file:rounded-md file:border-0   file:text-sm file:font-semibold   file:bg-blue-50 file:text-blue-700   hover:file:bg-blue-100"
-                    }, void 0, false, {
-                        fileName: "[project]/app/components/EditPostForm.tsx",
-                        lineNumber: 93,
-                        columnNumber: 9
-                    }, this),
-                    previewImage ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "mt-2",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                            src: previewImage,
-                            alt: "Preview",
-                            className: "h-32 object-cover rounded"
-                        }, void 0, false, {
-                            fileName: "[project]/app/components/EditPostForm.tsx",
-                            lineNumber: 108,
-                            columnNumber: 13
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/app/components/EditPostForm.tsx",
-                        lineNumber: 107,
-                        columnNumber: 11
-                    }, this) : initialData?.imagePath ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "mt-2",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                            src: `http://localhost:3003${initialData.imagePath}`,
-                            alt: "Current",
-                            className: "h-32 object-cover rounded"
-                        }, void 0, false, {
-                            fileName: "[project]/app/components/EditPostForm.tsx",
-                            lineNumber: 116,
-                            columnNumber: 13
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/app/components/EditPostForm.tsx",
-                        lineNumber: 115,
-                        columnNumber: 11
-                    }, this) : null
-                ]
-            }, void 0, true, {
-                fileName: "[project]/app/components/EditPostForm.tsx",
-                lineNumber: 91,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "pt-4",
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                    type: "submit",
-                    disabled: isSubmitting,
-                    className: "inline-flex justify-center rounded-md border border-transparent bg-blue-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50",
-                    children: isSubmitting ? 'Modification...' : 'Modifier'
-                }, void 0, false, {
-                    fileName: "[project]/app/components/EditPostForm.tsx",
-                    lineNumber: 126,
-                    columnNumber: 9
-                }, this)
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                className: "text-xl font-semibold",
+                children: "Modifier un article"
             }, void 0, false, {
                 fileName: "[project]/app/components/EditPostForm.tsx",
-                lineNumber: 125,
+                lineNumber: 38,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                type: "text",
+                value: title,
+                onChange: (e)=>setTitle(e.target.value),
+                placeholder: "Titre",
+                className: "border p-2 rounded"
+            }, void 0, false, {
+                fileName: "[project]/app/components/EditPostForm.tsx",
+                lineNumber: 40,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
+                value: content,
+                onChange: (e)=>setContent(e.target.value),
+                placeholder: "Contenu",
+                className: "border p-2 rounded"
+            }, void 0, false, {
+                fileName: "[project]/app/components/EditPostForm.tsx",
+                lineNumber: 48,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                type: "file",
+                accept: "image/*",
+                onChange: (e)=>setImage(e.target.files?.[0] || null),
+                className: "border p-2 rounded"
+            }, void 0, false, {
+                fileName: "[project]/app/components/EditPostForm.tsx",
+                lineNumber: 55,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                type: "submit",
+                className: "bg-blue-600 text-white py-2 px-4 rounded",
+                children: "Enregistrer les modifications"
+            }, void 0, false, {
+                fileName: "[project]/app/components/EditPostForm.tsx",
+                lineNumber: 62,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/components/EditPostForm.tsx",
-        lineNumber: 50,
+        lineNumber: 37,
         columnNumber: 5
     }, this);
-}
+} // import { useForm } from 'react-hook-form';
+ // import { useState } from 'react';
+ // interface EditPostFormProps {
+ //   onSubmit: (data: FormData) => void;
+ //   initialData: {
+ //     title: string;
+ //     content: string;
+ //     author: string;
+ //     imagePath?: string;
+ //   };
+ //   isSubmitting?: boolean;
+ // }
+ // export default function EditPostForm({ onSubmit, initialData, isSubmitting = false }: EditPostFormProps) {
+ //   const { register, handleSubmit, formState: { errors } } = useForm({
+ //     defaultValues: { ...initialData, image: null },
+ //   });
+ //   const [previewImage, setPreviewImage] = useState<string | null>(null);
+ //   const handleFormSubmit = async (data: any) => {
+ //     const formData = new FormData();
+ //     formData.append('title', data.title);
+ //     formData.append('content', data.content);
+ //     formData.append('author', data.author);
+ //     if (data.image && data.image[0]) {
+ //       // Append the new image if it exists
+ //       formData.append('image', data.image[0]);
+ //     } else if (initialData.imagePath) {
+ //       // Retain the existing image path if no new image is uploaded
+ //       formData.append('imagePath', initialData.imagePath);
+ //     }
+ //     onSubmit(formData);
+ //   };
+ //   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+ //     const file = e.target.files?.[0];
+ //     if (file) {
+ //       const reader = new FileReader();
+ //       reader.onloadend = () => {
+ //         setPreviewImage(reader.result as string);
+ //       };
+ //       reader.readAsDataURL(file);
+ //     }
+ //   };
+ //   return (
+ //     <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-4 max-w-2xl mx-auto">
+ //       <div>
+ //         <label className="block text-sm font-medium text-gray-700">Titre *</label>
+ //         <input
+ //           {...register('title', { required: 'Le titre est requis' })}
+ //           className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 ${
+ //             errors.title ? 'border-red-500' : 'border'
+ //           } p-2`}
+ //         />
+ //         {errors.title && (
+ //           <p className="mt-1 text-sm text-red-600">{errors.title.message as string}</p>
+ //         )}
+ //       </div>
+ //       <div>
+ //         <label className="block text-sm font-medium text-gray-700">Contenu *</label>
+ //         <textarea
+ //           {...register('content', { required: 'Le contenu est requis' })}
+ //           rows={4}
+ //           className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 ${
+ //             errors.content ? 'border-red-500' : 'border'
+ //           } p-2`}
+ //         />
+ //         {errors.content && (
+ //           <p className="mt-1 text-sm text-red-600">{errors.content.message as string}</p>
+ //         )}
+ //       </div>
+ //       <div>
+ //         <label className="block text-sm font-medium text-gray-700">Auteur *</label>
+ //         <input
+ //           {...register('author', { required: "L'auteur est requis" })}
+ //           className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 ${
+ //             errors.author ? 'border-red-500' : 'border'
+ //           } p-2`}
+ //         />
+ //         {errors.author && (
+ //           <p className="mt-1 text-sm text-red-600">{errors.author.message as string}</p>
+ //         )}
+ //       </div>
+ //       <div>
+ //         <label className="block text-sm font-medium text-gray-700">Image</label>
+ //         <input
+ //           type="file"
+ //           id="image"
+ //           {...register('image')}
+ //           accept="image/*"
+ //           onChange={handleImageChange}
+ //           className="mt-1 block w-full text-sm text-gray-500
+ //             file:mr-4 file:py-2 file:px-4
+ //             file:rounded-md file:border-0
+ //             file:text-sm file:font-semibold
+ //             file:bg-blue-50 file:text-blue-700
+ //             hover:file:bg-blue-100"
+ //         />
+ //         {previewImage ? (
+ //           <div className="mt-2">
+ //             <img 
+ //               src={previewImage} 
+ //               alt="Preview" 
+ //               className="h-32 object-cover rounded"
+ //             />
+ //           </div>
+ //         ) : initialData?.imagePath ? (
+ //           <div className="mt-2">
+ //             <img 
+ //               src={`http://localhost:3003${initialData.imagePath}`} 
+ //               alt="Current" 
+ //               className="h-32 object-cover rounded"
+ //             />
+ //           </div>
+ //         ) : null}
+ //       </div>
+ //       <div className="pt-4">
+ //         <button
+ //           type="submit"
+ //           disabled={isSubmitting}
+ //           className="inline-flex justify-center rounded-md border border-transparent bg-blue-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50"
+ //         >
+ //           {isSubmitting ? 'Modification...' : 'Modifier'}
+ //         </button>
+ //       </div>
+ //     </form>
+ //   );
+ // }
 }}),
 "[project]/app/post/edit/[id]/page.tsx [app-ssr] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
@@ -400,15 +385,16 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 function EditPostPage() {
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRouter"])();
     const { id } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useParams"])();
+    const postId = Array.isArray(id) ? id[0] : id;
     const [post, setPost] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     const [isSubmitting, setIsSubmitting] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     const [isLoading, setIsLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(true);
     const fetchPost = async ()=>{
-        if (!id) return;
+        if (!postId) return;
         try {
             setIsLoading(true);
-            const response = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$post$2f$service$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["getPost"])(id);
+            const response = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$post$2f$service$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["getPost"])(postId);
             setPost(response.data);
         } catch (err) {
             setError('Erreur lors du chargement du post');
@@ -442,12 +428,12 @@ function EditPostPage() {
                 className: "animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"
             }, void 0, false, {
                 fileName: "[project]/app/post/edit/[id]/page.tsx",
-                lineNumber: 52,
+                lineNumber: 53,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/app/post/edit/[id]/page.tsx",
-            lineNumber: 51,
+            lineNumber: 52,
             columnNumber: 7
         }, this);
     }
@@ -461,7 +447,7 @@ function EditPostPage() {
                     children: "Erreur ! "
                 }, void 0, false, {
                     fileName: "[project]/app/post/edit/[id]/page.tsx",
-                    lineNumber: 60,
+                    lineNumber: 61,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -469,13 +455,13 @@ function EditPostPage() {
                     children: error
                 }, void 0, false, {
                     fileName: "[project]/app/post/edit/[id]/page.tsx",
-                    lineNumber: 61,
+                    lineNumber: 62,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/post/edit/[id]/page.tsx",
-            lineNumber: 59,
+            lineNumber: 60,
             columnNumber: 7
         }, this);
     }
@@ -488,7 +474,7 @@ function EditPostPage() {
                     children: "Post non trouvé"
                 }, void 0, false, {
                     fileName: "[project]/app/post/edit/[id]/page.tsx",
-                    lineNumber: 69,
+                    lineNumber: 70,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -497,13 +483,13 @@ function EditPostPage() {
                     children: "Retour à la liste"
                 }, void 0, false, {
                     fileName: "[project]/app/post/edit/[id]/page.tsx",
-                    lineNumber: 70,
+                    lineNumber: 71,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/post/edit/[id]/page.tsx",
-            lineNumber: 68,
+            lineNumber: 69,
             columnNumber: 7
         }, this);
     }
@@ -518,7 +504,7 @@ function EditPostPage() {
                         children: "Modifier le Post"
                     }, void 0, false, {
                         fileName: "[project]/app/post/edit/[id]/page.tsx",
-                        lineNumber: 83,
+                        lineNumber: 84,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -526,13 +512,13 @@ function EditPostPage() {
                         children: "Modifiez les champs nécessaires"
                     }, void 0, false, {
                         fileName: "[project]/app/post/edit/[id]/page.tsx",
-                        lineNumber: 84,
+                        lineNumber: 85,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/post/edit/[id]/page.tsx",
-                lineNumber: 82,
+                lineNumber: 83,
                 columnNumber: 7
             }, this),
             error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -540,7 +526,7 @@ function EditPostPage() {
                 children: error
             }, void 0, false, {
                 fileName: "[project]/app/post/edit/[id]/page.tsx",
-                lineNumber: 88,
+                lineNumber: 89,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$EditPostForm$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -549,13 +535,13 @@ function EditPostPage() {
                 isSubmitting: isSubmitting
             }, void 0, false, {
                 fileName: "[project]/app/post/edit/[id]/page.tsx",
-                lineNumber: 93,
+                lineNumber: 94,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/post/edit/[id]/page.tsx",
-        lineNumber: 81,
+        lineNumber: 82,
         columnNumber: 5
     }, this);
 } // import { useRouter } from 'next/router';

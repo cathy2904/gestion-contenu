@@ -3,20 +3,24 @@ import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import * as express from 'express';
 import { join } from 'path';
+import * as cookieParser from 'cookie-parser';
+
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('api');
   //app.enableCors({ origin: "http://localhost:3000" });
 
+  app.use(cookieParser());
   app.useGlobalPipes(new ValidationPipe());
   // Serve static files from the uploads directory
   app.use('/uploads', express.static(join(__dirname, '..', 'uploads')));
 
   app.enableCors({
     origin: 'http://localhost:3000', 
+    
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: false,
+    credentials: true,
   });
   const PORT = process.env.PORT || 3003; 
   await app.listen(PORT);

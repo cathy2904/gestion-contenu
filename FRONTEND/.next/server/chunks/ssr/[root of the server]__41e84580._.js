@@ -146,6 +146,7 @@ function ContentPage() {
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [saving, setSaving] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [model, setModel] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('openai');
     const openai = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$openai$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["default"]({
         apiKey: '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',
         dangerouslyAllowBrowser: true
@@ -155,30 +156,57 @@ function ContentPage() {
         try {
             setLoading(true);
             setError(null);
-            // Appel à l'API OpenAI pour générer un article
-            const completion = await openai.chat.completions.create({
-                messages: [
-                    {
-                        role: 'system',
-                        content: 'Vous êtes un rédacteur professionnel.'
-                    },
-                    {
-                        role: 'user',
-                        content: `Écris un article sur : ${title}`
-                    }
-                ],
-                model: 'gpt-4o',
-                max_completion_tokens: 300
+            const apiKey = model === 'openai' ? process.env.OPENAI_API_KEY : process.env.DEEPSEEK_KEY;
+            const url = model === 'openai' ? 'https://api.openai.com/v1/chat/completions' : 'https://api.deepseek.com/chat/completions';
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${apiKey}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    model: model === 'openai' ? 'gpt-4o' : 'deepseek-chat',
+                    messages: [
+                        {
+                            role: 'system',
+                            content: 'Tu es un rédacteur professionnel.'
+                        },
+                        {
+                            role: 'user',
+                            content: `Écris un article sur : ${title}`
+                        }
+                    ],
+                    max_tokens: 500
+                })
             });
-            const generatedText = completion.choices[0].message.content || '';
-            setGeneratedContent(generatedText); // Afficher le contenu généré
+            const result = await response.json();
+            const content = result?.choices?.[0]?.message?.content || '';
+            setGeneratedContent(content);
         } catch (err) {
-            console.error('Erreur lors de la génération du contenu:', err);
-            setError(err instanceof Error ? err.message : 'Une erreur est survenue');
+            console.error(err);
+            setError("Une erreur est survenue lors de la génération de l'article.");
         } finally{
             setLoading(false);
         }
     }
+    // Appel à l'API OpenAI pour générer un article
+    //     const completion = await openai.chat.completions.create({
+    //       messages: [
+    //         { role: 'system', content: 'Vous êtes un rédacteur professionnel.' },
+    //         { role: 'user', content: `Écris un article sur : ${title}` },
+    //       ],
+    //       model: 'gpt-4o',
+    //       max_completion_tokens: 300,
+    //     });
+    //     const generatedText = completion.choices[0].message.content || '';
+    //     setGeneratedContent(generatedText); // Afficher le contenu généré
+    //   } catch (err) {
+    //     console.error('Erreur lors de la génération du contenu:', err);
+    //     setError(err instanceof Error ? err.message : 'Une erreur est survenue');
+    //   } finally {
+    //     setLoading(false);
+    //   }
+    // }
     // Fonction pour enregistrer le contenu généré dans MongoDB
     async function handleSave() {
         try {
@@ -281,7 +309,7 @@ function ContentPage() {
                 children: "Content Home"
             }, void 0, false, {
                 fileName: "[project]/app/contenu/page.tsx",
-                lineNumber: 148,
+                lineNumber: 186,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -291,105 +319,101 @@ function ContentPage() {
                     children: "Aller à la page d'analyse"
                 }, void 0, false, {
                     fileName: "[project]/app/contenu/page.tsx",
-                    lineNumber: 151,
+                    lineNumber: 189,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/contenu/page.tsx",
-                lineNumber: 150,
+                lineNumber: 188,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                style: styles.container,
+                className: "mb-4",
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                        style: styles.title,
-                        children: "Générer un article"
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                        htmlFor: "model",
+                        className: "mr-2 font-medium",
+                        children: "Choisir le moteur :"
                     }, void 0, false, {
                         fileName: "[project]/app/contenu/page.tsx",
-                        lineNumber: 156,
-                        columnNumber: 7
+                        lineNumber: 195,
+                        columnNumber: 9
                     }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                        type: "text",
-                        placeholder: "Entrez le titre de l'article",
-                        value: title,
-                        onChange: (e)=>setTitle(e.target.value),
-                        style: styles.input
-                    }, void 0, false, {
-                        fileName: "[project]/app/contenu/page.tsx",
-                        lineNumber: 157,
-                        columnNumber: 7
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                        onClick: handleGenerate,
-                        disabled: loading,
-                        style: {
-                            ...styles.button,
-                            ...loading ? styles.buttonDisabled : {}
-                        },
-                        children: loading ? 'Génération en cours...' : 'Générer'
-                    }, void 0, false, {
-                        fileName: "[project]/app/contenu/page.tsx",
-                        lineNumber: 164,
-                        columnNumber: 7
-                    }, this),
-                    error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        style: styles.error,
-                        children: error
-                    }, void 0, false, {
-                        fileName: "[project]/app/contenu/page.tsx",
-                        lineNumber: 172,
-                        columnNumber: 17
-                    }, this),
-                    generatedContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        style: styles.generatedContent,
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
+                        id: "model",
+                        value: model,
+                        onChange: (e)=>setModel(e.target.value),
+                        className: "border rounded p-2",
                         children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                                style: styles.generatedContentTitle,
-                                children: "Article généré :"
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                value: "openai",
+                                children: "GPT (OpenAI)"
                             }, void 0, false, {
                                 fileName: "[project]/app/contenu/page.tsx",
-                                lineNumber: 176,
+                                lineNumber: 202,
                                 columnNumber: 11
                             }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                style: styles.generatedContentText,
-                                children: generatedContent
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                value: "deepseek",
+                                children: "DeepSeek"
                             }, void 0, false, {
                                 fileName: "[project]/app/contenu/page.tsx",
-                                lineNumber: 177,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                onClick: handleSave,
-                                disabled: saving,
-                                style: {
-                                    ...styles.button,
-                                    ...saving ? styles.buttonDisabled : {}
-                                },
-                                children: saving ? 'Enregistrement en cours...' : 'Enregistrer'
-                            }, void 0, false, {
-                                fileName: "[project]/app/contenu/page.tsx",
-                                lineNumber: 178,
+                                lineNumber: 203,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/contenu/page.tsx",
-                        lineNumber: 175,
+                        lineNumber: 196,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/contenu/page.tsx",
-                lineNumber: 155,
+                lineNumber: 194,
                 columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                type: "text",
+                placeholder: "Entre un sujet ou un titre",
+                value: title,
+                onChange: (e)=>setTitle(e.target.value),
+                className: "border border-gray-300 rounded p-2 w-full mb-4"
+            }, void 0, false, {
+                fileName: "[project]/app/contenu/page.tsx",
+                lineNumber: 207,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                onClick: handleGenerate,
+                disabled: loading,
+                className: "bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700",
+                children: loading ? 'Génération...' : 'Générer l’article'
+            }, void 0, false, {
+                fileName: "[project]/app/contenu/page.tsx",
+                lineNumber: 215,
+                columnNumber: 7
+            }, this),
+            error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                className: "text-red-500 mt-4",
+                children: error
+            }, void 0, false, {
+                fileName: "[project]/app/contenu/page.tsx",
+                lineNumber: 223,
+                columnNumber: 17
+            }, this),
+            generatedContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "mt-6 p-4 border rounded bg-gray-100 whitespace-pre-wrap",
+                children: generatedContent
+            }, void 0, false, {
+                fileName: "[project]/app/contenu/page.tsx",
+                lineNumber: 226,
+                columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/contenu/page.tsx",
-        lineNumber: 147,
+        lineNumber: 185,
         columnNumber: 1
     }, this);
 }

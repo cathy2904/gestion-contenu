@@ -12,11 +12,13 @@ export default function ContentPage() {
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [model, setModel] = useState<'openai' | 'deepseek'>('openai')
 
-  const openai = new OpenAI({
-    apiKey: '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',
-    dangerouslyAllowBrowser: true,
-  });
+
+  // const openai = new OpenAI({
+  //   apiKey: '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',
+  //   dangerouslyAllowBrowser: true,
+  // });
 
   // Fonction pour générer un article
   async function handleGenerate() {
@@ -24,25 +26,64 @@ export default function ContentPage() {
       setLoading(true);
       setError(null);
 
-      // Appel à l'API OpenAI pour générer un article
-      const completion = await openai.chat.completions.create({
-        messages: [
-          { role: 'system', content: 'Vous êtes un rédacteur professionnel.' },
-          { role: 'user', content: `Écris un article sur : ${title}` },
-        ],
-        model: 'gpt-4o',
-        max_completion_tokens: 300,
-      });
+      const apiKey =
+      model === 'openai'
+        ? process.env.NEXT_PUBLIC_OPENAI_API_KEY
+        : process.env.NEXT_PUBLIC_DEEPSEEK_API_KEY
+        
 
-      const generatedText = completion.choices[0].message.content || '';
-      setGeneratedContent(generatedText); // Afficher le contenu généré
-    } catch (err) {
-      console.error('Erreur lors de la génération du contenu:', err);
-      setError(err instanceof Error ? err.message : 'Une erreur est survenue');
-    } finally {
-      setLoading(false);
-    }
-  }
+    const url =
+      model === 'openai'
+        ? 'https://api.openai.com/v1/chat/completions'
+        : 'https://api.deepseek.com/chat/completions'
+
+        console.log("API Key utilisée:", apiKey)
+console.log("URL utilisée:", url)
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${apiKey}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            model: model === 'openai' ? 'gpt-4o' : 'deepseek-chat',
+            messages: [
+              { role: 'system', content: 'Tu es un rédacteur professionnel.' },
+              { role: 'user', content: `Écris un article sur : ${title}` },
+            ],
+            max_tokens: 500,
+          }),
+        })
+  
+        const result = await response.json()
+        const content = result?.choices?.[0]?.message?.content || ''
+        setGeneratedContent(content)
+      } catch (err) {
+        console.error(err)
+        setError("Une erreur est survenue lors de la génération de l'article.")
+      } finally {
+        setLoading(false)
+      }}
+
+      // Appel à l'API OpenAI pour générer un article
+  //     const completion = await openai.chat.completions.create({
+  //       messages: [
+  //         { role: 'system', content: 'Vous êtes un rédacteur professionnel.' },
+  //         { role: 'user', content: `Écris un article sur : ${title}` },
+  //       ],
+  //       model: 'gpt-4o',
+  //       max_completion_tokens: 300,
+  //     });
+
+  //     const generatedText = completion.choices[0].message.content || '';
+  //     setGeneratedContent(generatedText); // Afficher le contenu généré
+  //   } catch (err) {
+  //     console.error('Erreur lors de la génération du contenu:', err);
+  //     setError(err instanceof Error ? err.message : 'Une erreur est survenue');
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // }
 
   // Fonction pour enregistrer le contenu généré dans MongoDB
   async function handleSave() {
@@ -124,7 +165,7 @@ export default function ContentPage() {
     generatedContent: {
       marginTop: '20px',
       padding: '20px',
-      backgroundColor: 'dark',
+      backgroundColor: 'black',
       border: '1px solid #ddd',
       borderRadius: '4px',
       color: 'white',
@@ -152,8 +193,49 @@ export default function ContentPage() {
           Aller à la page d'analyse
         </button>
       </Link>
-      <div style={styles.container}>
-      <h1 style={styles.title}>Générer un article</h1>
+      <Link href="contenu/deepseek/">
+        <button className="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+          Avec Deepseek
+        </button>
+      </Link>
+      {/* <div style={styles.container}> */}
+      <div className="mb-4">
+        <label htmlFor="model" className="mr-2 font-medium">Choisir le moteur :</label>
+        <select
+          id="model"
+          value={model}
+          onChange={(e) => setModel(e.target.value as 'openai' | 'deepseek')}
+          className="border rounded p-2 text-gray"
+        >
+          <option value="openai">CHAT GPT</option>
+          <option value="deepseek">DeepSeek</option>
+        </select>
+      </div>
+
+      <input
+        type="text"
+        placeholder="Entre un sujet ou un titre"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        className="border border-gray-300 rounded p-2 w-full mb-4"
+      />
+
+      <button
+        onClick={handleGenerate}
+        disabled={loading}
+        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+      >
+        {loading ? 'Génération...' : 'Générer l’article'}
+      </button>
+
+      {error && <p className="text-red-500 mt-4">{error}</p>}
+
+      {generatedContent && (
+        <div className="mt-6 p-4 border text-black rounded bg-gray-100 whitespace-pre-wrap">
+          {generatedContent}
+        </div>
+      )}
+      {/* <h1 style={styles.title}>Générer un article</h1>
       <input
         type="text"
         placeholder="Entrez le titre de l'article"
@@ -182,9 +264,9 @@ export default function ContentPage() {
           >
             {saving ? 'Enregistrement en cours...' : 'Enregistrer'}
           </button>
-        </div>
-      )}
-    </div>
+        </div> */}
+      {/* )} */}
+    {/* </div> */}
 
 
 

@@ -55,15 +55,14 @@ var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_
 __turbopack_context__.s({
     "default": (()=>ContentPage)
 });
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Principal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/Principal.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$openai$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i("[project]/node_modules/openai/index.mjs [app-client] (ecmascript) <locals>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/client/app-dir/link.js [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 'use client';
-;
 ;
 ;
 ;
@@ -74,39 +73,69 @@ function ContentPage() {
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [saving, setSaving] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
-    const openai = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$openai$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["default"]({
-        apiKey: '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',
-        dangerouslyAllowBrowser: true
-    });
+    const [model, setModel] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('openai');
+    // const openai = new OpenAI({
+    //   apiKey: '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',
+    //   dangerouslyAllowBrowser: true,
+    // });
     // Fonction pour générer un article
     async function handleGenerate() {
         try {
             setLoading(true);
             setError(null);
-            // Appel à l'API OpenAI pour générer un article
-            const completion = await openai.chat.completions.create({
-                messages: [
-                    {
-                        role: 'system',
-                        content: 'Vous êtes un rédacteur professionnel.'
-                    },
-                    {
-                        role: 'user',
-                        content: `Écris un article sur : ${title}`
-                    }
-                ],
-                model: 'gpt-4o',
-                max_completion_tokens: 300
+            const apiKey = model === 'openai' ? ("TURBOPACK compile-time value", "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") : ("TURBOPACK compile-time value", "sk-4a420159a11a4d30b3fa44d87d47c059");
+            const url = model === 'openai' ? 'https://api.openai.com/v1/chat/completions' : 'https://api.deepseek.com/chat/completions';
+            console.log("API Key utilisée:", apiKey);
+            console.log("URL utilisée:", url);
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${apiKey}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    model: model === 'openai' ? 'gpt-4o' : 'deepseek-chat',
+                    messages: [
+                        {
+                            role: 'system',
+                            content: 'Tu es un rédacteur professionnel.'
+                        },
+                        {
+                            role: 'user',
+                            content: `Écris un article sur : ${title}`
+                        }
+                    ],
+                    max_tokens: 500
+                })
             });
-            const generatedText = completion.choices[0].message.content || '';
-            setGeneratedContent(generatedText); // Afficher le contenu généré
+            const result = await response.json();
+            const content = result?.choices?.[0]?.message?.content || '';
+            setGeneratedContent(content);
         } catch (err) {
-            console.error('Erreur lors de la génération du contenu:', err);
-            setError(err instanceof Error ? err.message : 'Une erreur est survenue');
+            console.error(err);
+            setError("Une erreur est survenue lors de la génération de l'article.");
         } finally{
             setLoading(false);
         }
     }
+    // Appel à l'API OpenAI pour générer un article
+    //     const completion = await openai.chat.completions.create({
+    //       messages: [
+    //         { role: 'system', content: 'Vous êtes un rédacteur professionnel.' },
+    //         { role: 'user', content: `Écris un article sur : ${title}` },
+    //       ],
+    //       model: 'gpt-4o',
+    //       max_completion_tokens: 300,
+    //     });
+    //     const generatedText = completion.choices[0].message.content || '';
+    //     setGeneratedContent(generatedText); // Afficher le contenu généré
+    //   } catch (err) {
+    //     console.error('Erreur lors de la génération du contenu:', err);
+    //     setError(err instanceof Error ? err.message : 'Une erreur est survenue');
+    //   } finally {
+    //     setLoading(false);
+    //   }
+    // }
     // Fonction pour enregistrer le contenu généré dans MongoDB
     async function handleSave() {
         try {
@@ -185,7 +214,7 @@ function ContentPage() {
         generatedContent: {
             marginTop: '20px',
             padding: '20px',
-            backgroundColor: 'dark',
+            backgroundColor: 'black',
             border: '1px solid #ddd',
             borderRadius: '4px',
             color: 'white'
@@ -209,7 +238,7 @@ function ContentPage() {
                 children: "Content Home"
             }, void 0, false, {
                 fileName: "[project]/app/contenu/page.tsx",
-                lineNumber: 148,
+                lineNumber: 189,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -219,109 +248,120 @@ function ContentPage() {
                     children: "Aller à la page d'analyse"
                 }, void 0, false, {
                     fileName: "[project]/app/contenu/page.tsx",
-                    lineNumber: 151,
+                    lineNumber: 192,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/contenu/page.tsx",
-                lineNumber: 150,
+                lineNumber: 191,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                href: "contenu/deepseek/",
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                    className: "bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors",
+                    children: "Avec Deepseek"
+                }, void 0, false, {
+                    fileName: "[project]/app/contenu/page.tsx",
+                    lineNumber: 197,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/app/contenu/page.tsx",
+                lineNumber: 196,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                style: styles.container,
+                className: "mb-4",
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                        style: styles.title,
-                        children: "Générer un article"
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                        htmlFor: "model",
+                        className: "mr-2 font-medium",
+                        children: "Choisir le moteur :"
                     }, void 0, false, {
                         fileName: "[project]/app/contenu/page.tsx",
-                        lineNumber: 156,
-                        columnNumber: 7
+                        lineNumber: 203,
+                        columnNumber: 9
                     }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                        type: "text",
-                        placeholder: "Entrez le titre de l'article",
-                        value: title,
-                        onChange: (e)=>setTitle(e.target.value),
-                        style: styles.input
-                    }, void 0, false, {
-                        fileName: "[project]/app/contenu/page.tsx",
-                        lineNumber: 157,
-                        columnNumber: 7
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                        onClick: handleGenerate,
-                        disabled: loading,
-                        style: {
-                            ...styles.button,
-                            ...loading ? styles.buttonDisabled : {}
-                        },
-                        children: loading ? 'Génération en cours...' : 'Générer'
-                    }, void 0, false, {
-                        fileName: "[project]/app/contenu/page.tsx",
-                        lineNumber: 164,
-                        columnNumber: 7
-                    }, this),
-                    error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        style: styles.error,
-                        children: error
-                    }, void 0, false, {
-                        fileName: "[project]/app/contenu/page.tsx",
-                        lineNumber: 172,
-                        columnNumber: 17
-                    }, this),
-                    generatedContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        style: styles.generatedContent,
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
+                        id: "model",
+                        value: model,
+                        onChange: (e)=>setModel(e.target.value),
+                        className: "border rounded p-2 text-gray",
                         children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                                style: styles.generatedContentTitle,
-                                children: "Article généré :"
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                value: "openai",
+                                children: "CHAT GPT"
                             }, void 0, false, {
                                 fileName: "[project]/app/contenu/page.tsx",
-                                lineNumber: 176,
+                                lineNumber: 210,
                                 columnNumber: 11
                             }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                style: styles.generatedContentText,
-                                children: generatedContent
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                value: "deepseek",
+                                children: "DeepSeek"
                             }, void 0, false, {
                                 fileName: "[project]/app/contenu/page.tsx",
-                                lineNumber: 177,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                onClick: handleSave,
-                                disabled: saving,
-                                style: {
-                                    ...styles.button,
-                                    ...saving ? styles.buttonDisabled : {}
-                                },
-                                children: saving ? 'Enregistrement en cours...' : 'Enregistrer'
-                            }, void 0, false, {
-                                fileName: "[project]/app/contenu/page.tsx",
-                                lineNumber: 178,
+                                lineNumber: 211,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/contenu/page.tsx",
-                        lineNumber: 175,
+                        lineNumber: 204,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/contenu/page.tsx",
-                lineNumber: 155,
+                lineNumber: 202,
                 columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                type: "text",
+                placeholder: "Entre un sujet ou un titre",
+                value: title,
+                onChange: (e)=>setTitle(e.target.value),
+                className: "border border-gray-300 rounded p-2 w-full mb-4"
+            }, void 0, false, {
+                fileName: "[project]/app/contenu/page.tsx",
+                lineNumber: 215,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                onClick: handleGenerate,
+                disabled: loading,
+                className: "bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700",
+                children: loading ? 'Génération...' : 'Générer l’article'
+            }, void 0, false, {
+                fileName: "[project]/app/contenu/page.tsx",
+                lineNumber: 223,
+                columnNumber: 7
+            }, this),
+            error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                className: "text-red-500 mt-4",
+                children: error
+            }, void 0, false, {
+                fileName: "[project]/app/contenu/page.tsx",
+                lineNumber: 231,
+                columnNumber: 17
+            }, this),
+            generatedContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "mt-6 p-4 border text-black rounded bg-gray-100 whitespace-pre-wrap",
+                children: generatedContent
+            }, void 0, false, {
+                fileName: "[project]/app/contenu/page.tsx",
+                lineNumber: 234,
+                columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/contenu/page.tsx",
-        lineNumber: 147,
+        lineNumber: 188,
         columnNumber: 1
     }, this);
 }
-_s(ContentPage, "cbE9n4MAiZ+mtpHYzjEjcjqM71w=");
+_s(ContentPage, "yIqtRxm1vBkEAF8Ja5hAbLWGaow=");
 _c = ContentPage;
 var _c;
 __turbopack_context__.k.register(_c, "ContentPage");

@@ -3,10 +3,10 @@ import { MenuType } from "./type";
 
 export const menunav: MenuType[] = [
     {
-        title: "Catherine",
+        title: "Dashboard",
         menu: [
             {
-                titre: "Mon profil",
+                titre: "login",
                 link: "/",
                 value: "new-txt"
             },

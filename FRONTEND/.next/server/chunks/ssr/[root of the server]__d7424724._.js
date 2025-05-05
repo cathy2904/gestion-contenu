@@ -499,10 +499,10 @@ __turbopack_context__.s({
 });
 const menunav = [
     {
-        title: "Catherine",
+        title: "Dashboard",
         menu: [
             {
-                titre: "Mon profil",
+                titre: "login",
                 link: "/",
                 value: "new-txt"
             },
