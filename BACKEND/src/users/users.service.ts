@@ -23,6 +23,10 @@ export class UsersService {
     
     return newUser.save();
   }
+  async findAll() {
+    
+    return this.userModel.find();
+  }
 
   async findByEmail(email: string): Promise<User | null> {
     return this.userModel.findOne({ email }).exec();
@@ -31,4 +35,13 @@ export class UsersService {
   async findById(id: string): Promise<User | null> {
     return this.userModel.findById(id).exec();
   }
+
+  async updateRole(id: string, role: string) {
+    return this.userModel.findByIdAndUpdate(
+      id,
+      { role },
+      { new: true },
+    );
+  }
+  
 }

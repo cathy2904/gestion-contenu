@@ -24,9 +24,9 @@ export const dashs = [
     link: "/",
   },
   {
-    title: "Context",
+    title: "Generer",
     icon: <RiSoundModuleLine className="w-6 h-8"/>,
-    link: "/context",
+    link: "/content",
   },
   {
     title: "Generate",

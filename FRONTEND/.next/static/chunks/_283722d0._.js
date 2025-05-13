@@ -568,7 +568,8 @@ function AuthProvider({ children }) {
         setUser({
             id: data.user.id,
             username: data.user.username,
-            email: data.user.email
+            email: data.user.email,
+            role: data.user.role
         });
         router.push('/');
     };
@@ -609,7 +610,7 @@ function AuthProvider({ children }) {
         children: children
     }, void 0, false, {
         fileName: "[project]/app/contexts/authProvider.tsx",
-        lineNumber: 91,
+        lineNumber: 93,
         columnNumber: 5
     }, this);
 }
@@ -801,7 +802,7 @@ const contents = [
         title: "Contents",
         menu: [
             {
-                titre: "Content1",
+                titre: "Generer",
                 link: "/content",
                 value: "new-txt"
             },
@@ -1078,7 +1079,7 @@ const dashs = [
         link: "/"
     },
     {
-        title: "Context",
+        title: "Generer",
         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$ri$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["RiSoundModuleLine"], {
             className: "w-6 h-8"
         }, void 0, false, {
@@ -1086,7 +1087,7 @@ const dashs = [
             lineNumber: 28,
             columnNumber: 11
         }, this),
-        link: "/context"
+        link: "/content"
     },
     {
         title: "Generate",

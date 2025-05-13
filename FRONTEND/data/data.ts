@@ -33,7 +33,7 @@ export const contents: MenuType[] = [
         title: "Contents",
         menu: [
             {
-                titre: "Content1",
+                titre: "Generer",
                 link: "/content",
                 value: "new-txt"
             },

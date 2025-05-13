@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 111, "column": 0}, "map": {"version":3,"sources":["file://C%3A/Users/komba/Gestion-contenu/FRONTEND/app/components/LoadingSpinner.tsx"],"sourcesContent":["import React from 'react';\r\n\r\nconst LoadingSpinner: React.FC = () => {\r\n  return <div>Chargement...</div>;\r\n};\r\n\r\nexport default LoadingSpinner;\r\n"],"names":[],"mappings":";;;;;AAEA,MAAM,iBAA2B;IAC/B,qBAAO,8OAAC;kBAAI;;;;;;AACd;uCAEe","debugId":null}}]
+}

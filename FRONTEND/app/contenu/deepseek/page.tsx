@@ -111,8 +111,8 @@ export default function ArticleGenerator() {
         </div>
         
         <div>
-          <label htmlFor="tone" className="block  text-black mb-2 font-medium">
-            Ton de l'article :
+          <label htmlFor="tone" className="block  text-white-bold mb-2 font-medium">
+            style de texte :
           </label>
           <select
             id="tone"
@@ -130,7 +130,7 @@ export default function ArticleGenerator() {
       <button
         onClick={generateArticle}
         disabled={isLoading}
-        className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg disabled:opacity-50 transition-colors"
+        className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg disabled:opacity-50 transition-colors"
       >
         {isLoading ? (
           <span className="flex items-center justify-center">

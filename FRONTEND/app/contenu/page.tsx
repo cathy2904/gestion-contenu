@@ -15,11 +15,6 @@ export default function ContentPage() {
   const [model, setModel] = useState<'openai' | 'deepseek'>('openai')
 
 
-  // const openai = new OpenAI({
-  //   apiKey: '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',
-  //   dangerouslyAllowBrowser: true,
-  // });
-
   // Fonction pour générer un article
   async function handleGenerate() {
     try {
@@ -189,13 +184,13 @@ console.log("URL utilisée:", url)
       <h1>Content Home</h1>
 
       <Link href="contenu/analyze/">
-        <button className="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+        <button className="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition-colors">
           Aller à la page d'analyse
         </button>
       </Link>
       <Link href="contenu/deepseek/">
-        <button className="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors">
-          Avec Deepseek
+        <button className="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition-colors">
+          Avancé
         </button>
       </Link>
       {/* <div style={styles.container}> */}
@@ -223,7 +218,7 @@ console.log("URL utilisée:", url)
       <button
         onClick={handleGenerate}
         disabled={loading}
-        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+        className="bg-green-600 text-white px-4 py-2 rounded hover:bg-blue-700"
       >
         {loading ? 'Génération...' : 'Générer l’article'}
       </button>

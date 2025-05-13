@@ -19,6 +19,13 @@ import { UsersController } from './users/users.controller';
 import { UsersModule } from './users/users.module';
 import { FilesModule } from './files/files.module';
 import { FilesController } from './files/files.controller';
+import { RolesService } from './roles/roles.service';
+import { RolesController } from './roles/roles.controller';
+import { RolesModule } from './roles/roles.module';
+import { ContentController } from './content/content.controller';
+import { ContentService } from './content/content.service';
+import { ContentModule } from './content/content.module';
+import { AiServiceModule } from './ai-service/ai-service.module';
 
 
 
@@ -32,6 +39,7 @@ import { FilesController } from './files/files.controller';
       dest: './uploads',  // Dossier de stockage temporaire
     }),
     ConfigModule.forRoot(), // Charge les variables d'environnement
+    ConfigModule.forRoot({ isGlobal: true }),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
@@ -44,10 +52,13 @@ import { FilesController } from './files/files.controller';
     AnalyzeModule,
     AuthModule,
     UsersModule,
+    RolesModule,
+    ContentModule,
+    AiServiceModule,
     
    
   ],
-  providers: [AnalyzeService, UsersService],
-  controllers: [AnalyzeController, UsersController, FilesController],
+  providers: [AnalyzeService, UsersService, ContentService],
+  controllers: [AnalyzeController, UsersController, FilesController,  RolesController, ContentController],
 })
 export class AppModule {}

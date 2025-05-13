@@ -7,6 +7,7 @@ interface User {
   id: string;
   username: string;
   email: string;
+  role: 'admin' | 'editor' | 'user'; 
 }
 
 interface AuthContextType {
@@ -58,7 +59,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setUser({
       id: data.user.id,
       username: data.user.username,
-      email: data.user.email
+      email: data.user.email,
+      role: data.user.role,
     });
 
     router.push('/');
