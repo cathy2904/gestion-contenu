@@ -38,8 +38,8 @@ export const contents: MenuType[] = [
                 value: "new-txt"
             },
             {
-                titre: "Content2",
-                link: "/",
+                titre: "Gn Img",
+                link: "/generate-image",
                 value: "new-file"
             }
         ]

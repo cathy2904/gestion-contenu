@@ -151,45 +151,60 @@ module.exports = mod;
 var { g: global, __dirname } = __turbopack_context__;
 {
 __turbopack_context__.s({
-    "createContent": (()=>createContent),
-    "deleteContent": (()=>deleteContent),
-    "fetchContentById": (()=>fetchContentById),
     "fetchContents": (()=>fetchContents),
-    "generateContentOnly": (()=>generateContentOnly),
-    "getContent": (()=>getContent)
+    "generateContent": (()=>generateContent),
+    "saveContent": (()=>saveContent)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/axios/lib/axios.js [app-ssr] (ecmascript)");
 ;
-const API_URL = process.env.NEXT_API_URL || 'http://localhost:3000';
-const api = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].create({
-    baseURL: API_URL,
-    headers: {
-        'Content-Type': 'application/json'
-    }
-});
+const generateContent = async (data)=>{
+    const res = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].post('http://localhost:3003/api/content/generate', data);
+    return res.data;
+};
+const saveContent = async (data)=>{
+    const res = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].post('/api/save', data);
+    return res.data;
+};
 const fetchContents = async ()=>{
-    const response = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].get(`${API_URL}/content`);
-    return response.data;
-};
-const getContent = async (id)=>{
-    const response = await api.get(`/content/${id}`);
-    return response.data;
-};
-const createContent = async (contentData)=>{
-    const response = await api.post('/content', contentData);
-    return response.data;
-};
-const fetchContentById = async (id)=>{
-    const response = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].get(`${API_URL}/content/${id}`);
-    return response.data;
-};
-const generateContentOnly = async (generateData)=>{
-    const response = await api.post('/content/generate', generateData);
-    return response.data.content;
-};
-const deleteContent = async (id)=>{
-    await api.delete(`/content/${id}`);
+    const res = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].get('/api/contents');
+    return res.data;
 }; // import axios from 'axios';
+ // import { Content, ContentFormData, GenerateContentData } from '../types/content';
+ // const API_URL = process.env.NEXT_API_URL || 'http://localhost:3000';
+ // const api = axios.create({
+ //   baseURL: API_URL,
+ //   headers: {
+ //     'Content-Type': 'application/json',
+ //   },
+ // });
+ // // export const getContents = async (): Promise<Content[]> => {
+ // //   const response = await api.get('/content');
+ // //   return response.data;
+ // // };
+ // export const fetchContents = async (): Promise<Content[]> => {
+ //     const response = await axios.get(`${API_URL}/content`);
+ //     return response.data;
+ //   };
+ // export const getContent = async (id: string): Promise<Content> => {
+ //   const response = await api.get(`/content/${id}`);
+ //   return response.data;
+ // };
+ // export const createContent = async (contentData: ContentFormData): Promise<Content> => {
+ //   const response = await api.post('/content', contentData);
+ //   return response.data;
+ // };
+ // export const fetchContentById = async (id: string): Promise<Content> => {
+ //     const response = await axios.get(`${API_URL}/content/${id}`);
+ //     return response.data;
+ //   };
+ // export const generateContentOnly = async (generateData: GenerateContentData): Promise<string> => {
+ //   const response = await api.post('/content/generate', generateData);
+ //   return response.data.content;
+ // };
+ // export const deleteContent = async (id: string): Promise<void> => {
+ //   await api.delete(`/content/${id}`);
+ // };
+ // import axios from 'axios';
  // import { Content } from '../types/content';
  // const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
  // export const fetchContents = async (): Promise<Content[]> => {

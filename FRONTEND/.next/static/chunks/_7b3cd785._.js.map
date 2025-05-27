@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file://C%3A/Users/komba/Gestion-contenu/FRONTEND/components/RequireAuth.tsx"],"sourcesContent":["\"use client\";\r\n\r\nimport { useEffect } from \"react\";\r\nimport { useRouter } from \"next/navigation\";\r\nimport { useAuth } from \"@/app/contexts/authProvider\";\r\n\r\nexport default function RequireAuth({ children }: { children: React.ReactNode }) {\r\n  const { user } = useAuth();\r\n  const router = useRouter();\r\n\r\n  useEffect(() => {\r\n    if (!user) {\r\n      router.push(\"/auth/login\");\r\n    }\r\n  }, [user]);\r\n\r\n  return user ? <>{children}</> : null;\r\n}\r\n"],"names":[],"mappings":";;;;AAEA;AACA;AACA;;;AAJA;;;;AAMe,SAAS,YAAY,EAAE,QAAQ,EAAiC;;IAC7E,MAAM,EAAE,IAAI,EAAE,GAAG,CAAA,GAAA,mIAAA,CAAA,UAAO,AAAD;IACvB,MAAM,SAAS,CAAA,GAAA,qIAAA,CAAA,YAAS,AAAD;IAEvB,CAAA,GAAA,6JAAA,CAAA,YAAS,AAAD;iCAAE;YACR,IAAI,CAAC,MAAM;gBACT,OAAO,IAAI,CAAC;YACd;QACF;gCAAG;QAAC;KAAK;IAET,OAAO,qBAAO;kBAAG;wBAAe;AAClC;GAXwB;;QACL,mIAAA,CAAA,UAAO;QACT,qIAAA,CAAA,YAAS;;;KAFF","debugId":null}}]
+}

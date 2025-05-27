@@ -1,7 +1,8 @@
 export class CreateContentDto {
   readonly title: string;
-  readonly body: string;
+  readonly content: string;
   readonly style?: string;
-  readonly length?: number;
+  readonly length?: string;
   readonly provider?: string;
+  readonly user?: string;
 }

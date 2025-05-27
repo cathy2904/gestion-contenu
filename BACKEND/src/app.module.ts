@@ -26,11 +26,17 @@ import { ContentController } from './content/content.controller';
 import { ContentService } from './content/content.service';
 import { ContentModule } from './content/content.module';
 import { AiServiceModule } from './ai-service/ai-service.module';
+import { MongoService } from './database/mongo.service';
+import { ImagesModule } from './images/images.module';
+import { ScheduleModule } from '@nestjs/schedule';
+import { DocumentsController } from './documents/documents.controller';
+import { DocumentsModule } from './documents/documents.module';
 
 
 
 @Module({
   imports: [
+     ScheduleModule.forRoot(),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'uploads'), // Path to the uploads directory
       serveRoot: '/uploads', // Serve files under the /uploads route
@@ -55,10 +61,12 @@ import { AiServiceModule } from './ai-service/ai-service.module';
     RolesModule,
     ContentModule,
     AiServiceModule,
+    ImagesModule,
+    DocumentsModule,
     
    
   ],
-  providers: [AnalyzeService, UsersService, ContentService],
-  controllers: [AnalyzeController, UsersController, FilesController,  RolesController, ContentController],
+  providers: [AnalyzeService, UsersService, ContentService, MongoService],
+  controllers: [AnalyzeController, UsersController, FilesController,  RolesController, ContentController, DocumentsController],
 })
 export class AppModule {}

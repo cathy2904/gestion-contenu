@@ -1,7 +1,7 @@
 // Exemple basique
 export enum Role {
     ADMIN = 'admin',
-    EDITOR = 'editor',
+    // EDITOR = 'editor',
     USER = 'user',
   }
   
@@ -23,11 +23,11 @@ export enum Role {
       Permission.UPDATE_ARTICLE,
       Permission.VIEW_ARTICLE,
     ],
-    [Role.EDITOR]: [
-      Permission.CREATE_ARTICLE,
-      Permission.UPDATE_ARTICLE,
-      Permission.VIEW_ARTICLE,
-    ],
+    // [Role.EDITOR]: [
+    //   Permission.CREATE_ARTICLE,
+    //   Permission.UPDATE_ARTICLE,
+    //   Permission.VIEW_ARTICLE,
+    // ],
     [Role.USER]: [Permission.VIEW_ARTICLE],
   };
   

@@ -114,24 +114,6 @@ function ContentPage() {
             setLoading(false);
         }
     }
-    // Appel à l'API OpenAI pour générer un article
-    //     const completion = await openai.chat.completions.create({
-    //       messages: [
-    //         { role: 'system', content: 'Vous êtes un rédacteur professionnel.' },
-    //         { role: 'user', content: `Écris un article sur : ${title}` },
-    //       ],
-    //       model: 'gpt-4o',
-    //       max_completion_tokens: 300,
-    //     });
-    //     const generatedText = completion.choices[0].message.content || '';
-    //     setGeneratedContent(generatedText); // Afficher le contenu généré
-    //   } catch (err) {
-    //     console.error('Erreur lors de la génération du contenu:', err);
-    //     setError(err instanceof Error ? err.message : 'Une erreur est survenue');
-    //   } finally {
-    //     setLoading(false);
-    //   }
-    // }
     // Fonction pour enregistrer le contenu généré dans MongoDB
     async function handleSave() {
         try {
@@ -234,7 +216,7 @@ function ContentPage() {
                 children: "Content Home"
             }, void 0, false, {
                 fileName: "[project]/app/contenu/page.tsx",
-                lineNumber: 184,
+                lineNumber: 167,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -244,12 +226,12 @@ function ContentPage() {
                     children: "Aller à la page d'analyse"
                 }, void 0, false, {
                     fileName: "[project]/app/contenu/page.tsx",
-                    lineNumber: 187,
+                    lineNumber: 170,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/contenu/page.tsx",
-                lineNumber: 186,
+                lineNumber: 169,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -259,12 +241,12 @@ function ContentPage() {
                     children: "Avancé"
                 }, void 0, false, {
                     fileName: "[project]/app/contenu/page.tsx",
-                    lineNumber: 192,
+                    lineNumber: 175,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/contenu/page.tsx",
-                lineNumber: 191,
+                lineNumber: 174,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -276,7 +258,7 @@ function ContentPage() {
                         children: "Choisir le moteur :"
                     }, void 0, false, {
                         fileName: "[project]/app/contenu/page.tsx",
-                        lineNumber: 198,
+                        lineNumber: 181,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -290,7 +272,7 @@ function ContentPage() {
                                 children: "CHAT GPT"
                             }, void 0, false, {
                                 fileName: "[project]/app/contenu/page.tsx",
-                                lineNumber: 205,
+                                lineNumber: 188,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -298,19 +280,19 @@ function ContentPage() {
                                 children: "DeepSeek"
                             }, void 0, false, {
                                 fileName: "[project]/app/contenu/page.tsx",
-                                lineNumber: 206,
+                                lineNumber: 189,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/contenu/page.tsx",
-                        lineNumber: 199,
+                        lineNumber: 182,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/contenu/page.tsx",
-                lineNumber: 197,
+                lineNumber: 180,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -321,7 +303,7 @@ function ContentPage() {
                 className: "border border-gray-300 rounded p-2 w-full mb-4"
             }, void 0, false, {
                 fileName: "[project]/app/contenu/page.tsx",
-                lineNumber: 210,
+                lineNumber: 193,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -331,7 +313,7 @@ function ContentPage() {
                 children: loading ? 'Génération...' : 'Générer l’article'
             }, void 0, false, {
                 fileName: "[project]/app/contenu/page.tsx",
-                lineNumber: 218,
+                lineNumber: 201,
                 columnNumber: 7
             }, this),
             error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -339,7 +321,7 @@ function ContentPage() {
                 children: error
             }, void 0, false, {
                 fileName: "[project]/app/contenu/page.tsx",
-                lineNumber: 226,
+                lineNumber: 209,
                 columnNumber: 17
             }, this),
             generatedContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -347,13 +329,13 @@ function ContentPage() {
                 children: generatedContent
             }, void 0, false, {
                 fileName: "[project]/app/contenu/page.tsx",
-                lineNumber: 229,
+                lineNumber: 212,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/contenu/page.tsx",
-        lineNumber: 183,
+        lineNumber: 166,
         columnNumber: 1
     }, this);
 }

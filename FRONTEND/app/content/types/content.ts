@@ -1,9 +1,9 @@
 export interface Content {
   _id: string;
   title: string;
-  texte: string;
+  content: string;
   style: string;
-  length: number;
+  length: string;
   provider: string;
   createdAt: string;
   updatedAt: string;
@@ -12,15 +12,15 @@ export interface Content {
 export type ContentFormData = {
   title: string;
   style: string;
-  length: number;
+  length: string;
   provider: string;
-  texte: string;
+  content: string;
 };
 
 export type GenerateContentData = {
   texte: string;
   style: string;
-  length: number;
+  length: string;
   provider: string;
 };
 

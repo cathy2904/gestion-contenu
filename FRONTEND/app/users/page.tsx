@@ -74,7 +74,7 @@ export default function UsersPage() {
                   >
                     <option  value="user">user</option>
                     <option  value="admin">admin</option>
-                    <option  value="editor">editeur</option>
+                    {/* <option  value="editor">editeur</option> */}
                   </select>
                 </td>
               </tr>

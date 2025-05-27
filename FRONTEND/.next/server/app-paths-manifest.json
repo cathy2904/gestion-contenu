@@ -1,11 +1,9 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
   "/auth/login/page": "app/auth/login/page.js",
   "/content/create/page": "app/content/create/page.js",
-  "/contenu/deepseek/page": "app/contenu/deepseek/page.js",
-  "/contenu/page": "app/contenu/page.js",
+  "/content/page": "app/content/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/page": "app/page.js",
-  "/post/page": "app/post/page.js",
-  "/users/page": "app/users/page.js"
+  "/generate-image/create/page": "app/generate-image/create/page.js",
+  "/generate-image/page": "app/generate-image/page.js",
+  "/page": "app/page.js"
 }

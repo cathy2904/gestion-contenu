@@ -1,7 +1,7 @@
 export class GenerateContentDto {
   readonly title: string;
   readonly style?: string;
-  readonly length?: number;
+  readonly length?: string;
   readonly provider: 'openai' | 'deepseek' | 'claude';
 }
 

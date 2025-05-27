@@ -807,8 +807,8 @@ const contents = [
                 value: "new-txt"
             },
             {
-                titre: "Content2",
-                link: "/",
+                titre: "Gn Img",
+                link: "/generate-image",
                 value: "new-file"
             }
         ]

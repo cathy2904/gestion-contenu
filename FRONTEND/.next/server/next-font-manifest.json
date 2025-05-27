@@ -1,9 +1,5 @@
 {
   "app": {
-    "[project]/app/_not-found/page": [
-      "static/media/GeistMonoVF-s.p.a9159d35.woff",
-      "static/media/GeistVF-s.p.7fe29570.woff"
-    ],
     "[project]/app/auth/login/page": [
       "static/media/GeistMonoVF-s.p.a9159d35.woff",
       "static/media/GeistVF-s.p.7fe29570.woff"
@@ -12,23 +8,19 @@
       "static/media/GeistMonoVF-s.p.a9159d35.woff",
       "static/media/GeistVF-s.p.7fe29570.woff"
     ],
-    "[project]/app/contenu/deepseek/page": [
+    "[project]/app/content/page": [
       "static/media/GeistMonoVF-s.p.a9159d35.woff",
       "static/media/GeistVF-s.p.7fe29570.woff"
     ],
-    "[project]/app/contenu/page": [
+    "[project]/app/generate-image/create/page": [
+      "static/media/GeistMonoVF-s.p.a9159d35.woff",
+      "static/media/GeistVF-s.p.7fe29570.woff"
+    ],
+    "[project]/app/generate-image/page": [
       "static/media/GeistMonoVF-s.p.a9159d35.woff",
       "static/media/GeistVF-s.p.7fe29570.woff"
     ],
     "[project]/app/page": [
-      "static/media/GeistMonoVF-s.p.a9159d35.woff",
-      "static/media/GeistVF-s.p.7fe29570.woff"
-    ],
-    "[project]/app/post/page": [
-      "static/media/GeistMonoVF-s.p.a9159d35.woff",
-      "static/media/GeistVF-s.p.7fe29570.woff"
-    ],
-    "[project]/app/users/page": [
       "static/media/GeistMonoVF-s.p.a9159d35.woff",
       "static/media/GeistVF-s.p.7fe29570.woff"
     ]

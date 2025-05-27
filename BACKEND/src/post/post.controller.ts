@@ -56,6 +56,7 @@ async create(
   return this.postService.create({ ...createPostDto, imagePath });
 }
 
+
   @Get()
   findAll() {
     return this.postService.findAll();

@@ -7,12 +7,12 @@ import { AiServiceModule } from '../ai-service/ai-service.module';
 import { MongoService } from 'src/database/mongo.service';
 
 @Module({
-    imports: [  
-      MongooseModule.forFeature([{ name: 'Content', schema: ContentSchema }]),
-
-      AiServiceModule ],
+    imports: [ MongooseModule.forFeature([
+          { name: 'Content', schema: ContentSchema },
+        ]), AiServiceModule ],
       controllers: [ContentController],
       providers: [ContentService, MongoService],
+      exports: [ContentService, MongooseModule]
     })
 
 export class ContentModule {}

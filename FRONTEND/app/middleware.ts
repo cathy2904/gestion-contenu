@@ -24,7 +24,7 @@ export function middleware(request: NextRequest) {
 
 // Applique ce middleware à toutes les pages protégées, mais pas aux pages d'authentification
 export const config = {
-  matcher: ['/', '/dashboard', '/profile', '/admin'],  // Liste des pages protégées
+  matcher: ['/', '/generate-image', '/dashboard', '/profile', '/admin'],  // Liste des pages protégées
 };
 
 

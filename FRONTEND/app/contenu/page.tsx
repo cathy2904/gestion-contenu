@@ -60,25 +60,8 @@ console.log("URL utilisée:", url)
         setLoading(false)
       }}
 
-      // Appel à l'API OpenAI pour générer un article
-  //     const completion = await openai.chat.completions.create({
-  //       messages: [
-  //         { role: 'system', content: 'Vous êtes un rédacteur professionnel.' },
-  //         { role: 'user', content: `Écris un article sur : ${title}` },
-  //       ],
-  //       model: 'gpt-4o',
-  //       max_completion_tokens: 300,
-  //     });
+      
 
-  //     const generatedText = completion.choices[0].message.content || '';
-  //     setGeneratedContent(generatedText); // Afficher le contenu généré
-  //   } catch (err) {
-  //     console.error('Erreur lors de la génération du contenu:', err);
-  //     setError(err instanceof Error ? err.message : 'Une erreur est survenue');
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // }
 
   // Fonction pour enregistrer le contenu généré dans MongoDB
   async function handleSave() {
