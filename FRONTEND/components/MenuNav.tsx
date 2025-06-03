@@ -26,7 +26,7 @@ export const MenuNav = ({menus}: {menus:MenuType[]}) => {
                 <MenuItem key={key} value={part.value}><Link href={part.link}>{part.titre} </Link></MenuItem>
 
             ))}
-             {user && (
+             {/* {user && (
         <div className="flex items-center gap-4">
           <span>Bienvenue, {user.username} !</span>
           <button
@@ -36,7 +36,7 @@ export const MenuNav = ({menus}: {menus:MenuType[]}) => {
             Déconnexion
           </button>
         </div>
-      )}
+      )} */}
           {/* <MenuItem value="new-file">Mon abonnement</MenuItem>
           <MenuItem value="new-win">Voir les offres</MenuItem>
           <MenuItem value="open-file">Se deconnecter</MenuItem> */}

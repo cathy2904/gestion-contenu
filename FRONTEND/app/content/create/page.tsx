@@ -56,6 +56,7 @@ export default function Home() {
         length,
         provider,
         content: generatedContent,
+        
       });
      console.log("✅ Enregistrement réussi :", response.data);
     alert("Contenu enregistré avec succès !");

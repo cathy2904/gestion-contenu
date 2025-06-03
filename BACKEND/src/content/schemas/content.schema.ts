@@ -9,6 +9,7 @@ export const ContentSchema = new Schema({
   provider: String,
   schedule: Date,
    statut: { type: String, enum: ['brouillon', 'programmé', 'publié'], default: 'brouillon' },
+   publicationDate: {type: Date, required: false},
     channel: { type: String, enum: ['linkedin', 'email', 'blog'] },
   user: { type: Types.ObjectId, ref: 'Users' },
   createdAt: {    type: Date, default: Date.now,}, 
@@ -22,7 +23,7 @@ export const ContentSchema = new Schema({
   style: string;
   length: string;
   provider: string;
-  schedule: Date,
+  publicationDate: Date,
    statut: 'brouillon' | 'programmé' | 'publié';
   channel: 'linkedin' | 'email' | 'blog';
   user: String;

@@ -34,6 +34,7 @@ export default  function Home() {
             {/* <h1>Bienvenue sur la page d’accueil</h1> */}
           
       <Graph />
+      <h1>BIENVENUE</h1>
       {/* <Time /> */}
       {/* <BarChart /> */}
 

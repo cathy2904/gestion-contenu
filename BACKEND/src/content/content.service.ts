@@ -1,8 +1,6 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { OpenAI } from 'openai';
 import Configuration from "openai";
-// import removeMarkdown from 'remove-markdown';
-// import * as removeMarkdown from 'remove-markdown';
 import { CreateContentDto } from './dto/create-content.dto';
 import { Content } from './schemas/content.schema';
 import { InjectModel } from '@nestjs/mongoose';
@@ -15,6 +13,8 @@ import { Collection } from 'mongodb';
 import axios from 'axios';
 const removeMarkdown = require('remove-markdown');
 import { Cron, CronExpression } from '@nestjs/schedule';
+import { UpdateScheduleDto } from './dto/update-schedule.dto';
+import { UpdateContentDto } from './dto/update-content.dto';
 
 @Injectable()
 export class ContentService {
@@ -117,6 +117,59 @@ async generateContent(title: string, style: string, length: string, provider: st
        const createdContent = new this.contentModel(createContentDto);
        return createdContent.save();
      }
+      async scheduleContent(id: string, dto: UpdateScheduleDto): Promise<Content> {
+    const content = await this.contentModel.findById(id);
+    if (!content) {
+      throw new NotFoundException('Contenu non trouvé');
+    }
+
+    content.publicationDate = new Date(dto.publicationDate);
+    content.statut = 'programmé';
+    return content.save();
+  }
+  async getOne(id: string): Promise<Content> {
+    const content = await this.contentModel.findById(id).exec();
+    if (!content) {
+      throw new NotFoundException(`Contenu avec l'ID ${id} non trouvé`);
+    }
+    return content;
+  }
+  async updateSchedule(id: string, dto: UpdateScheduleDto): Promise<Content> {
+    const updateData: any = {
+      publicationDate: new Date(dto.publicationDate),
+      statut: 'programmé',
+    };
+
+    if (dto.title) updateData.title = dto.title;
+    if (dto.content) updateData.content = dto.content;
+
+    const updated = await this.contentModel.findByIdAndUpdate(id, updateData, {
+      new: true,
+    });
+
+    if (!updated) {
+      throw new NotFoundException(`Contenu avec l'id ${id} introuvable`);
+    }
+
+    return updated;
+  }
+
+
+
+async update(id: string, updateContentDto: UpdateContentDto): Promise<Content> {
+    const updated = await this.contentModel.findByIdAndUpdate(id, updateContentDto, {
+      new: true,
+    });
+    if (!updated) {
+      throw new NotFoundException(`Contenu avec l'id ${id} introuvable`);
+    }
+    return updated;
+  }
+
+  async findById(id: string) {
+    return this.contentModel.findById(id);
+  }
+
 
      // Publie automatiquement les contenus planifiés
 @Cron(CronExpression.EVERY_MINUTE)
@@ -133,6 +186,33 @@ async publishScheduledContent() {
     console.log(`[AUTO] Publié : ${content.title}`);
   }
 }
+
+//  Mise à jour du statut
+  // async updateStatus(id: string, statut: string) {
+  //   return this.contentModel.findByIdAndUpdate(id, { statut }, { new: true });
+  // }
+
+  // 📊 Statistiques pour le dashboard
+  async getStats() {
+    const byStatut = await this.contentModel.aggregate([
+      { $group: { _id: '$statut', count: { $sum: 1 } } },
+    ]);
+
+    const byStyle = await this.contentModel.aggregate([
+      { $group: { _id: '$style', count: { $sum: 1 } } },
+    ]);
+
+    const byChannel = await this.contentModel.aggregate([
+      { $group: { _id: '$channel', count: { $sum: 1 } } },
+    ]);
+
+    return {
+      total: await this.contentModel.countDocuments(),
+      byStatut,
+      byStyle,
+      byChannel,
+    };
+  }
 //   async findAll(): Promise<Content[]> {
 //   try {
 //     const data = await this.contentModel.find().sort({ createdAt: -1 }).exec();

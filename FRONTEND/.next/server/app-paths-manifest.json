@@ -1,7 +1,8 @@
 {
   "/auth/login/page": "app/auth/login/page.js",
-  "/content/create/page": "app/content/create/page.js",
   "/content/page": "app/content/page.js",
+  "/content/read/[id]/page": "app/content/read/[id]/page.js",
+  "/content/schedule/[id]/page": "app/content/schedule/[id]/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
   "/generate-image/create/page": "app/generate-image/create/page.js",
   "/generate-image/page": "app/generate-image/page.js",

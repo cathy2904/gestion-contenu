@@ -23,27 +23,27 @@ export const dashs = [
     icon: <AiOutlineDashboard className="w-8 h-8" />,
     link: "/",
   },
-  {
-    title: "Generer",
-    icon: <RiSoundModuleLine className="w-6 h-8"/>,
-    link: "/content",
-  },
-  {
-    title: "Generate",
-    icon: <RiSoundModuleLine className="w-6 h-8"/>,
-    link: "/contenu",
-  },
+  // {
+  //   title: "Generer",
+  //   icon: <RiSoundModuleLine className="w-6 h-8"/>,
+  //   link: "/content",
+  // },
+  // {
+  //   title: "Generate",
+  //   icon: <RiSoundModuleLine className="w-6 h-8"/>,
+  //   link: "/contenu",
+  // },
   
-  {
-    title: "Article",
-    icon: <RiSoundModuleLine className="w-6 h-8"/>,
-    link: "/articles",
-  },
-  {
-    title: "Post",
-    icon: <RiSoundModuleLine className="w-6 h-8"/>,
-    link: "/post",
-  },
+  // {
+  //   title: "Article",
+  //   icon: <RiSoundModuleLine className="w-6 h-8"/>,
+  //   link: "/articles",
+  // },
+  // {
+  //   title: "Post",
+  //   icon: <RiSoundModuleLine className="w-6 h-8"/>,
+  //   link: "/post",
+  // },
   {
     // title: ,
     node: <MenuNav menus={contents} />,
@@ -64,17 +64,17 @@ export const dashs = [
   {
     title: "Analysis",
     icon: <FaChartPie className="w-4 h-8"/>,
-    link: "/analysis",
+    link: "/upload",
   },
-  {
-    title: "Referal",
-    icon: <SlBookOpen className="w-4 h-8"/>,
-    link: "/referal",
-  },
+  // {
+  //   title: "Referal",
+  //   icon: <SlBookOpen className="w-4 h-8"/>,
+  //   link: "/referal",
+  // },
   {
     title: "Settings",
     icon: <DiAptana className="w-4 h-8"/>,
-    link: "/settings",
+    link: "/users",
   },
 ];
 

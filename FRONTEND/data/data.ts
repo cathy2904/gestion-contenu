@@ -30,7 +30,7 @@ export const menunav: MenuType[] = [
 ]
 export const contents: MenuType[] = [
     {
-        title: "Contents",
+        title: "Generer",
         menu: [
             {
                 titre: "Generer",
@@ -49,16 +49,16 @@ export const markets: MenuType[] = [
     {
         title: "Marketing",
         menu: [
-            {
-                titre: "Sell",
-                link: "/marketing",
-                value: "new-txt"
-            },
-            {
-                titre: "Expenses",
-                link: "/",
-                value: "new-file"
-            }
+            // {
+            //     titre: "Sell",
+            //     link: "/marketing",
+            //     value: "new-txt"
+            // },
+            // {
+            //     titre: "Expenses",
+            //     link: "/",
+            //     value: "new-file"
+            // }
         ]
     } 
 ]
