@@ -51,15 +51,21 @@ export const dashs = [
     link: "/content",
   },
 
-  {
-    node: <MenuNav menus={markets} />,
-    icon: <AiOutlineSound className="w-6 h-8"/>,
-    link: "/marketing",
+  // {
+  //   node: <MenuNav menus={markets} />,
+  //   icon: <AiOutlineSound className="w-6 h-8"/>,
+  //   link: "/marketing",
+  // },
+
+ {
+    title: "dashboard",
+    icon: <RiMenuSearchLine className="w-4 h-8"/>,
+    link: "/dashboard",
   },
   {
-    title: "Prospects",
+    title: "List analz",
     icon: <RiMenuSearchLine className="w-4 h-8"/>,
-    link: "/prospects",
+    link: "/upload/drafts",
   },
   {
     title: "Analysis",
@@ -75,6 +81,11 @@ export const dashs = [
     title: "Settings",
     icon: <DiAptana className="w-4 h-8"/>,
     link: "/users",
+  },
+   {
+    title: "Connexions",
+    icon: <DiAptana className="w-4 h-8"/>,
+    link: "/connect",
   },
 ];
 

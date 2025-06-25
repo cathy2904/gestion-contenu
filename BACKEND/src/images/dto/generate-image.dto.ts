@@ -1,3 +1,42 @@
+// export class GenerateImageDto {
+//  prompt: string;
+//   style: string;
+//   format: 'png' | 'jpg' | 'jpeg';
+//   size?: string;
+//   n?: number;
+//   // userId: string;
+// }
+
+// import { IsString, IsOptional, IsNumber } from 'class-validator';
+
+// export class GenerateImageDto {
+//   @IsString()
+//   prompt: string;
+
+//   @IsOptional()
+//   @IsString()
+//   style?: string;
+
+//   @IsOptional()
+//   @IsString()
+//   size?: string; // e.g., "512x512"
+
+//   @IsOptional()
+//   @IsNumber()
+//   numImages?: number;
+
+//   @IsOptional()
+//   @IsString()
+//   provider?: 'openai' | 'deepseek';
+
+//   @IsOptional()
+//   @IsString()
+//   userId?: string;
+// }
+
+
+
+
 import { IsString, IsOptional, IsNumber } from 'class-validator';
 
 export class GenerateImageDto {
@@ -25,14 +64,3 @@ export class GenerateImageDto {
   userId?: string;
 }
 
-
-// // src/modules/images/dto/generate-image.dto.ts
-// export class GenerateImageDto {
-//   prompt: string;
-//   provider: 'openai' | 'deepseek';
-//   size?: '256x256' | '512x512' | '1024x1024';
-//   n?: number;
-//   style?: string;
-//   quality?: string;
-//   userId?: string;
-// }

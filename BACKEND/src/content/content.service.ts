@@ -96,10 +96,10 @@ private async callProviderAPI(prompt: string, provider: string): Promise<string>
 }
 
 
-async generateContent(title: string, style: string, length: string, provider: string): Promise<string> {
-  console.log('Début de la génération...', { title, style, length, provider });
+async generateContent(title: string, style: string, length: string, provider: string, platform: string): Promise<string> {
+  console.log('Début de la génération...', { title, style, length, provider, platform });
 
-  const prompt = `Rédige un article ${style}, de longueur ${length}, sur le sujet : "${title}"`;
+  const prompt = `Rédige un article ${style}, de longueur ${length}, sur le sujet : "${title}" pour cette plateforme : ${platform} `;
 
   try {
     const response = await this.callProviderAPI(prompt, provider);
@@ -193,26 +193,115 @@ async publishScheduledContent() {
   // }
 
   // 📊 Statistiques pour le dashboard
-  async getStats() {
-    const byStatut = await this.contentModel.aggregate([
+  // async getStats() {
+  //   const byStatut = await this.contentModel.aggregate([
+  //     { $group: { _id: '$statut', count: { $sum: 1 } } },
+  //   ]);
+
+  //   const byStyle = await this.contentModel.aggregate([
+  //     { $group: { _id: '$style', count: { $sum: 1 } } },
+  //   ]);
+
+  //   const byChannel = await this.contentModel.aggregate([
+  //     { $group: { _id: '$channel', count: { $sum: 1 } } },
+  //   ]);
+
+  //   return {
+  //     total: await this.contentModel.countDocuments(),
+  //     byStatut,
+  //     byStyle,
+  //     byChannel,
+  //   };
+  // }
+
+// async getStats(statut?: string, date?: string) {
+//   try {
+//     const filter: any = {};
+//     if (statut) filter.statut = statut;
+//     if (date) {
+//       const start = new Date(date);
+//       const end = new Date(date);
+//       end.setHours(23, 59, 59, 999);
+//       filter.createdAt = { $gte: start, $lte: end };
+//     }
+
+//     const total = await this.contentModel.countDocuments(filter);
+//     const byStatus = await this.contentModel.aggregate([
+//       { $match: filter },
+//       { $group: { _id: '$statut', count: { $sum: 1 } } },
+//     ]);
+//     const byPlatform = await this.contentModel.aggregate([
+//   { $match: { ...filter, platform: { $exists: true, $ne: null } } },
+//   { $group: { _id: '$platform', count: { $sum: 1 } } },
+// ]);
+
+
+//     return { total, byStatus, byPlatform };
+//   } catch (error) {
+//     console.error('Erreur lors du calcul des stats :', error);
+//     throw new InternalServerErrorException('Erreur serveur');
+//   }
+// }
+
+async getStats(statut?: string, date?: string) {
+  try {
+    const filter: any = {};
+
+    if (statut) {
+      filter.statut = statut;
+    }
+
+    if (date && !isNaN(Date.parse(date))) {
+      const start = new Date(date);
+      const end = new Date(date);
+      end.setHours(23, 59, 59, 999);
+      filter.createdAt = { $gte: start, $lte: end };
+    }
+
+    const total = await this.contentModel.countDocuments(filter);
+    const byStatus = await this.contentModel.aggregate([
+      { $match: filter },
       { $group: { _id: '$statut', count: { $sum: 1 } } },
     ]);
-
-    const byStyle = await this.contentModel.aggregate([
-      { $group: { _id: '$style', count: { $sum: 1 } } },
+    const byPlatform = await this.contentModel.aggregate([
+      { $match: { ...filter, platform: { $exists: true } } },
+      { $group: { _id: '$platform', count: { $sum: 1 } } },
     ]);
 
-    const byChannel = await this.contentModel.aggregate([
-      { $group: { _id: '$channel', count: { $sum: 1 } } },
-    ]);
-
-    return {
-      total: await this.contentModel.countDocuments(),
-      byStatut,
-      byStyle,
-      byChannel,
-    };
+    return { total, byStatus, byPlatform };
+  } catch (error) {
+    console.error('❌ Erreur dans getStats :', error); // 🔥 Affiche l'erreur dans le terminal
+    throw new InternalServerErrorException('Erreur interne');
   }
+}
+
+
+async publishToSocialMedia(id: string) {
+  const content = await this.contentModel.findById(id);
+  if (!content) throw new NotFoundException('Contenu introuvable');
+
+  // for (const platform of content.platforms) {
+  //   switch (platform) {
+  //     case 'facebook':
+  //       await this.facebookService.postContent(content);
+  //       break;
+  //     case 'linkedin':
+  //       await this.linkedinService.postContent(content);
+  //       break;
+  //     case 'twitter':
+  //       await this.twitterService.postContent(content);
+  //       break;
+  //   }
+  }
+
+  // content.statut = 'publié';
+  // content.publicationDate = new Date();
+  // return content.save();
+// }
+
+ 
+
+
 //   async findAll(): Promise<Content[]> {
 //   try {
 //     const data = await this.contentModel.find().sort({ createdAt: -1 }).exec();

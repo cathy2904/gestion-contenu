@@ -3,6 +3,9 @@ export class GenerateContentDto {
   readonly style?: string;
   readonly length?: string;
   readonly provider: 'openai' | 'deepseek' | 'claude';
+  readonly platform: string;
+  readonly media: string;
+
 }
 
 // import { IsNotEmpty, IsString, IsNumber, IsEnum } from 'class-validator';

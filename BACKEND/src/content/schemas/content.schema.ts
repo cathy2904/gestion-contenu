@@ -10,8 +10,9 @@ export const ContentSchema = new Schema({
   schedule: Date,
    statut: { type: String, enum: ['brouillon', 'programmé', 'publié'], default: 'brouillon' },
    publicationDate: {type: Date, required: false},
-    channel: { type: String, enum: ['linkedin', 'email', 'blog'] },
+    platform: { type: String, enum: ['linkedin', 'facebook', 'instagram', 'twiter'] },
   user: { type: Types.ObjectId, ref: 'Users' },
+  media: [{ type: String }],
   createdAt: {    type: Date, default: Date.now,}, 
 },  { collection: 'contents' 
  });
@@ -25,8 +26,9 @@ export const ContentSchema = new Schema({
   provider: string;
   publicationDate: Date,
    statut: 'brouillon' | 'programmé' | 'publié';
-  channel: 'linkedin' | 'email' | 'blog';
+  platform: 'linkedin' |  'facebook' |'instagram'|'twiter';
   user: String;
+   media: string[]; 
   createdAt: Date;
 }
 

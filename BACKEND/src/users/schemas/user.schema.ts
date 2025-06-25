@@ -6,7 +6,25 @@ export const UserSchema = new Schema<User>({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   role: { type: String, enum: Object.values(Role), default: Role.USER },
-  createdAt: { type: Date, default: Date.now }
+  createdAt: { type: Date, default: Date.now },
+  socialAccounts: {
+    facebook: {
+      id: String,
+      token: String,
+      displayName: String,
+    },
+    instagram: {
+      id: String,
+      token: String,
+      displayName: String,
+    },
+    linkedin: {
+      id: String,
+      token: String,
+      displayName: String,
+    },
+  },
+
 });
 
 export interface User extends Document {
@@ -15,6 +33,11 @@ export interface User extends Document {
   password: string;
   role: Role;
   createdAt: Date;
+  socialAccounts?: {
+    facebook?: { id: string; token: string; displayName: string };
+    instagram?: { id: string; token: string; displayName: string };
+    linkedin?: { id: string; token: string; displayName: string };
+  };
 }
 // import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 // import { Document } from 'mongoose';

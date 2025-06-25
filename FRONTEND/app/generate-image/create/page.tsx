@@ -1,7 +1,127 @@
+// 'use client';
+// import { useState } from 'react';
+// import axios from 'axios';
+
+// interface GeneratedImage {
+//   _id: string;
+//   url: string;
+//   style: string;
+//   prompt: string;
+//   createdAt: string;
+// }
+
+// export default function ImageGeneratorPage() {
+//   const [images, setImages] = useState<GeneratedImage[]>([]);
+//   const [prompt, setPrompt] = useState('');
+//   const [style, setStyle] = useState('digital painting');
+//   const [format, setFormat] = useState<'png' | 'jpg' | 'jpeg'>('png');
+//   const [size, setSize] = useState('1024x1024');
+//   const [n, setN] = useState(1);
+//   //const [images, setImages] = useState<string[]>([]);
+//   const [loading, setLoading] = useState(false);
+
+//   const generateImage = async () => {
+//     setLoading(true);
+//     try {
+//       const res = await axios.post('http://localhost:3000/api/images/generate', {
+//         prompt,
+//         style,
+//         format,
+//         size,
+//         n,
+//         // userId: '1234',
+//       });
+//       setImages(res.data);
+//     } catch (error) {
+//       console.error('Erreur de génération :', error);
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   return (
+//     <div className="p-6">
+//       <h1 className="text-2xl font-bold mb-4">Générateur d'image avec GPT</h1>
+//       <input
+//         type="text"
+//         placeholder="Titre / Prompt"
+//         value={prompt}
+//         onChange={(e) => setPrompt(e.target.value)}
+//         className="border px-4 py-2 mb-4 w-full"
+//       />
+//       <select
+//         value={style}
+//         onChange={(e) => setStyle(e.target.value)}
+//         className="border px-4 py-2 mb-4 w-full"
+//       >
+//         <option value="digital painting">Digital Painting</option>
+//         <option value="photorealistic">Photorealistic</option>
+//         <option value="cartoon">Cartoon</option>
+//         <option value="fantasy art">Fantasy Art</option>
+//       </select>
+//       <select
+//         value={size}
+//         onChange={(e) => setSize(e.target.value)}
+//         className="border px-4 py-2 mb-4 w-full"
+//       >
+//         <option value="512x512">512x512</option>
+//         <option value="1024x1024">1024x1024</option>
+//         <option value="1792x1024">1792x1024</option>
+//         <option value="1024x1792">1024x1792</option>
+//       </select>
+//       <select
+//         value={format}
+//         onChange={(e) => setFormat(e.target.value as any)}
+//         className="border px-4 py-2 mb-4 w-full"
+//       >
+//         <option value="png">PNG</option>
+//         <option value="jpg">JPG</option>
+//         <option value="jpeg">JPEG</option>
+//       </select>
+//       <input
+//         type="number"
+//         min={1}
+//         max={5}
+//         value={n}
+//         onChange={(e) => setN(parseInt(e.target.value))}
+//         className="border px-4 py-2 mb-4 w-full"
+//       />
+//       <button
+//         onClick={generateImage}
+//         className="bg-blue-600 text-white px-4 py-2 rounded"
+//         disabled={loading}
+//       >
+//         {loading ? 'Chargement...' : 'Générer'}
+//       </button>
+
+//       {images.length > 0 && (
+//         <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+//           {images.map((img, i) => (
+//             <div key={i} className="border p-2 rounded">
+//               <img src={img.url} alt={img.prompt} className="w-full rounded" />
+//               <a
+//                 href={img.url}
+//                 download={`image_${i}.${format}`}
+//                 className="mt-2 block text-blue-500 underline text-sm"
+//               >
+//                 Télécharger
+//               </a>
+//               <p className="text-xs mt-1 text-gray-600">{img.prompt} ({img.style})</p>
+//             </div>
+//           ))}
+//         </div>
+//       )}
+//     </div>
+//   );
+// }
+
+
+
+
 'use client';
 
 import { useState } from 'react';
-import RequireAuth from '@/components/RequireAuth';
+// import RequireAuth from '@/components/RequireAuth';
 
 export default function GenerateImagePage() {
   const [prompt, setPrompt] = useState('');
@@ -22,7 +142,7 @@ export default function GenerateImagePage() {
     setImages([]);
 
     try {
-      const response = await fetch('http://localhost:3003/api/images/generate', {
+      const response = await fetch('http://localhost:3000/api/images/generate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -54,7 +174,7 @@ export default function GenerateImagePage() {
   if (images.length === 0) return;
 
   try {
-    const response = await fetch('http://localhost:3003/api/images/save', {
+    const response = await fetch('http://localhost:3000/api/images/save', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -89,7 +209,7 @@ const handleCancel = () => {
 
 
   return (
-     <RequireAuth>
+    //  <RequireAuth>
     <div className="max-w-3xl mx-auto py-10 px-4">
       <h1 className="text-3xl font-bold mb-6">Générateur d’Images IA</h1>
 
@@ -192,6 +312,6 @@ const handleCancel = () => {
 {isSaved && <p className="text-green-600 mt-4">Image enregistrée avec succès </p>}
       </div>
     </div>
-    </RequireAuth>
+    // </RequireAuth>
   );
 }

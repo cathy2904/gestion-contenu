@@ -494,7 +494,7 @@ function AuthProvider({ children }) {
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         const checkAuth = async ()=>{
             try {
-                const res = await fetch('http://localhost:3003/api/users/profile', {
+                const res = await fetch('http://localhost:3000/api/users/profile', {
                     credentials: 'include'
                 });
                 if (res.ok) {
@@ -509,7 +509,7 @@ function AuthProvider({ children }) {
         checkAuth();
     }, []);
     const login = async (email, password)=>{
-        const res = await fetch('http://localhost:3003/api/auth/login', {
+        const res = await fetch('http://localhost:3000/api/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -532,7 +532,7 @@ function AuthProvider({ children }) {
         router.push('/');
     };
     const register = async (username, email, password)=>{
-        const res = await fetch('http://localhost:3003/api/auth/register', {
+        const res = await fetch('http://localhost:3000/api/auth/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -548,7 +548,7 @@ function AuthProvider({ children }) {
         await login(email, password);
     };
     const logout = async ()=>{
-        await fetch('http://localhost:3003/api/auth/logout', {
+        await fetch('http://localhost:3000/api/auth/logout', {
             method: 'POST',
             credentials: 'include'
         });
@@ -677,7 +677,7 @@ const menunav = [
         menu: [
             {
                 titre: "login",
-                link: "/",
+                link: "/auth/login",
                 value: "new-txt"
             },
             {
@@ -913,33 +913,32 @@ const dashs = [
         }, this),
         link: "/content"
     },
+    // {
+    //   node: <MenuNav menus={markets} />,
+    //   icon: <AiOutlineSound className="w-6 h-8"/>,
+    //   link: "/marketing",
+    // },
     {
-        node: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$MenuNav$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["MenuNav"], {
-            menus: __TURBOPACK__imported__module__$5b$project$5d2f$data$2f$data$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["markets"]
-        }, void 0, false, {
-            fileName: "[project]/components/DashBar.tsx",
-            lineNumber: 55,
-            columnNumber: 11
-        }, this),
-        icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$ai$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["AiOutlineSound"], {
-            className: "w-6 h-8"
-        }, void 0, false, {
-            fileName: "[project]/components/DashBar.tsx",
-            lineNumber: 56,
-            columnNumber: 11
-        }, this),
-        link: "/marketing"
-    },
-    {
-        title: "Prospects",
+        title: "dashboard",
         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$ri$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["RiMenuSearchLine"], {
             className: "w-4 h-8"
         }, void 0, false, {
             fileName: "[project]/components/DashBar.tsx",
-            lineNumber: 61,
+            lineNumber: 62,
             columnNumber: 11
         }, this),
-        link: "/prospects"
+        link: "/dashboard"
+    },
+    {
+        title: "List analz",
+        icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$ri$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["RiMenuSearchLine"], {
+            className: "w-4 h-8"
+        }, void 0, false, {
+            fileName: "[project]/components/DashBar.tsx",
+            lineNumber: 67,
+            columnNumber: 11
+        }, this),
+        link: "/upload/drafts"
     },
     {
         title: "Analysis",
@@ -947,7 +946,7 @@ const dashs = [
             className: "w-4 h-8"
         }, void 0, false, {
             fileName: "[project]/components/DashBar.tsx",
-            lineNumber: 66,
+            lineNumber: 72,
             columnNumber: 11
         }, this),
         link: "/upload"
@@ -963,10 +962,21 @@ const dashs = [
             className: "w-4 h-8"
         }, void 0, false, {
             fileName: "[project]/components/DashBar.tsx",
-            lineNumber: 76,
+            lineNumber: 82,
             columnNumber: 11
         }, this),
         link: "/users"
+    },
+    {
+        title: "Connexions",
+        icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$di$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DiAptana"], {
+            className: "w-4 h-8"
+        }, void 0, false, {
+            fileName: "[project]/components/DashBar.tsx",
+            lineNumber: 87,
+            columnNumber: 11
+        }, this),
+        link: "/connect"
     }
 ];
 function DashBar() {
@@ -990,7 +1000,7 @@ function DashBar() {
                                 children: dash?.icon
                             }, void 0, false, {
                                 fileName: "[project]/components/DashBar.tsx",
-                                lineNumber: 95,
+                                lineNumber: 106,
                                 columnNumber: 15
                             }, this),
                             dash.title && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -998,35 +1008,35 @@ function DashBar() {
                                 children: dash.title
                             }, void 0, false, {
                                 fileName: "[project]/components/DashBar.tsx",
-                                lineNumber: 96,
+                                lineNumber: 107,
                                 columnNumber: 30
                             }, this),
                             dash.node && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 children: dash.node
                             }, void 0, false, {
                                 fileName: "[project]/components/DashBar.tsx",
-                                lineNumber: 97,
+                                lineNumber: 108,
                                 columnNumber: 29
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/DashBar.tsx",
-                        lineNumber: 94,
+                        lineNumber: 105,
                         columnNumber: 13
                     }, this)
                 }, key, false, {
                     fileName: "[project]/components/DashBar.tsx",
-                    lineNumber: 88,
+                    lineNumber: 99,
                     columnNumber: 11
                 }, this))
         }, void 0, false, {
             fileName: "[project]/components/DashBar.tsx",
-            lineNumber: 86,
+            lineNumber: 97,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/DashBar.tsx",
-        lineNumber: 85,
+        lineNumber: 96,
         columnNumber: 5
     }, this);
 }

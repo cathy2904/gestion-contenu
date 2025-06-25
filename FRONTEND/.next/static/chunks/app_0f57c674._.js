@@ -183,6 +183,7 @@ function Home() {
     const [title, setTitle] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('');
     const [style, setStyle] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('standard');
     const [length, setLength] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('medium');
+    const [platform, setPlatform] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('linkedin');
     const [provider, setProvider] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('gpt-4');
     const [generatedContent, setGeneratedContent] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('<p>Contenu initial généré</p>');
     const [contents, setContents] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
@@ -197,7 +198,8 @@ function Home() {
                 title,
                 style,
                 length,
-                provider
+                provider,
+                platform
             });
             setGeneratedContent(response.data.content);
         } catch (err) {
@@ -215,6 +217,7 @@ function Home() {
                 style,
                 length,
                 provider,
+                platform,
                 content: generatedContent
             });
             console.log("✅ Enregistrement réussi :", response.data);
@@ -246,7 +249,7 @@ function Home() {
                 children: "Générateur de contenu IA"
             }, void 0, false, {
                 fileName: "[project]/app/content/create/page.tsx",
-                lineNumber: 85,
+                lineNumber: 90,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -260,7 +263,7 @@ function Home() {
                         onChange: (e)=>setTitle(e.target.value)
                     }, void 0, false, {
                         fileName: "[project]/app/content/create/page.tsx",
-                        lineNumber: 88,
+                        lineNumber: 93,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -273,7 +276,7 @@ function Home() {
                                 children: "Style standard"
                             }, void 0, false, {
                                 fileName: "[project]/app/content/create/page.tsx",
-                                lineNumber: 97,
+                                lineNumber: 102,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -281,7 +284,7 @@ function Home() {
                                 children: "Style marketing"
                             }, void 0, false, {
                                 fileName: "[project]/app/content/create/page.tsx",
-                                lineNumber: 98,
+                                lineNumber: 103,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -289,7 +292,7 @@ function Home() {
                                 children: "Style humour"
                             }, void 0, false, {
                                 fileName: "[project]/app/content/create/page.tsx",
-                                lineNumber: 99,
+                                lineNumber: 104,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -297,7 +300,7 @@ function Home() {
                                 children: "Formel"
                             }, void 0, false, {
                                 fileName: "[project]/app/content/create/page.tsx",
-                                lineNumber: 100,
+                                lineNumber: 105,
                                 columnNumber: 9
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -305,7 +308,7 @@ function Home() {
                                 children: "Décontracté"
                             }, void 0, false, {
                                 fileName: "[project]/app/content/create/page.tsx",
-                                lineNumber: 101,
+                                lineNumber: 106,
                                 columnNumber: 14
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -313,7 +316,7 @@ function Home() {
                                 children: "Professionnel"
                             }, void 0, false, {
                                 fileName: "[project]/app/content/create/page.tsx",
-                                lineNumber: 102,
+                                lineNumber: 107,
                                 columnNumber: 14
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -321,7 +324,7 @@ function Home() {
                                 children: "Académique"
                             }, void 0, false, {
                                 fileName: "[project]/app/content/create/page.tsx",
-                                lineNumber: 103,
+                                lineNumber: 108,
                                 columnNumber: 14
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -329,7 +332,7 @@ function Home() {
                                 children: "Créatif"
                             }, void 0, false, {
                                 fileName: "[project]/app/content/create/page.tsx",
-                                lineNumber: 104,
+                                lineNumber: 109,
                                 columnNumber: 14
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -337,7 +340,7 @@ function Home() {
                                 children: "Persuasif"
                             }, void 0, false, {
                                 fileName: "[project]/app/content/create/page.tsx",
-                                lineNumber: 105,
+                                lineNumber: 110,
                                 columnNumber: 14
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -345,13 +348,13 @@ function Home() {
                                 children: "Informatif"
                             }, void 0, false, {
                                 fileName: "[project]/app/content/create/page.tsx",
-                                lineNumber: 106,
+                                lineNumber: 111,
                                 columnNumber: 14
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/content/create/page.tsx",
-                        lineNumber: 96,
+                        lineNumber: 101,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -364,7 +367,7 @@ function Home() {
                                 children: "un text Court"
                             }, void 0, false, {
                                 fileName: "[project]/app/content/create/page.tsx",
-                                lineNumber: 110,
+                                lineNumber: 115,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -372,7 +375,7 @@ function Home() {
                                 children: "un texteMoyen"
                             }, void 0, false, {
                                 fileName: "[project]/app/content/create/page.tsx",
-                                lineNumber: 111,
+                                lineNumber: 116,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -380,14 +383,65 @@ function Home() {
                                 children: " un texte Long"
                             }, void 0, false, {
                                 fileName: "[project]/app/content/create/page.tsx",
-                                lineNumber: 112,
+                                lineNumber: 117,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/content/create/page.tsx",
-                        lineNumber: 109,
+                        lineNumber: 114,
                         columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
+                        className: "w-full border p-2 rounded",
+                        value: platform,
+                        onChange: (e)=>setPlatform(e.target.value),
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                value: "linkedin",
+                                children: "LINKEDIN"
+                            }, void 0, false, {
+                                fileName: "[project]/app/content/create/page.tsx",
+                                lineNumber: 121,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                value: "blog",
+                                children: "BLOG"
+                            }, void 0, false, {
+                                fileName: "[project]/app/content/create/page.tsx",
+                                lineNumber: 122,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                value: "facebook",
+                                children: " FACEBOOK"
+                            }, void 0, false, {
+                                fileName: "[project]/app/content/create/page.tsx",
+                                lineNumber: 123,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                value: "instagram",
+                                children: " INSTAGRAM"
+                            }, void 0, false, {
+                                fileName: "[project]/app/content/create/page.tsx",
+                                lineNumber: 124,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                value: "twiter",
+                                children: " TWITER(X)"
+                            }, void 0, false, {
+                                fileName: "[project]/app/content/create/page.tsx",
+                                lineNumber: 125,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/app/content/create/page.tsx",
+                        lineNumber: 120,
+                        columnNumber: 2
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
                         className: "w-full border p-2 rounded",
@@ -399,7 +453,7 @@ function Home() {
                                 children: "GPT-4"
                             }, void 0, false, {
                                 fileName: "[project]/app/content/create/page.tsx",
-                                lineNumber: 117,
+                                lineNumber: 130,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -407,7 +461,7 @@ function Home() {
                                 children: "GPT-4o"
                             }, void 0, false, {
                                 fileName: "[project]/app/content/create/page.tsx",
-                                lineNumber: 118,
+                                lineNumber: 131,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -415,13 +469,13 @@ function Home() {
                                 children: "DeepSeek"
                             }, void 0, false, {
                                 fileName: "[project]/app/content/create/page.tsx",
-                                lineNumber: 119,
+                                lineNumber: 132,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/content/create/page.tsx",
-                        lineNumber: 115,
+                        lineNumber: 128,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -431,13 +485,13 @@ function Home() {
                         children: loading ? 'Génération...' : 'Générer'
                     }, void 0, false, {
                         fileName: "[project]/app/content/create/page.tsx",
-                        lineNumber: 122,
+                        lineNumber: 135,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/content/create/page.tsx",
-                lineNumber: 87,
+                lineNumber: 92,
                 columnNumber: 7
             }, this),
             generatedContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -448,7 +502,7 @@ function Home() {
                         children: "Contenu généré :"
                     }, void 0, false, {
                         fileName: "[project]/app/content/create/page.tsx",
-                        lineNumber: 133,
+                        lineNumber: 146,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$Editor$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -456,7 +510,7 @@ function Home() {
                         onUpdate: setGeneratedContent
                     }, void 0, false, {
                         fileName: "[project]/app/content/create/page.tsx",
-                        lineNumber: 134,
+                        lineNumber: 147,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -466,131 +520,23 @@ function Home() {
                         children: "Enregistrer"
                     }, void 0, false, {
                         fileName: "[project]/app/content/create/page.tsx",
-                        lineNumber: 141,
+                        lineNumber: 154,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/content/create/page.tsx",
-                lineNumber: 132,
+                lineNumber: 145,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/content/create/page.tsx",
-        lineNumber: 84,
+        lineNumber: 89,
         columnNumber: 5
     }, this);
-} // 'use client';
- // import { useEffect, useState } from 'react';
- // import axios from 'axios';
- // type ContentItem = {
- //   _id: string;
- //   title: string;
- //   style: string;
- //   length: string;
- //   provider: string;
- //   content: string;
- //   createdAt: string;
- // };
- // export default function ContentPage() {
- //   const [title, setTitle] = useState('');
- //   const [style, setStyle] = useState('informatif');
- //   const [length, setLength] = useState('moyenne');
- //   const [provider, setProvider] = useState('gpt-4');
- //   const [generated, setGenerated] = useState<ContentItem | null>(null);
- //   const [allContents, setAllContents] = useState<ContentItem[]>([]);
- //   const [loading, setLoading] = useState(false);
- //   const handleGenerate = async () => {
- //     setLoading(true);
- //     setGenerated(null);
- //     try {
- //       const response = await axios.post('http://localhost:3003/api/content/generate', {
- //         title,
- //         style,
- //         length,
- //         provider,
- //       });
- //       setGenerated(response.data);
- //       fetchContents(); // refresh list
- //     } catch (error) {
- //       alert('Erreur lors de la génération');
- //     } finally {
- //       setLoading(false);
- //     }
- //   };
- //   const fetchContents = async () => {
- //     const res = await axios.get('http://localhost:3003/api/content');
- //     setAllContents(res.data);
- //   };
- //   useEffect(() => {
- //     fetchContents();
- //   }, []);
- //   return (
- //     <div className="max-w-3xl mx-auto p-6">
- //       <h1 className="text-2xl font-bold mb-4">Génération d'article avec IA</h1>
- //       <div className="space-y-4 border p-4 rounded-lg shadow">
- //         <input
- //           type="text"
- //           placeholder="Titre de l'article"
- //           className="w-full border p-2 rounded"
- //           value={title}
- //           onChange={(e) => setTitle(e.target.value)}
- //         />
- //         <div className="flex gap-4">
- //           <select value={style} onChange={(e) => setStyle(e.target.value)} className="border p-2 rounded w-1/3">
- //             <option value="informatif">Informatif</option>
- //             <option value="créatif">Créatif</option>
- //             <option value="persuasif">Persuasif</option>
- //           </select>
- //           <select value={length} onChange={(e) => setLength(e.target.value)} className="border p-2 rounded w-1/3">
- //             <option value="courte">Courte</option>
- //             <option value="moyenne">Moyenne</option>
- //             <option value="longue">Longue</option>
- //           </select>
- //           <select value={provider} onChange={(e) => setProvider(e.target.value)} className="border p-2 rounded w-1/3">
- //             <option value="gpt-4">GPT-4</option>
- //             <option value="gpt-4o">GPT-4o</option>
- //             <option value="deepseek">DeepSeek</option>
- //           </select>
- //         </div>
- //         <button
- //           onClick={handleGenerate}
- //           disabled={loading || !title}
- //           className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
- //         >
- //           {loading ? 'Génération en cours...' : 'Générer et Enregistrer'}
- //         </button>
- //       </div>
- //       {generated && (
- //         <div className="mt-6 border p-4 rounded shadow bg-green-50">
- //           <h2 className="font-semibold text-lg">Article généré</h2>
- //           <p className="mt-2 whitespace-pre-line">{generated.content}</p>
- //         </div>
- //       )}
- //       <div className="mt-10">
- //         <h2 className="text-xl font-semibold mb-2">Articles enregistrés</h2>
- //         {allContents.length === 0 ? (
- //           <p>Aucun article enregistré.</p>
- //         ) : (
- //           <ul className="space-y-4">
- //             {allContents.map((item) => (
- //               <li key={item._id} className="border p-4 rounded shadow">
- //                 <p><strong>Titre :</strong> {item.title}</p>
- //                 <p><strong>Style :</strong> {item.style}</p>
- //                 <p><strong>Longueur :</strong> {item.length}</p>
- //                 <p><strong>Fournisseur :</strong> {item.provider}</p>
- //                 <p className="mt-2 whitespace-pre-line"><strong>Contenu :</strong> {item.content}</p>
- //                 <p className="text-sm text-gray-500 mt-1">Créé le : {new Date(item.createdAt).toLocaleString()}</p>
- //               </li>
- //             ))}
- //           </ul>
- //         )}
- //       </div>
- //     </div>
- //   );
- // }
-_s(Home, "KrzUOkrIqtRgvjGuH/ZnzNDEM40=");
+}
+_s(Home, "dO4M647UST2O/2192imqTwaduXA=");
 _c = Home;
 var _c;
 __turbopack_context__.k.register(_c, "Home");

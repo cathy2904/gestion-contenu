@@ -3,7 +3,7 @@ import { UpdatePostDto, Post } from '../types/post';
 //import { CreatePostData, Post, UpdatePostData } from '../../types/post';
 
 const api = axios.create({
-  baseURL: 'http://localhost:3003/api',
+  baseURL: 'http://localhost:3000/api',
 });
 export const getPosts = () => api.get('/posts');
 export const getPost = (id: string) => api.get(`/posts/${id}`);
@@ -36,7 +36,7 @@ export const updatePost = (id: string, postData: any) => api.put(`/posts/${id}`,
     //     formData.append('image', imageFile);
     //   }
       
-    //   const response = await fetch(`http://localhost:3003/api/posts/${id}`, {
+    //   const response = await fetch(`http://localhost:3000/api/posts/${id}`, {
     //     method: 'PATCH',
     //     body: formData,
     //   });

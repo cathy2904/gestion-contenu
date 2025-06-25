@@ -51,4 +51,19 @@ export class AuthService {
       username: user.username,
     });
   }
+
+  async validateOrCreateSocialUser(
+    provider: 'facebook' | 'instagram' | 'linkedin',
+    profile: any,
+    accessToken: string,
+  ) {
+    const user = await this.usersService.saveSocialToken({
+      provider,
+      profile,
+      accessToken,
+    });
+    const payload = { email: user.email, sub: user._id };
+    const token = this.jwtService.sign(payload);
+    return { access_token: token, user: { id: user._id, email: user.email, username: user.username } };
+  }
 }

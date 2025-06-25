@@ -29,7 +29,7 @@ function ReadContentPage() {
             const fetchContent = {
                 "ReadContentPage.useEffect.fetchContent": async ()=>{
                     try {
-                        const response = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].get(`http://localhost:3003/api/content/${id}`);
+                        const response = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].get(`http://localhost:3000/api/content/${id}`);
                         setContent(response.data);
                     } catch (error) {
                         console.error('Erreur lors du chargement du contenu', error);
@@ -47,14 +47,14 @@ function ReadContentPage() {
         children: "Chargement..."
     }, void 0, false, {
         fileName: "[project]/app/content/read/[id]/page.tsx",
-        lineNumber: 35,
+        lineNumber: 36,
         columnNumber: 23
     }, this);
     if (!content) return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
         children: "Contenu non trouvé."
     }, void 0, false, {
         fileName: "[project]/app/content/read/[id]/page.tsx",
-        lineNumber: 37,
+        lineNumber: 38,
         columnNumber: 24
     }, this);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -65,7 +65,7 @@ function ReadContentPage() {
                 children: content.title
             }, void 0, false, {
                 fileName: "[project]/app/content/read/[id]/page.tsx",
-                lineNumber: 43,
+                lineNumber: 44,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -73,8 +73,26 @@ function ReadContentPage() {
                 children: content.content
             }, void 0, false, {
                 fileName: "[project]/app/content/read/[id]/page.tsx",
-                lineNumber: 44,
+                lineNumber: 45,
                 columnNumber: 7
+            }, this),
+            content.media && content.media.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4",
+                children: content.media.map((url, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                        src: url,
+                        alt: `media-${index}`,
+                        width: 600,
+                        height: 400,
+                        className: "rounded-lg object-cover"
+                    }, index, false, {
+                        fileName: "[project]/app/content/read/[id]/page.tsx",
+                        lineNumber: 52,
+                        columnNumber: 13
+                    }, this))
+            }, void 0, false, {
+                fileName: "[project]/app/content/read/[id]/page.tsx",
+                lineNumber: 49,
+                columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "mt-6 text-sm text-white-500",
@@ -85,7 +103,7 @@ function ReadContentPage() {
                                 children: "Statut :"
                             }, void 0, false, {
                                 fileName: "[project]/app/content/read/[id]/page.tsx",
-                                lineNumber: 47,
+                                lineNumber: 65,
                                 columnNumber: 12
                             }, this),
                             " ",
@@ -93,7 +111,7 @@ function ReadContentPage() {
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/content/read/[id]/page.tsx",
-                        lineNumber: 47,
+                        lineNumber: 65,
                         columnNumber: 9
                     }, this),
                     content.publicationDate && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -102,7 +120,7 @@ function ReadContentPage() {
                                 children: "Date de publication :"
                             }, void 0, false, {
                                 fileName: "[project]/app/content/read/[id]/page.tsx",
-                                lineNumber: 49,
+                                lineNumber: 67,
                                 columnNumber: 14
                             }, this),
                             " ",
@@ -110,19 +128,19 @@ function ReadContentPage() {
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/content/read/[id]/page.tsx",
-                        lineNumber: 49,
+                        lineNumber: 67,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/content/read/[id]/page.tsx",
-                lineNumber: 46,
+                lineNumber: 64,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/content/read/[id]/page.tsx",
-        lineNumber: 42,
+        lineNumber: 43,
         columnNumber: 5
     }, this);
 }

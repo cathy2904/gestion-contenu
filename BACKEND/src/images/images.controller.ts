@@ -1,11 +1,12 @@
 // src/modules/images/images.controller.ts
-import { Body, Controller, Delete, Get, Param, Post, Query, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Query, Req, Res, UseGuards } from '@nestjs/common';
 import { ImagesService } from './images.service';
 import { GenerateImageDto } from './dto/generate-image.dto';
 import { SaveImageDto } from './dto/save-image.dto';
 import { GeneratedImage } from './schemas/generated-image.schema';
 import { JwtAuthGuard } from 'src/auth/guards/Jwt.guard';
 import { Request } from 'express';
+import axios from 'axios';
 
 @Controller('images')
 export class ImagesController {
@@ -16,10 +17,24 @@ export class ImagesController {
     return this.imagesService.generateImage(dto);
   }
 
+  
+
   @Post('save')
 async saveGeneratedImage(@Body() body: SaveImageDto) {
   return this.imagesService.saveGeneratedImage(body);
 }
+
+// @Get('download')
+// async download(@Query('url') url: string, @Res() res: Response) {
+//   const imageResponse = await axios.get(url, { responseType: 'arraybuffer' });
+//   const buffer = Buffer.from(imageResponse.data, 'binary');
+
+//   res.set({
+//     'Content-Type': 'image/png',
+//     'Content-Disposition': 'attachment; filename="image.png"',
+//   });
+//   res.send(buffer);
+// }
 // @UseGuards(JwtAuthGuard)
 //   @Post('save')
 //   async saveGeneratedImage(@Req() req: Request, @Body() body: any) {
@@ -28,17 +43,17 @@ async saveGeneratedImage(@Body() body: SaveImageDto) {
 //     return this.imagesService.saveGeneratedImage(body, userId);
 //   }
 
-  @Get()
-  // @ApiOperation({ summary: 'Récupérer toutes les images générées' })
-  async getAllImages(): Promise<GeneratedImage[]> {
-    return this.imagesService.findAll();
-  }
+  // @Get()
+  // // @ApiOperation({ summary: 'Récupérer toutes les images générées' })
+  // async getAllImages(): Promise<GeneratedImage[]> {
+  //   return this.imagesService.findAll();
+  // }
 
-  @Get(':id')
-  // @ApiOperation({ summary: 'Récupérer une image par ID' })
-  async getImageById(@Param('id') id: string): Promise<GeneratedImage[]> {
-    return this.imagesService.findById(id);
-  }
+  // @Get(':id')
+  // // @ApiOperation({ summary: 'Récupérer une image par ID' })
+  // async getImageById(@Param('id') id: string): Promise<GeneratedImage[]> {
+  //   return this.imagesService.findById(id);
+  // }
 
   @Delete(':id')
   // @HttpCode(HttpStatus.NO_CONTENT)

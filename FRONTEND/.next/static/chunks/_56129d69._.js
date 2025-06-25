@@ -53,6 +53,117 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 
 var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
 {
+// 'use client';
+// import { useState } from 'react';
+// import axios from 'axios';
+// interface GeneratedImage {
+//   _id: string;
+//   url: string;
+//   style: string;
+//   prompt: string;
+//   createdAt: string;
+// }
+// export default function ImageGeneratorPage() {
+//   const [images, setImages] = useState<GeneratedImage[]>([]);
+//   const [prompt, setPrompt] = useState('');
+//   const [style, setStyle] = useState('digital painting');
+//   const [format, setFormat] = useState<'png' | 'jpg' | 'jpeg'>('png');
+//   const [size, setSize] = useState('1024x1024');
+//   const [n, setN] = useState(1);
+//   //const [images, setImages] = useState<string[]>([]);
+//   const [loading, setLoading] = useState(false);
+//   const generateImage = async () => {
+//     setLoading(true);
+//     try {
+//       const res = await axios.post('http://localhost:3003/api/images/generate', {
+//         prompt,
+//         style,
+//         format,
+//         size,
+//         n,
+//         // userId: '1234',
+//       });
+//       setImages(res.data);
+//     } catch (error) {
+//       console.error('Erreur de génération :', error);
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+//   return (
+//     <div className="p-6">
+//       <h1 className="text-2xl font-bold mb-4">Générateur d'image avec GPT</h1>
+//       <input
+//         type="text"
+//         placeholder="Titre / Prompt"
+//         value={prompt}
+//         onChange={(e) => setPrompt(e.target.value)}
+//         className="border px-4 py-2 mb-4 w-full"
+//       />
+//       <select
+//         value={style}
+//         onChange={(e) => setStyle(e.target.value)}
+//         className="border px-4 py-2 mb-4 w-full"
+//       >
+//         <option value="digital painting">Digital Painting</option>
+//         <option value="photorealistic">Photorealistic</option>
+//         <option value="cartoon">Cartoon</option>
+//         <option value="fantasy art">Fantasy Art</option>
+//       </select>
+//       <select
+//         value={size}
+//         onChange={(e) => setSize(e.target.value)}
+//         className="border px-4 py-2 mb-4 w-full"
+//       >
+//         <option value="512x512">512x512</option>
+//         <option value="1024x1024">1024x1024</option>
+//         <option value="1792x1024">1792x1024</option>
+//         <option value="1024x1792">1024x1792</option>
+//       </select>
+//       <select
+//         value={format}
+//         onChange={(e) => setFormat(e.target.value as any)}
+//         className="border px-4 py-2 mb-4 w-full"
+//       >
+//         <option value="png">PNG</option>
+//         <option value="jpg">JPG</option>
+//         <option value="jpeg">JPEG</option>
+//       </select>
+//       <input
+//         type="number"
+//         min={1}
+//         max={5}
+//         value={n}
+//         onChange={(e) => setN(parseInt(e.target.value))}
+//         className="border px-4 py-2 mb-4 w-full"
+//       />
+//       <button
+//         onClick={generateImage}
+//         className="bg-blue-600 text-white px-4 py-2 rounded"
+//         disabled={loading}
+//       >
+//         {loading ? 'Chargement...' : 'Générer'}
+//       </button>
+//       {images.length > 0 && (
+//         <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+//           {images.map((img, i) => (
+//             <div key={i} className="border p-2 rounded">
+//               <img src={img.url} alt={img.prompt} className="w-full rounded" />
+//               <a
+//                 href={img.url}
+//                 download={`image_${i}.${format}`}
+//                 className="mt-2 block text-blue-500 underline text-sm"
+//               >
+//                 Télécharger
+//               </a>
+//               <p className="text-xs mt-1 text-gray-600">{img.prompt} ({img.style})</p>
+//             </div>
+//           ))}
+//         </div>
+//       )}
+//     </div>
+//   );
+// }
 __turbopack_context__.s({
     "default": (()=>GenerateImagePage)
 });
@@ -147,7 +258,7 @@ function GenerateImagePage() {
                     children: "Générateur d’Images IA"
                 }, void 0, false, {
                     fileName: "[project]/app/generate-image/create/page.tsx",
-                    lineNumber: 94,
+                    lineNumber: 214,
                     columnNumber: 7
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -161,7 +272,7 @@ function GenerateImagePage() {
                                     children: "Prompt"
                                 }, void 0, false, {
                                     fileName: "[project]/app/generate-image/create/page.tsx",
-                                    lineNumber: 98,
+                                    lineNumber: 218,
                                     columnNumber: 11
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -172,13 +283,13 @@ function GenerateImagePage() {
                                     required: true
                                 }, void 0, false, {
                                     fileName: "[project]/app/generate-image/create/page.tsx",
-                                    lineNumber: 99,
+                                    lineNumber: 219,
                                     columnNumber: 11
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/generate-image/create/page.tsx",
-                            lineNumber: 97,
+                            lineNumber: 217,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -188,7 +299,7 @@ function GenerateImagePage() {
                                     children: "Style (optionnel)"
                                 }, void 0, false, {
                                     fileName: "[project]/app/generate-image/create/page.tsx",
-                                    lineNumber: 109,
+                                    lineNumber: 229,
                                     columnNumber: 11
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -198,13 +309,13 @@ function GenerateImagePage() {
                                     onChange: (e)=>setStyle(e.target.value)
                                 }, void 0, false, {
                                     fileName: "[project]/app/generate-image/create/page.tsx",
-                                    lineNumber: 110,
+                                    lineNumber: 230,
                                     columnNumber: 11
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/generate-image/create/page.tsx",
-                            lineNumber: 108,
+                            lineNumber: 228,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -214,7 +325,7 @@ function GenerateImagePage() {
                                     children: "Fournisseur"
                                 }, void 0, false, {
                                     fileName: "[project]/app/generate-image/create/page.tsx",
-                                    lineNumber: 119,
+                                    lineNumber: 239,
                                     columnNumber: 11
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -227,7 +338,7 @@ function GenerateImagePage() {
                                             children: "OpenAI"
                                         }, void 0, false, {
                                             fileName: "[project]/app/generate-image/create/page.tsx",
-                                            lineNumber: 125,
+                                            lineNumber: 245,
                                             columnNumber: 13
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -235,19 +346,19 @@ function GenerateImagePage() {
                                             children: "DeepSeek"
                                         }, void 0, false, {
                                             fileName: "[project]/app/generate-image/create/page.tsx",
-                                            lineNumber: 126,
+                                            lineNumber: 246,
                                             columnNumber: 13
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/generate-image/create/page.tsx",
-                                    lineNumber: 120,
+                                    lineNumber: 240,
                                     columnNumber: 11
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/generate-image/create/page.tsx",
-                            lineNumber: 118,
+                            lineNumber: 238,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -257,7 +368,7 @@ function GenerateImagePage() {
                                     children: "Taille"
                                 }, void 0, false, {
                                     fileName: "[project]/app/generate-image/create/page.tsx",
-                                    lineNumber: 131,
+                                    lineNumber: 251,
                                     columnNumber: 11
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -270,7 +381,7 @@ function GenerateImagePage() {
                                             children: "256x256"
                                         }, void 0, false, {
                                             fileName: "[project]/app/generate-image/create/page.tsx",
-                                            lineNumber: 137,
+                                            lineNumber: 257,
                                             columnNumber: 13
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -278,7 +389,7 @@ function GenerateImagePage() {
                                             children: "512x512"
                                         }, void 0, false, {
                                             fileName: "[project]/app/generate-image/create/page.tsx",
-                                            lineNumber: 138,
+                                            lineNumber: 258,
                                             columnNumber: 13
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -286,19 +397,19 @@ function GenerateImagePage() {
                                             children: "1024x1024"
                                         }, void 0, false, {
                                             fileName: "[project]/app/generate-image/create/page.tsx",
-                                            lineNumber: 139,
+                                            lineNumber: 259,
                                             columnNumber: 13
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/generate-image/create/page.tsx",
-                                    lineNumber: 132,
+                                    lineNumber: 252,
                                     columnNumber: 11
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/generate-image/create/page.tsx",
-                            lineNumber: 130,
+                            lineNumber: 250,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -308,7 +419,7 @@ function GenerateImagePage() {
                                     children: "Nombre d’images"
                                 }, void 0, false, {
                                     fileName: "[project]/app/generate-image/create/page.tsx",
-                                    lineNumber: 144,
+                                    lineNumber: 264,
                                     columnNumber: 11
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -320,13 +431,13 @@ function GenerateImagePage() {
                                     max: 10
                                 }, void 0, false, {
                                     fileName: "[project]/app/generate-image/create/page.tsx",
-                                    lineNumber: 145,
+                                    lineNumber: 265,
                                     columnNumber: 11
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/generate-image/create/page.tsx",
-                            lineNumber: 143,
+                            lineNumber: 263,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -336,13 +447,13 @@ function GenerateImagePage() {
                             children: loading ? 'Génération...' : 'Générer'
                         }, void 0, false, {
                             fileName: "[project]/app/generate-image/create/page.tsx",
-                            lineNumber: 155,
+                            lineNumber: 275,
                             columnNumber: 9
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/generate-image/create/page.tsx",
-                    lineNumber: 96,
+                    lineNumber: 216,
                     columnNumber: 7
                 }, this),
                 error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -350,7 +461,7 @@ function GenerateImagePage() {
                     children: error
                 }, void 0, false, {
                     fileName: "[project]/app/generate-image/create/page.tsx",
-                    lineNumber: 164,
+                    lineNumber: 284,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -362,7 +473,7 @@ function GenerateImagePage() {
                                 className: "rounded shadow"
                             }, index, false, {
                                 fileName: "[project]/app/generate-image/create/page.tsx",
-                                lineNumber: 168,
+                                lineNumber: 288,
                                 columnNumber: 11
                             }, this)),
                         images.length > 0 && !isSaved && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -374,7 +485,7 @@ function GenerateImagePage() {
                                     children: "Enregistrer"
                                 }, void 0, false, {
                                     fileName: "[project]/app/generate-image/create/page.tsx",
-                                    lineNumber: 177,
+                                    lineNumber: 297,
                                     columnNumber: 5
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -383,13 +494,13 @@ function GenerateImagePage() {
                                     children: "Annuler"
                                 }, void 0, false, {
                                     fileName: "[project]/app/generate-image/create/page.tsx",
-                                    lineNumber: 183,
+                                    lineNumber: 303,
                                     columnNumber: 5
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/generate-image/create/page.tsx",
-                            lineNumber: 176,
+                            lineNumber: 296,
                             columnNumber: 3
                         }, this),
                         isSaved && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -397,24 +508,24 @@ function GenerateImagePage() {
                             children: "Image enregistrée avec succès "
                         }, void 0, false, {
                             fileName: "[project]/app/generate-image/create/page.tsx",
-                            lineNumber: 192,
+                            lineNumber: 312,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/generate-image/create/page.tsx",
-                    lineNumber: 166,
+                    lineNumber: 286,
                     columnNumber: 7
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/generate-image/create/page.tsx",
-            lineNumber: 93,
+            lineNumber: 213,
             columnNumber: 5
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/generate-image/create/page.tsx",
-        lineNumber: 92,
+        lineNumber: 212,
         columnNumber: 6
     }, this);
 }

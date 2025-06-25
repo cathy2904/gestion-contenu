@@ -6,7 +6,9 @@ import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { LocalStrategy } from './strategies/local.strategy';
 import { JwtStrategy } from './strategies/jwt.strategy';
-
+import { FacebookStrategy } from './strategies/facebook.strategy';
+import { InstagramStrategy } from './strategies/instagram.strategy';
+import { LinkedinStrategy } from './strategies/linkedin.strategy';
 
 @Module({
   imports: [

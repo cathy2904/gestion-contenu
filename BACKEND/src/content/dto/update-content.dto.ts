@@ -11,6 +11,11 @@ export class UpdateContentDto {
   @IsOptional()
   @IsString()
   content?: string;
+
+   @IsOptional()
+  @IsString()
+  media?: string[];
+  
   
   
 }

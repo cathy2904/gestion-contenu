@@ -12,7 +12,7 @@ export default function EditPage({ params }: { params: { id: string } }) {
 
 
 // async function getPost(id: string) {
-//   const res = await fetch(`http://localhost:3003/api/posts/${id}`, {
+//   const res = await fetch(`http://localhost:3000/api/posts/${id}`, {
 //     cache: "no-store",
 //   });
 

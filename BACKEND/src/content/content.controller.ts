@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Get, HttpException, HttpStatus, Query, Req, Param, Patch, Put, NotFoundException } from '@nestjs/common';
+import { Controller, Post, Body, Get, HttpException, HttpStatus, Query, Req, Param, Patch, Put, NotFoundException, UseInterceptors, UploadedFiles, UploadedFile } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { ContentService } from './content.service';
 import { GenerateContentDto } from './dto/generate-content.dto';
@@ -8,13 +8,31 @@ import { Model } from 'mongoose';
 import { Content } from './schemas/content.schema';
 import { UpdateScheduleDto } from './dto/update-schedule.dto';
 import { UpdateContentDto } from './dto/update-content.dto';
+import { platform } from 'os';
+import { diskStorage } from 'multer';
+import { extname } from 'path';
+import { FileFieldsInterceptor, FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
+import { CloudinaryStorage } from 'multer-storage-cloudinary';
+import * as multer from 'multer';
+import cloudinary from './../cloudinary/cloudinary.config';
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  
+    params: async (req, file) => ({
+    folder: 'content_media',
+    resource_type: 'auto',
+    allowed_formats: ['jpg', 'png', 'jpeg', 'mp4', 'mov'],
+  }),
+  
+});
 
 @Controller('content')
 export class ContentController {
-  constructor(private readonly contentService: ContentService) {}
-  //  constructor(
-  //   @InjectModel('Content') private readonly contentModel: Model<Content>,
-  // ) {}
+  // constructor(private readonly contentService: ContentService) {}
+   constructor(
+    private readonly contentService: ContentService,
+    @InjectModel('Content') private readonly contentModel: Model<Content>,
+  ) {}
 
   //  @Get()
   // findAll() {
@@ -29,6 +47,7 @@ async findAll(
   @Query('style') style?: string,
   @Query('date') date?: string,
   @Query('statut') statut?: string,
+  @Query('platform') platform?: string,
 ) {
   const pageNum = parseInt(page, 10);
   const limitNum = parseInt(limit, 10);
@@ -37,6 +56,7 @@ async findAll(
   if (user) filter.user = user;
   if (style) filter.style = style;
    if (statut) filter.statut = statut;
+   if (platform) filter.platform = platform;
   // if (date) filter.createdAt = { $gte: new Date(date) };
   if (date) {
     const start = new Date(date);
@@ -51,11 +71,12 @@ async findAll(
 
   @Get()
 async getAllContents(@Query() query: any) {
-  const { user, style, date } = query;
+  const { user, style, date, platform } = query;
   const filter: any = {};
 
   if (user) filter.user = user;
   if (style) filter.style = style;
+  if (platform) filter.platform = platform;
   if (date) filter.createdAt = { $gte: new Date(date) };
 
   return this.contentService.findAll(filter);
@@ -67,23 +88,31 @@ async getAllContents(@Query() query: any) {
 //   return { imageUrl };
 // }
   
-  // @Post()
-  // async saveContent(@Body() createContentDto: CreateContentDto) {
-  //   return this.contentService.saveContent(createContentDto);
-  // }
   @Post()
-async saveContent(@Body() createContentDto: CreateContentDto, @Req() req) {
-  const userId = req.user?.id || '664012345abc...'; // Remplace par un vrai ObjectId pour test
-  return this.contentService.saveContent({ ...createContentDto, user: userId });
-}
+  async saveContent(@Body() createContentDto: CreateContentDto) {
+    return this.contentService.saveContent(createContentDto);
+  }
+//   @Post()
+// async saveContent(@Body() createContentDto: CreateContentDto, @Req() req) {
+//   const userId = req.user?.id || '664012345abc...'; // Remplace par un vrai ObjectId pour test
+//   return this.contentService.saveContent({ ...createContentDto, user: userId });
+// }
 
 
    @Post('generate')
   async generateContent(@Body() body: any) {
-    const { title, style, length, provider } = body;
-    const content = await this.contentService.generateContent(title, style, length, provider);
+    const { title, style, length, provider, platform } = body;
+    const content = await this.contentService.generateContent(title, style, length, provider, platform);
 
     return { content };
+  }
+  //  Dashboard stats
+  @Get('stats')
+  async getStats(
+    @Query('statut') statut?: string,
+  @Query('date') date?: string,
+  ) {
+    return this.contentService.getStats(statut, date);
   }
    @Get(':id')
   async getOne(@Param('id') id: string): Promise<Content> {
@@ -108,15 +137,94 @@ async saveContent(@Body() createContentDto: CreateContentDto, @Req() req) {
   //   return { publicationDate: content.publicationDate };
   // }
 
- @Put(':id')
-  async update(
-    @Param('id') id: string,
-    @Body() updateContentDto: UpdateContentDto,
-  ) {
-    return this.contentService.update(id, updateContentDto);
-  }
 
+  //modif du titre, contenu
+//  @Put(':id')
+//   async update(
+//     @Param('id') id: string,
+//     @Body() updateContentDto: UpdateContentDto,
+//   ) {
+//     return this.contentService.update(id, updateContentDto);
+//   }
+
+  // @Put(':id')
+  // @UseInterceptors(
+  //   FileFieldsInterceptor(
+  //     [{ name: 'media', maxCount: 10 }],
+  //     {
+  //       storage: diskStorage({
+  //         destination: './uploads', // Dossier où les fichiers seront stockés
+  //         filename: (req, file, callback) => {
+  //           const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
+  //           const ext = extname(file.originalname);
+  //           const filename = `${file.fieldname}-${uniqueSuffix}${ext}`;
+  //           callback(null, filename);
+  //         },
+  //       }),
+  //     },
+  //   ),
+  // )
+  // async updateContent(
+  //   @Param('id') id: string,
+  //   @UploadedFiles() files: { media?: Express.Multer.File[] },
+  //   @Req() req: any,
+  // ) {
+  //   const { title, content } = req.body;
+
+  //   const mediaPaths = files?.media?.map(file => file.filename) || [];
+
+  //   return this.contentService.update(id, {
+  //     title,
+  //     content,
+  //     media: mediaPaths,
+      
+  //   });
+  // }
   
+//   @Put(':id')
+// @UseInterceptors(
+//   FilesInterceptor('files', 10, {
+//     storage: Storage as any,
+//     fileFilter: (req, file, cb) => {
+//       if (
+//         file.mimetype.startsWith('image/') ||
+//         file.mimetype.startsWith('video/')
+//       ) {
+//         cb(null, true);
+//       } else {
+//         cb(new Error('Invalid file type'), false);
+//       }
+//     },
+//   }),
+// )
+// async updateContent(
+//   @Param('id') id: string,
+//   @UploadedFiles() files: Express.Multer.File[],
+//   @Body() body: any,
+// ) {
+//   const mediaUrls = files.map((f) => f?.path);
+//   const updateData = {
+//     ...body,
+//     media: mediaUrls,
+//   };
+
+//   return this.contentService.update(id, updateData);
+// }
+
+@Put(':id')
+  @UseInterceptors(FilesInterceptor('media', 10, { storage }))
+  async updateContent(
+    @Param('id') id: string,
+    @UploadedFiles() files: Express.Multer.File[],
+    @Body() body: any,
+  ) {
+    const mediaUrls = files.map((f) => f.path); // URL Cloudinary
+    const updateData = {
+      ...body,
+      media: mediaUrls,
+    };
+    return this.contentService.update(id, updateData);
+  }
 
 @Put('schedule/:id')
 async schedule(
@@ -126,11 +234,15 @@ async schedule(
   return this.contentService.updateSchedule(id, dto);
 }
  
+@Put('publish/:id')
+async publishContent(@Param('id') id: string) {
+  return this.contentService.publishToSocialMedia(id);
+}
 
 
-  //  Dashboard stats
-  @Get('stats')
-  async getStats() {
-    return this.contentService.getStats();
-  }
+  
+   
+  
+
+
 }

@@ -17,16 +17,15 @@ async function bootstrap() {
   app.use('/uploads', express.static(join(__dirname, '..', 'uploads')));
 
   app.enableCors({
-    origin: 'http://localhost:3000', 
+    origin: 'http://localhost:3001', 
     
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   });
-  const PORT = process.env.PORT || 3003; 
+  const PORT = process.env.PORT || 3000; 
   await app.listen(PORT);
   console.log(`Server running on http://localhost:${PORT}`);
 
   
-
 }
 bootstrap();

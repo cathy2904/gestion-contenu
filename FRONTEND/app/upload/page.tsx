@@ -15,7 +15,7 @@ export default function UploadPage() {
     formData.append('title', title);
 
     setLoading(true);
-    const res = await fetch('http://localhost:3003/api/documents/upload', {
+    const res = await fetch('http://localhost:3000/api/documents/upload', {
       method: 'POST',
       body: formData,
     });
@@ -27,7 +27,7 @@ export default function UploadPage() {
   const handleSave = async () => {
     if (!response || !title) return;
 
-    const res = await fetch('http://localhost:3003/api/documents', {
+    const res = await fetch('http://localhost:3000/api/documents', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -61,6 +61,7 @@ export default function UploadPage() {
           >
             voir la liste
           </Link>
+          
       <input
         type="text"
         value={title}

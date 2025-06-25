@@ -21,7 +21,7 @@ export default function UsersPage() {
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get('http://localhost:3003/api/users'); // ← backend NestJS
+      const res = await axios.get('http://localhost:3000/api/users'); // ← backend NestJS
       setUsers(res.data);
     } catch (err) {
       console.error('Erreur de chargement des utilisateurs', err);
@@ -33,7 +33,7 @@ export default function UsersPage() {
   const handleRoleChange = async (userId: string, newRole: string) => {
     try {
       setUpdating(userId);
-      await axios.patch(`http://localhost:3003/api/users/${userId}/role`, {
+      await axios.patch(`http://localhost:3000/api/users/${userId}/role`, {
         role: newRole,
       });
       fetchUsers(); // refresh

@@ -7,7 +7,7 @@ export const menunav: MenuType[] = [
         menu: [
             {
                 titre: "login",
-                link: "/",
+                link: "/auth/login",
                 value: "new-txt"
             },
             {

@@ -6,8 +6,7 @@ import axios from "axios";
 import Link from "next/link";
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
-import { Calendar, Eye, Pencil, Trash2 } from "lucide-react";
-
+import { Calendar, Eye, Pencil, Trash2, Filter, ChevronDown } from "lucide-react";
 
 export interface Content {
   _id: string;
@@ -19,7 +18,8 @@ export interface Content {
   user: string;
   publicationDate: Date;
   statut: 'brouillon' | 'programmé' | 'publié';
-  channel: 'linkedin' | 'email' | 'blog';
+  platform: 'linkedin' | 'blog'| 'facebook' |'instagram'|'twiter';
+  media?: string; 
   createdAt: string;
   updatedAt: string;
 }
@@ -35,11 +35,12 @@ export default function ContentPage() {
   const [selectedContentId, setSelectedContentId] = useState<string | null>(null);
   const [scheduleDate, setScheduleDate] = useState<string>('');
   const [scheduleTime, setScheduleTime] = useState<string>('');
-   const router = useRouter();
+  const [showFilters, setShowFilters] = useState(false);
+  const router = useRouter();
 
   const fetchContents = async (page: number) => {
     try {
-      const response = await axios.get(`http://localhost:3003/api/content?page=${page}&limit=10`, {
+      const response = await axios.get(`http://localhost:3000/api/content?page=${page}&limit=10`, {
         params: {
           user: user || undefined,
           style: style || undefined,
@@ -61,15 +62,13 @@ export default function ContentPage() {
     }
   };
 
-  
-
   useEffect(() => {
     fetchContents(page);
   }, [page, user, style, date]);
 
   const handlePublish = async (id: string) => {
     try {
-      await axios.put(`http://localhost:3003/api/content/${id}/publish`);
+      await axios.put(`http://localhost:3000/api/content/${id}/publish`);
       fetchContents(page);
     } catch (error) {
       console.error("Erreur lors de la publication :", error);
@@ -78,7 +77,7 @@ export default function ContentPage() {
 
   const handleDelete = async (id: string) => {
     try {
-      await axios.delete(`http://localhost:3003/api/content/${id}`);
+      await axios.delete(`http://localhost:3000/api/content/${id}`);
       fetchContents(page);
     } catch (error) {
       console.error("Erreur lors de la suppression :", error);
@@ -89,7 +88,7 @@ export default function ContentPage() {
     if (!selectedContentId || !scheduleDate || !scheduleTime) return;
     const fullDate = new Date(`${scheduleDate}T${scheduleTime}`);
     try {
-      await axios.put(`http://localhost:3003/api/content/schedule/${selectedContentId}`, {
+      await axios.put(`http://localhost:3000/api/content/schedule/${selectedContentId}`, {
         schedule: fullDate,
       });
       setSelectedContentId(null);
@@ -101,358 +100,317 @@ export default function ContentPage() {
     }
   };
 
+  const getStatusColor = (statut: string) => {
+    switch (statut) {
+      case 'publié': return 'bg-green-100 text-green-800';
+      case 'programmé': return 'bg-yellow-100 text-yellow-800';
+      case 'brouillon': return 'bg-black-100 text-black-800';
+      default: return 'bg-black-100 text-black-800';
+    }
+  };
+
+  const getPlatformColor = (platform: string) => {
+    switch (platform) {
+      case 'linkedin': return 'bg-blue-100 text-blue-800';
+      case 'facebook': return 'bg-blue-100 text-blue-800';
+      case 'instagram': return 'bg-pink-100 text-pink-800';
+      case 'twitter': return 'bg-sky-100 text-sky-800';
+      case 'blog': return 'bg-purple-100 text-purple-800';
+      default: return 'bg-black-100 text-white-800';
+    }
+  };
+
   return (
     <Principal titre="Contents">
-      <h1 className="text-2xl font-bold mb-4">Liste des Contenus</h1>
-      <Link href="/content/create" className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
-         Créer un contenu
-      </Link>
-      <div className="my-4 flex gap-4">
-        <div>filtrage par style et date</div>
-        {/* <input type="text" placeholder="ID utilisateur" value={user} onChange={(e) => setUser(e.target.value)} className="border p-2" /> */}
-        <select value={style} onChange={(e) => setStyle(e.target.value)} className="border p-2">
-          <option value="">Tous les styles</option>
-          <option value="standard">Standard</option>
-          <option value="humour">Humour</option>
-          <option value="marketing">Marketing</option>
-          
-          
-       
-        <option value="formal">Formel</option>
-             <option value="casual">Décontracté</option>
-             <option value="professional">Professionnel</option>
-             <option value="academic">Académique</option>
-             <option value="creative">Créatif</option>
-             <option value="persuasive">Persuasif</option>
-             <option value="informative">Informatif</option>
-        </select>
-        <input type="date" value={date} onChange={(e) => setDate(e.target.value)} className="border p-2" />
-      </div>
-
-      {loading ? <p>Chargement...</p> : contents.length === 0 ? <p>Aucun contenu trouvé.</p> : (
-        <table className="w-full border border-gray-300">
-          <thead>
-            <tr className="bg-black-200">
-              <th className="border px-2 py-2">Titre</th>
-              <th className="border px-2 py-2">Fournisseur</th>
-              <th className="border px-1 py-2">Style</th>
-              <th className="border px-2 py-2">Longueur</th>
-              <th className="border px-2 py-2">Contenu</th>
-              <th className="border px-2 py-2">Statut</th>
-              <th className="border px-2 py-2">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {contents.map((item) => (
-              <tr key={item._id} className="hover:bg-black-50">
-                <td className="border px-2 py-2">{item.title}</td>
-                <td className="border px-2 py-2">{item.provider}</td>
-                <td className="border px-1 py-2">{item.style}</td>
-                <td className="border px-2 py-2">{item.length}</td>
-                <td className="border px-2 py-2 truncate max-w-xs" title={item.content}>{item.content.slice(0, 100)}...</td>
-                <td className="border px-2 py-2">{item.statut}</td>
-                <td className="border px-2 py-2 flex gap-2">
-                  {/* <button onClick={() => router.push(`/content/schedule/${item._id}`)} className="bg-yellow-500 text-white px-2 py-1 rounded">Plan</button> */}
-                  
-                  {/* <button
-  onClick={() => {
-    setSelectedContentId(item._id);
-    const selectedItem = contents.find((c) => c._id === item._id);
-    if (selectedItem?.schedule) {
-      const date = new Date(selectedItem.schedule);
-      setScheduleDate(date.toISOString().split('T')[0]);
-      setScheduleTime(date.toTimeString().slice(0, 5));
-    } else {
-      setScheduleDate('');
-      setScheduleTime('');
-    }
-  }}
-  className="bg-yellow-500 text-white px-2 py-1 rounded"
->
-  fPlanifier
-</button> */}
-
-                  {/* <button onClick={() => handlePublish(item._id)} className="bg-green-500 text-white px-2 py-1 rounded">Publier</button>
-                  <button onClick={() => handleDelete(item._id)} className="bg-red-500 text-white px-2 py-1 rounded">Supprimer</button> */}
-                                  <Link href={`/content/read/${item._id}`}>
-                <Button variant="ghost" className="hover:bg-blue-100 text-blue-600">
-                  <Eye className="w-5 h-5" />
-                </Button>
-              </Link>
-              <Link href={`/content/edit/${item._id}`}>
-                <Button variant="ghost" className="hover:bg-yellow-100 text-yellow-600">
-                  <Pencil className="w-5 h-5" />
-                </Button>
-              </Link>
-              <Link href={`/content/schedule/${item._id}`}>
-                <Button variant="ghost" className="hover:bg-green-100 text-green-600">
-                  <Calendar className="w-5 h-5" />
-                </Button>
-              </Link>
-              <Button
-                variant="ghost"
-                onClick={() => handleDelete(item._id)}
-                className="hover:bg-red-100 text-red-600"
-              >
-                <Trash2 className="w-5 h-5" />
-              </Button>
-                                  
-                                  </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
-
-      {selectedContentId && (
-        <div className="my-4 p-4 border rounded bg-black-100">
-          <h3 className="text-lg font-bold mb-2">Planifier la publication</h3>
-          <input type="date" value={scheduleDate} onChange={(e) => setScheduleDate(e.target.value)} className="border p-2 mr-2" />
-          <input type="time" value={scheduleTime} onChange={(e) => setScheduleTime(e.target.value)} className="border p-2 mr-2" />
-          <button onClick={handleSchedule} className="bg-blue-600 text-white px-4 py-2 rounded">Confirmer</button>
-          <button onClick={() => setSelectedContentId(null)} className="ml-2 bg-black-500 text-white px-4 py-2 rounded">Annuler</button>
+      <div className="p-4 md:p-6">
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+          <h1 className="text-2xl md:text-3xl font-bold text-white-900">Liste des Contenus</h1>
+          <Link 
+            href="/content/create" 
+            className="inline-flex items-center justify-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            Créer un contenu
+          </Link>
         </div>
-      )}
 
-      <div className="flex justify-center mt-4 gap-4">
-        <button onClick={() => setPage((p) => Math.max(p - 1, 1))} disabled={page === 1} className="px-4 py-2 bg-black-300 rounded disabled:opacity-50">Précédent</button>
-        <span className="px-4 py-2">Page {page} / {totalPages}</span>
-        <button onClick={() => setPage((p) => Math.min(p + 1, totalPages))} disabled={page === totalPages} className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50">Suivant</button>
+        {/* Filters */}
+        <div className="mb-6">
+          <button
+            onClick={() => setShowFilters(!showFilters)}
+            className="flex items-center gap-2 px-4 py-2 bg-black-100 rounded-lg hover:bg-black-200 transition-colors md:hidden"
+          >
+            <Filter className="w-4 h-4" />
+            Filtres
+            <ChevronDown className={`w-4 h-4 transition-transform ${showFilters ? 'rotate-180' : ''}`} />
+          </button>
+          
+          <div className={`${showFilters ? 'block' : 'hidden'} md:block mt-4 md:mt-0`}>
+            <div className="flex flex-col md:flex-row gap-4">
+              <div className="flex-1">
+                <label className="block text-sm font-medium text-white-700 mb-1">Style</label>
+                <select 
+                  value={style} 
+                  onChange={(e) => setStyle(e.target.value)} 
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                  <option value="">Tous les styles</option>
+                  <option value="standard">Standard</option>
+                  <option value="humour">Humour</option>
+                  <option value="marketing">Marketing</option>
+                  <option value="formal">Formel</option>
+                  <option value="casual">Décontracté</option>
+                  <option value="professional">Professionnel</option>
+                  <option value="academic">Académique</option>
+                  <option value="creative">Créatif</option>
+                  <option value="persuasive">Persuasif</option>
+                  <option value="informative">Informatif</option>
+                </select>
+              </div>
+              
+              <div className="flex-1">
+                <label className="block text-sm font-medium text-white-700 mb-1">Date</label>
+                <input 
+                  type="date" 
+                  value={date} 
+                  onChange={(e) => setDate(e.target.value)} 
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Content */}
+        {loading ? (
+          <div className="flex justify-center py-8">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+          </div>
+        ) : contents.length === 0 ? (
+          <div className="text-center py-8 text-white-500">
+            Aucun contenu trouvé.
+          </div>
+        ) : (
+          <>
+            {/* Desktop Table */}
+            <div className="hidden lg:block overflow-x-auto">
+              <table className="w-full bg-black rounded-lg shadow-sm border border-gray-200">
+                <thead className="bg-black-50">
+                  <tr>
+                    <th className="px-4 py-3 text-left text-sm font-medium text-white-700">Titre</th>
+                    <th className="px-4 py-3 text-left text-sm font-medium text-white-700">Fournisseur</th>
+                    <th className="px-4 py-3 text-left text-sm font-medium text-white-700">Style</th>
+                    <th className="px-4 py-3 text-left text-sm font-medium text-white-700">Longueur</th>
+                    <th className="px-4 py-3 text-left text-sm font-medium text-white-700">Réseau</th>
+                    <th className="px-4 py-3 text-left text-sm font-medium text-white-700">Contenu</th>
+                    <th className="px-4 py-3 text-left text-sm font-medium text-white-700">Image</th>
+                    <th className="px-4 py-3 text-left text-sm font-medium text-white-700">Statut</th>
+                    <th className="px-4 py-3 text-left text-sm font-medium text-white-700">Actions</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200">
+                  {contents.map((item) => (
+                    <tr key={item._id} className="hover:bg-black-50">
+                      <td className="px-4 py-3 font-medium text-white-900">{item.title}</td>
+                      <td className="px-4 py-3 text-white-700">{item.provider}</td>
+                      <td className="px-4 py-3 text-white-700">{item.style}</td>
+                      <td className="px-4 py-3 text-white-700">{item.length}</td>
+                      <td className="px-4 py-3">
+                        <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${getPlatformColor(item.platform)}`}>
+                          {item.platform}
+                        </span>
+                      </td>
+                      <td className="px-4 py-3 max-w-xs truncate text-white-700" title={item.content}>
+                        {item.content.slice(0, 100)}...
+                      </td>
+                      <td className="px-4 py-3">
+                        {item.media ? (
+                          <img src={item.media} alt="Media" className="w-12 h-12 object-cover rounded-lg" />
+                        ) : (
+                          <span className="text-white-400 italic text-sm">Aucune</span>
+                        )}
+                      </td>
+                      <td className="px-4 py-3">
+                        <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${getStatusColor(item.statut)}`}>
+                          {item.statut}
+                        </span>
+                      </td>
+                      <td className="px-4 py-3">
+                        <div className="flex gap-2">
+                          <Link href={`/content/read/${item._id}`}>
+                            <Button variant="ghost" size="sm" className="hover:bg-blue-100 text-blue-600">
+                              <Eye className="w-4 h-4" />
+                            </Button>
+                          </Link>
+                          <Link href={`/content/edit/${item._id}`}>
+                            <Button variant="ghost" size="sm" className="hover:bg-yellow-100 text-yellow-600">
+                              <Pencil className="w-4 h-4" />
+                            </Button>
+                          </Link>
+                          <Link href={`/content/schedule/${item._id}`}>
+                            <Button variant="ghost" size="sm" className="hover:bg-green-100 text-green-600">
+                              <Calendar className="w-4 h-4" />
+                            </Button>
+                          </Link>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => handleDelete(item._id)}
+                            className="hover:bg-red-100 text-red-600"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </Button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Mobile/Tablet Cards */}
+            <div className="lg:hidden space-y-4">
+              {contents.map((item) => (
+                <div key={item._id} className="bg-black rounded-lg shadow-sm border border-gray-200 p-4">
+                  <div className="flex items-start justify-between mb-3">
+                    <h3 className="font-medium text-white-900 flex-1 pr-2">{item.title}</h3>
+                    <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${getStatusColor(item.statut)}`}>
+                      {item.statut}
+                    </span>
+                  </div>
+                  
+                  <div className="grid grid-cols-2 gap-4 mb-4 text-sm">
+                    <div>
+                      <span className="text-white-500">Fournisseur:</span>
+                      <p className="font-medium">{item.provider}</p>
+                    </div>
+                    <div>
+                      <span className="text-white-500">Style:</span>
+                      <p className="font-medium">{item.style}</p>
+                    </div>
+                    <div>
+                      <span className="text-white-500">Longueur:</span>
+                      <p className="font-medium">{item.length}</p>
+                    </div>
+                    <div>
+                      <span className="text-white-500">Réseau:</span>
+                      <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${getPlatformColor(item.platform)}`}>
+                        {item.platform}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="mb-4">
+                    <span className="text-white-500 text-sm">Contenu:</span>
+                    <p className="text-white-700 text-sm mt-1">{item.content.slice(0, 150)}...</p>
+                  </div>
+
+                  {item.media && (
+                    <div className="mb-4">
+                      <img src={item.media} alt="Media" className="w-20 h-20 object-cover rounded-lg" />
+                    </div>
+                  )}
+
+                  <div className="flex gap-2 pt-3 border-t border-gray-100">
+                    <Link href={`/content/read/${item._id}`} className="flex-1">
+                      <Button variant="ghost" size="sm" className="w-full hover:bg-blue-100 text-blue-600">
+                        <Eye className="w-4 h-4 mr-2" />
+                        Voir
+                      </Button>
+                    </Link>
+                    <Link href={`/content/edit/${item._id}`} className="flex-1">
+                      <Button variant="ghost" size="sm" className="w-full hover:bg-yellow-100 text-yellow-600">
+                        <Pencil className="w-4 h-4 mr-2" />
+                        Éditer
+                      </Button>
+                    </Link>
+                    <Link href={`/content/schedule/${item._id}`} className="flex-1">
+                      <Button variant="ghost" size="sm" className="w-full hover:bg-green-100 text-green-600">
+                        <Calendar className="w-4 h-4 mr-2" />
+                        Planifier
+                      </Button>
+                    </Link>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => handleDelete(item._id)}
+                      className="hover:bg-red-100 text-red-600"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </Button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
+
+        {/* Schedule Modal */}
+        {selectedContentId && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+            <div className="bg-black rounded-lg p-6 w-full max-w-md">
+              <h3 className="text-lg font-bold mb-4">Planifier la publication</h3>
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-white-700 mb-1">Date</label>
+                  <input 
+                    type="date" 
+                    value={scheduleDate} 
+                    onChange={(e) => setScheduleDate(e.target.value)} 
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-white-700 mb-1">Heure</label>
+                  <input 
+                    type="time" 
+                    value={scheduleTime} 
+                    onChange={(e) => setScheduleTime(e.target.value)} 
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+                <div className="flex gap-3 pt-4">
+                  <button 
+                    onClick={handleSchedule} 
+                    className="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                  >
+                    Confirmer
+                  </button>
+                  <button 
+                    onClick={() => setSelectedContentId(null)} 
+                    className="flex-1 bg-black-300 text-white-700 px-4 py-2 rounded-lg hover:bg-black-400 transition-colors"
+                  >
+                    Annuler
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Pagination */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-8">
+          <span className="text-sm text-white-700">
+            Page {page} sur {totalPages}
+          </span>
+          <div className="flex gap-2">
+            <button 
+              onClick={() => setPage((p) => Math.max(p - 1, 1))} 
+              disabled={page === 1} 
+              className="px-4 py-2 bg-black-200 rounded-lg disabled:opacity-50 hover:bg-black-300 transition-colors"
+            >
+              Précédent
+            </button>
+            <button 
+              onClick={() => setPage((p) => Math.min(p + 1, totalPages))} 
+              disabled={page === totalPages} 
+              className="px-4 py-2 bg-black-200 rounded-lg disabled:opacity-50 hover:bg-black-300 transition-colors"
+            >
+              Suivant
+            </button>
+          </div>
+        </div>
       </div>
     </Principal>
   );
 }
-
-// 'use client';
-// import Principal from "@/components/Principal";
-// import React, { useEffect, useState } from 'react';
-
-// // import { Content } from "./types/content";
-
-// import { fetchContents } from "./api/route";
-// import ContentList from "../components/ContentList";
-// import Link from "next/link";
-// import axios from "axios";
-
-// export interface Content {
-//   _id: string;
-//   title: string;
-//   content: string;
-//   style: string;
-//   length: string;
-//   provider: string;
-//   user: string;
-//    schedule: Date,
-//    statut: 'brouillon' | 'programmé' | 'publié';
-//   channel: 'linkedin' | 'email' | 'blog';
-
-//   createdAt: string;
-//   updatedAt: string;
-// }
-
-// export default function ContentPage() {
-//   const [contents, setContents] = useState<Content[]>([])
-//   const [loading, setLoading] = useState(true)
-//   const [page, setPage] = useState(1);
-// const [totalPages, setTotalPages] = useState(1);
-// // plannification
-// const [statut, setStatut] = useState('');
-// // const [statut, setStatut] = useState<'brouillon' | 'planifié' | 'publié'>('brouillon');
-
-//   // Filtres
-//   const [user, setUser] = useState('');
-//   const [style, setStyle] = useState('');
-//   const [date, setDate] = useState('');
-//   // const [selectedStyle, setSelectedStyle] = useState('');
-
-
-
-//   const fetchContents = async (page: number) => {
-//     try {
-//       const response = await axios.get('http://localhost:3003/api/content?page=${page}&limit=10',  {
-//         params: {
-//           page,
-//           limit: 10,
-//           user: user || undefined,
-//           style: style || undefined,
-//           date: date || undefined,
-//            statut: statut || undefined,
-//         },
-        
-//     })
-    
-//       // setContents(response.data)
-//       const data = response.data
-//      if (Array.isArray(data.contents)) {
-//         setContents(data.contents);
-//         setTotalPages(data.totalPages);
-//       } else {
-//         setContents([]);
-//         console.error('❌ Données inattendues :', data);
-//       }
-//      } catch (error) {
-//       console.error('❌ Erreur lors du chargement des contenus :', error)
-//     } finally {
-//       setLoading(false)
-//     }
-//   }
-
-  
-//   useEffect(() => {
-//     fetchContents(page)
-//   }, [page, user, style, date])
-
-//   const handlePublish = async (id: string) => {
-//     try {
-//       await axios.put(`http://localhost:3003/api/content/${id}/publish`);
-//       fetchContents(page);
-//     } catch (error) {
-//       console.error("Erreur lors de la publication :", error);
-//     }
-//   };
-
-//   const handleDelete = async (id: string) => {
-//     try {
-//       await axios.delete(`http://localhost:3003/api/content/${id}`);
-//       fetchContents(page);
-//     } catch (error) {
-//       console.error("Erreur lors de la suppression :", error);
-//     }
-//   };
-
-//   return (
-// <Principal titre="Contents">
-//       <h1>Content Home</h1>
-
-//       <div>
-//       <Link
-//           href="/content/create"
-//           className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-//         >
-//           ➕ Créer un contenu
-//         </Link>
-//       {/* <h1>Liste des contenus</h1>
-//       <ContentList contents={content} /> */}
-//       <div className="p-6">
-//       <h1 className="text-2xl font-bold mb-4"> Liste des Contenus Générés</h1>
-//       {/* Filtres */}
-//       <div className="flex gap-4 mb-4">
-//         <input
-//           type="text"
-//           placeholder="ID utilisateur"
-//           value={user}
-//           onChange={(e) => setUser(e.target.value)}
-//           className="border p-2"
-//         />
-//         <select
-//           value={style}
-//           onChange={(e) => setStyle(e.target.value)}
-//           className="border p-2"
-//         >
-//           <option value="">Tous les styles</option>
-//           <option value="{{style}}"></option>
-//          <option value="standard">Style standard</option>
-//           <option value="humour">Style humour</option>
-//           <option value="marketing">Style marketing</option>
-//           <option value="formal">Formel</option>
-//           <option value="casual">Décontracté</option>
-//           <option value="professional">Professionnel</option>
-//           <option value="academic">Académique</option>
-//           <option value="creative">Créatif</option>
-//           <option value="persuasive">Persuasif</option>
-//           <option value="informative">Informatif</option>
-//         </select>
-//         <input
-//           type="date"
-//           value={date}
-//           onChange={(e) => setDate(e.target.value)}
-//           className="border p-2"
-//         />
-//       </div>
-
-
-//       {loading ? (
-//         <p>Chargement en cours...</p>
-//       ) : contents.length === 0 ? (
-//         <p>Aucun contenu trouvé.</p>
-//       ) : (
-//         <table className="w-full table-auto border border-gray-300">
-//           <thead>
-//             <tr className="bg-black-100">
-//               <th className="border px-2 py-2">Titre</th>
-//               <th className="border px-2 py-2">Fournisseur</th>
-//               <th className="border px-2 py-2">Style</th>
-//               <th className="border px-2 py-2">Longueur</th>
-//               {/* <th className="border px-4 py-2">Date</th> */}
-//               <th className="border px-4 py-2">Contenu</th>
-//               <th className="border px-4 py-2">Status</th>
-//               <th className="border px-4 py-2">Actions</th>
-//             </tr>
-//           </thead>
-//           <tbody>
-//             {contents.map((item) => (
-//               <tr key={item._id} className="hover:bg-black-50">
-//                 <td className="border px-2 py-2">{item.title}</td>
-//                 <td className="border px-2 py-2">{item.provider}</td>
-//                 <td className="border px-2 py-2">{item.style}</td>
-//                 <td className="border px-2 py-2">{item.length}</td>
-//                  <td className="border px-4 py-2 max-w-sm overflow-hidden text-ellipsis whitespace-nowrap" title={item.content}>
-//                   {item.content?.slice(0,100) }...
-//                 </td>
-//                 <td className="border px-4 py-2">{item.statut}</td>
-//                 {/* <td>
-//                   <select
-//                     value={statut}
-//                     onChange={(e) => setStatut(e.target.value)}
-//                     className="border p-2"
-//                   >
-//                     <option value="">Tous les statuts</option>
-//                     <option value=""></option>
-//                     <option value="draft">Brouillon</option>
-//                     <option value="scheduled">Programmé</option>
-//                     <option value="published">Publié</option>
-//                   </select>
-//                 </td> */}
-//                  <td className="border px-2 py-2 flex gap-2">
-//                       <button
-//                         onClick={() => handlePublish(item._id)}
-//                         className="bg-green-500 text-white px-2 py-1 rounded hover:bg-green-600"
-//                       >
-//                         Publier
-//                       </button>
-//                       <button
-//                         onClick={() => handleDelete(item._id)}
-//                         className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
-//                       >
-//                         Supprimer
-//                       </button>
-//                     </td>
-//                 {/* <td className="border px-4 py-2">
-//                   {new Date(item.createdAt).toLocaleDateString()}
-//                 </td> */}
-                
-//               </tr>
-//             ))}
-//           </tbody>
-//           <button
-//     onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
-//     disabled={page === 1}
-//     className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
-//   >
-//     Précédent
-//   </button>
-//   <span className="px-4 py-2">Page {page} / {totalPages}</span>
-//   <button
-//     onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))}
-//     disabled={page === totalPages}
-//     className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
-//   >
-//     Suivant
-//   </button>
-//         </table>
-//       )}
-//     </div>
-  
-//     </div>
-//     </Principal>  )
-// }

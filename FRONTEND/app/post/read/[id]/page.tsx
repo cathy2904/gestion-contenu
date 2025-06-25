@@ -77,7 +77,7 @@ export default function ReadPost() {
         <div className="mb-4 ">
         {post.imagePath ? (
                     <img
-                      src={`http://localhost:3003${post.imagePath}`}
+                      src={`http://localhost:3000${post.imagePath}`}
                       alt={post.title}
                       className="h-16 w-16 object-cover rounded"
                       onError={(e) => {

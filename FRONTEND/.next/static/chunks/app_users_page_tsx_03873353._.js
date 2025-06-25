@@ -28,7 +28,7 @@ function UsersPage() {
     }["UsersPage.useEffect"], []);
     const fetchUsers = async ()=>{
         try {
-            const res = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].get('http://localhost:3003/api/users'); // ← backend NestJS
+            const res = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].get('http://localhost:3000/api/users'); // ← backend NestJS
             setUsers(res.data);
         } catch (err) {
             console.error('Erreur de chargement des utilisateurs', err);
@@ -39,7 +39,7 @@ function UsersPage() {
     const handleRoleChange = async (userId, newRole)=>{
         try {
             setUpdating(userId);
-            await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].patch(`http://localhost:3003/api/users/${userId}/role`, {
+            await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].patch(`http://localhost:3000/api/users/${userId}/role`, {
                 role: newRole
             });
             fetchUsers(); // refresh

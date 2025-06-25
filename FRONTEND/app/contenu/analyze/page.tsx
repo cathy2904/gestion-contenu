@@ -16,7 +16,7 @@ export default function Home() {
   const [selectedDocument, setSelectedDocument] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [uploadProgress, setUploadProgress] = useState<number>(0);
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3003';
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
 
   const { getRootProps, getInputProps } = useDropzone({
     onDrop: acceptedFiles => {
@@ -193,7 +193,7 @@ export default function Home() {
 
 //     try {
 //       const response = await axios.post(
-//         'http://localhost:3003/api/analyze',
+//         'http://localhost:3000/api/analyze',
 //         formData,
 //         {
 //           headers: { 'Content-Type': 'multipart/form-data' },

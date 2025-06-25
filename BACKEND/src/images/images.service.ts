@@ -8,6 +8,8 @@ import { firstValueFrom } from 'rxjs';
 import { GenerateImageDto } from './dto/generate-image.dto';
 import { GeneratedImage } from './schemas/generated-image.schema';
 import { SaveImageDto } from './dto/save-image.dto';
+import * as cloudinary from 'cloudinary';
+import axios from 'axios';
 
 @Injectable()
 export class ImagesService {
@@ -16,7 +18,13 @@ export class ImagesService {
     private readonly configService: ConfigService,
     @InjectModel(GeneratedImage.name)
     private readonly imageModel: Model<GeneratedImage>
-  ) {}
+  ) {
+    cloudinary.v2.config({
+      cloud_name: this.configService.get('CLOUDINARY_CLOUD_NAME'),
+      api_key: this.configService.get('CLOUDINARY_API_KEY'),
+      api_secret: this.configService.get('CLOUDINARY_API_SECRET'),
+    });
+  }
 
   async generateImage(dto: GenerateImageDto) {
     switch (dto.provider) {
@@ -27,6 +35,18 @@ export class ImagesService {
       default:
         throw new HttpException('Provider not supported', HttpStatus.BAD_REQUEST);
     }
+  }
+
+   private async uploadToCloudinary(imageUrl: string): Promise<string> {
+    const response = await axios.get(imageUrl, { responseType: 'arraybuffer' });
+    const base64 = Buffer.from(response.data, 'binary').toString('base64');
+    const dataURI = `data:image/png;base64,${base64}`;
+
+    const upload = await cloudinary.v2.uploader.upload(dataURI, {
+      folder: 'generated_images',
+    });
+
+    return upload.secure_url;
   }
 
   private async generateWithOpenAI(dto: GenerateImageDto) {

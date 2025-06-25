@@ -160,7 +160,7 @@ const deleteArticle = async (id: string) => {
 //   const handleDelete = async (id: string) => {
 //     const confirmDelete = confirm('Êtes-vous sûr de vouloir supprimer cet article ?');
 //     if (confirmDelete) {
-//       const res = await fetch(`http://localhost:3003/api/articles/${id}`, {
+//       const res = await fetch(`http://localhost:3000/api/articles/${id}`, {
 //         method: 'DELETE',
 //       });
 //       if (res.ok) {

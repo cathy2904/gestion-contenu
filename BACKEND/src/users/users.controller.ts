@@ -1,4 +1,4 @@
-import { Controller, Get, UseGuards, Request, Patch, Param, Body } from '@nestjs/common';
+import { Controller, Get, UseGuards, Request, Patch, Param, Body, Req } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { JwtAuthGuard } from 'src/auth/guards/Jwt.guard';
 import { RolesGuard } from 'src/roles/roles.guard';
@@ -35,6 +35,15 @@ async updateRole(
 }
 
 
-
+@Get('user/social-status')
+@UseGuards(JwtAuthGuard)
+getStatus(@Req() req) {
+  const user = req.user
+  return {
+    facebook: !!user.socialAccounts?.facebook?.token,
+    instagram: !!user.socialAccounts?.instagram?.token,
+    linkedin: !!user.socialAccounts?.linkedin?.token,
+  }
+}
   
 }

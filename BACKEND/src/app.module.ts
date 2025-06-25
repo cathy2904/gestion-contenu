@@ -31,6 +31,8 @@ import { ImagesModule } from './images/images.module';
 import { ScheduleModule } from '@nestjs/schedule';
 import { DocumentsController } from './documents/documents.controller';
 import { DocumentsModule } from './documents/documents.module';
+import { SocialModule } from './social/social.module';
+import { CloudinaryModule } from './cloudinary/cloudinary.module';
 
 
 
@@ -63,6 +65,8 @@ import { DocumentsModule } from './documents/documents.module';
     AiServiceModule,
     ImagesModule,
     DocumentsModule,
+    SocialModule,
+    CloudinaryModule,
     
    
   ],

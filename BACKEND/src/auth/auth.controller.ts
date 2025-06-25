@@ -1,7 +1,8 @@
-import { Controller, Post, Body, Res, UseGuards, Request } from '@nestjs/common';
+import { Controller, Post, Body, Res, UseGuards, Request, Get, Req } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './guards/local-auth.guard';
 import { Response } from 'express';
+import { AuthGuard } from '@nestjs/passport';
 
 
 
@@ -14,7 +15,7 @@ export class AuthController {
   async login(@Request() req, @Res({ passthrough: true }) res: Response) {
     const { access_token, user } = await this.authService.login(req.user);
 
-    // ✅ Ajouter le token dans un cookie
+    
     res.cookie('token', access_token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
@@ -33,5 +34,41 @@ export class AuthController {
     @Body('password') password: string,
   ) {
     return this.authService.register(username, email, password);
+  }
+
+   @Get('auth/facebook')
+  @UseGuards(AuthGuard('facebook'))
+  facebookLogin() {}
+
+  @Get('auth/facebook/callback')
+  @UseGuards(AuthGuard('facebook'))
+  async facebookCallback(@Request() req, @Res({ passthrough: true }) res: Response) {
+    const { access_token, user } = await this.authService.validateOrCreateSocialUser('facebook', req.user.profile, req.user.accessToken);
+    res.cookie('token', access_token, { httpOnly: true, secure: process.env.NODE_ENV === 'production', sameSite: 'strict', maxAge: 86400000 });
+    return res.redirect('/connect-social-success');
+  }
+
+  @Get('auth/instagram')
+  @UseGuards(AuthGuard('instagram'))
+  instagramLogin() {}
+
+  @Get('auth/instagram/callback')
+  @UseGuards(AuthGuard('instagram'))
+  async instagramCallback(@Request() req, @Res({ passthrough: true }) res: Response) {
+    const { access_token, user } = await this.authService.validateOrCreateSocialUser('instagram', req.user.profile, req.user.accessToken);
+    res.cookie('token', access_token, { httpOnly: true, secure: process.env.NODE_ENV === 'production', sameSite: 'strict', maxAge: 86400000 });
+    return res.redirect('/connect-social-success');
+  }
+
+  @Get('auth/linkedin')
+  @UseGuards(AuthGuard('linkedin'))
+  linkedinLogin() {}
+
+  @Get('auth/linkedin/callback')
+  @UseGuards(AuthGuard('linkedin'))
+  async linkedinCallback(@Request() req, @Res({ passthrough: true }) res: Response) {
+    const { access_token, user } = await this.authService.validateOrCreateSocialUser('linkedin', req.user.profile, req.user.accessToken);
+    res.cookie('token', access_token, { httpOnly: true, secure: process.env.NODE_ENV === 'production', sameSite: 'strict', maxAge: 86400000 });
+    return res.redirect('/connect-social-success');
   }
 }
