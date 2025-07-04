@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { FaFacebook, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import { platform } from 'os';
 
 
 export default function ScheduleContentPage() {
@@ -10,6 +11,7 @@ export default function ScheduleContentPage() {
   const router = useRouter();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [platform, setPlatform] = useState('');
   const [publicationDate, setPublicationDate] = useState('');
 
   useEffect(() => {
@@ -18,6 +20,7 @@ export default function ScheduleContentPage() {
       const data = await res.json();
       setTitle(data.title);
       setContent(data.content);
+      setPlatform(data.platform)
     };
     if (id) fetchContent();
   }, [id]);
@@ -53,6 +56,7 @@ export default function ScheduleContentPage() {
           placeholder="Titre"
           required
         />
+
         <textarea
           value={content}
           onChange={(e) => setContent(e.target.value)}
@@ -61,6 +65,14 @@ export default function ScheduleContentPage() {
           rows={5}
           required
         />
+        {/* <input
+          type="text"
+          value={platform}
+          onChange={(e) => setPlatform(e.target.value)}
+          className="w-full border px-3 py-2 rounded"
+          placeholder="Platform"
+          
+        /> */}
         <input
           type="datetime-local"
           value={publicationDate}
@@ -69,7 +81,7 @@ export default function ScheduleContentPage() {
           required
         />
 
-         <div className="flex justify-between items-center gap-3 mt-4">
+         {/* <div className="flex justify-between items-center gap-3 mt-4">
           <button
             type="button"
             className="flex items-center gap-2 px-3 py-2 bg-blue-600 text-white rounded"
@@ -91,7 +103,7 @@ export default function ScheduleContentPage() {
           >
             <FaLinkedin /> Connecter LinkedIn
           </button>
-        </div>
+        </div> */}
         <button
           type="submit"
           className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"

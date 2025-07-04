@@ -3,12 +3,13 @@ import { Schema, Document, Types } from 'mongoose';
 
 export const ContentSchema = new Schema({
   title: String,
-  content: String,
+  // content: String,
+  content: {type: String, default: ''},
   style: String,
   length: String,
   provider: String,
   schedule: Date,
-   statut: { type: String, enum: ['brouillon', 'programmé', 'publié'], default: 'brouillon' },
+   statut: { type: String, enum: ['idée', 'brouillon', 'programmé', 'publié'], default: 'brouillon' },
    publicationDate: {type: Date, required: false},
     platform: { type: String, enum: ['linkedin', 'facebook', 'instagram', 'twiter'] },
   user: { type: Types.ObjectId, ref: 'Users' },

@@ -7,42 +7,6 @@ var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_
 {
 // 'use client';
 // import { useEffect, useState } from 'react';
-// import axios from 'axios';
-// type Account = { displayName: string };
-// type Social = { facebook?: Account; instagram?: Account; linkedin?: Account };
-// export default function ConnectSocialPage() {
-//   const [social, setSocial] = useState<Social>({});
-//   const fetchSocial = async () => {
-//     const res = await axios.get('/social/me', { withCredentials: true });
-//     setSocial(res.data.socialAccounts || {});
-//   };
-//   const connect = (provider: string) => (window.location.href = `/auth/${provider}`);
-//   const disconnect = async (provider: string) => {
-//     await axios.delete(`/social/${provider}`, { withCredentials: true });
-//     fetchSocial();
-//   };
-//   useEffect(() => { fetchSocial(); }, []);
-//   return (
-//     <div className="p-6 space-y-4 max-w-md mx-auto">
-//       <h2 className="text-xl font-bold">Gérer mes connexions</h2>
-//       {['facebook', 'instagram', 'linkedin'].map((prov) => (
-//         <div key={prov} className="flex justify-between items-center border p-4 rounded">
-//           <span className="capitalize">{prov}</span>
-//           {social[prov] ? (
-//             <>
-//               <span>Connecté ({social[prov]?.displayName})</span>
-//               <button className="text-red-500" onClick={() => disconnect(prov)}>Déconnecter</button>
-//             </>
-//           ) : (
-//             <button className="bg-blue-600 text-white px-3 py-1 rounded" onClick={() => connect(prov)}>Connecter</button>
-//           )}
-//         </div>
-//       ))}
-//     </div>
-//   );
-// }
-// 'use client'
-// import { useEffect, useState } from 'react'
 // export default function ConnectSocial() {
 //   const [status, setStatus] = useState({
 //     facebook: false,
@@ -51,12 +15,16 @@ var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_
 //   });
 //   useEffect(() => {
 //     const fetchStatus = async () => {
-//       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/social-status`, {
-//         credentials: 'include',
-//       });
-//       if (res.ok) {
-//         const data = await res.json();
-//         setStatus(data);
+//       try {
+//         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/social-status`, {
+//           credentials: 'include',
+//         });
+//         if (res.ok) {
+//           const data = await res.json();
+//           setStatus(data);
+//         }
+//       } catch (err) {
+//         console.error('Erreur status:', err);
 //       }
 //     };
 //     fetchStatus();
@@ -65,7 +33,8 @@ var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_
 //     window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/api/auth/${platform}`;
 //   };
 //   return (
-//     <div className="space-y-4">
+//     <div className="p-8 space-y-4">
+//       <h2 className="text-2xl font-bold mb-4">Connexion Réseaux Sociaux</h2>
 //       {['facebook', 'instagram', 'linkedin'].map((platform) => (
 //         <div key={platform} className="flex items-center justify-between">
 //           <span className="capitalize">{platform}</span>
@@ -99,87 +68,137 @@ function ConnectSocial() {
     const [status, setStatus] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
         facebook: false,
         instagram: false,
-        linkedin: false
-    });
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "ConnectSocial.useEffect": ()=>{
-            const fetchStatus = {
-                "ConnectSocial.useEffect.fetchStatus": async ()=>{
-                    try {
-                        const res = await fetch(`${("TURBOPACK compile-time value", "http://localhost:3000")}/api/auth/social-status`, {
-                            credentials: 'include'
-                        });
-                        if (res.ok) {
-                            const data = await res.json();
-                            setStatus(data);
-                        }
-                    } catch (err) {
-                        console.error('Erreur status:', err);
-                    }
-                }
-            }["ConnectSocial.useEffect.fetchStatus"];
-            fetchStatus();
+        linkedin: false,
+        displayNames: {
+            facebook: null,
+            instagram: null,
+            linkedin: null
         }
-    }["ConnectSocial.useEffect"], []);
+    });
+    // 🔁 Récupération du statut de connexion des réseaux
+    const fetchStatus = async ()=>{
+        try {
+            const res = await fetch(`${("TURBOPACK compile-time value", "http://localhost:3000")}/api/auth/social-status`, {
+                credentials: 'include'
+            });
+            if (res.ok) {
+                const data = await res.json();
+                setStatus(data);
+            }
+        } catch (err) {
+            console.error('Erreur lors de la récupération du statut social:', err);
+        }
+    };
+    // 🔗 Redirection vers la page d'auth du réseau
     const connect = (platform)=>{
         window.location.href = `${"TURBOPACK compile-time value", "http://localhost:3000"}/api/auth/${platform}`;
     };
+    // ❌ Déconnexion du réseau
+    const disconnect = async (platform)=>{
+        try {
+            const res = await fetch(`${("TURBOPACK compile-time value", "http://localhost:3000")}/api/auth/disconnect/${platform}`, {
+                method: 'GET',
+                credentials: 'include'
+            });
+            if (res.ok) {
+                fetchStatus();
+            }
+        } catch (err) {
+            console.error(`Erreur lors de la déconnexion de ${platform}:`, err);
+        }
+    };
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "ConnectSocial.useEffect": ()=>{
+            fetchStatus();
+        }
+    }["ConnectSocial.useEffect"], []);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "p-8 space-y-4",
+        className: "p-8 space-y-6 max-w-xl mx-auto",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                 className: "text-2xl font-bold mb-4",
-                children: "Connexion Réseaux Sociaux"
+                children: "Connexion aux Réseaux Sociaux"
             }, void 0, false, {
                 fileName: "[project]/app/connect/page.tsx",
-                lineNumber: 130,
+                lineNumber: 136,
                 columnNumber: 7
             }, this),
             [
                 'facebook',
                 'instagram',
                 'linkedin'
-            ].map((platform)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "flex items-center justify-between",
+            ].map((platform)=>{
+                const isConnected = status[platform];
+                const displayName = status.displayNames[platform];
+                return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "flex items-center justify-between border-b pb-3 pt-2",
                     children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                            className: "capitalize",
-                            children: platform
-                        }, void 0, false, {
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                    className: "capitalize font-medium",
+                                    children: platform
+                                }, void 0, false, {
+                                    fileName: "[project]/app/connect/page.tsx",
+                                    lineNumber: 147,
+                                    columnNumber: 15
+                                }, this),
+                                isConnected && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "text-sm text-gray-500",
+                                    children: [
+                                        "Connecté en tant que ",
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                            className: "font-semibold",
+                                            children: displayName ?? 'Utilisateur'
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/connect/page.tsx",
+                                            lineNumber: 150,
+                                            columnNumber: 40
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/app/connect/page.tsx",
+                                    lineNumber: 149,
+                                    columnNumber: 17
+                                }, this)
+                            ]
+                        }, void 0, true, {
                             fileName: "[project]/app/connect/page.tsx",
-                            lineNumber: 133,
-                            columnNumber: 11
-                        }, this),
-                        status[platform] ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                            className: "text-green-600",
-                            children: "Connecté"
-                        }, void 0, false, {
-                            fileName: "[project]/app/connect/page.tsx",
-                            lineNumber: 135,
+                            lineNumber: 146,
                             columnNumber: 13
+                        }, this),
+                        isConnected ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                            onClick: ()=>disconnect(platform),
+                            className: "px-4 py-1 bg-red-600 text-white rounded hover:bg-red-700",
+                            children: "Déconnecter"
+                        }, void 0, false, {
+                            fileName: "[project]/app/connect/page.tsx",
+                            lineNumber: 156,
+                            columnNumber: 15
                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                             onClick: ()=>connect(platform),
-                            className: "px-4 py-1 bg-blue-600 text-white rounded",
+                            className: "px-4 py-1 bg-blue-600 text-white rounded hover:bg-blue-700",
                             children: "Connecter"
                         }, void 0, false, {
                             fileName: "[project]/app/connect/page.tsx",
-                            lineNumber: 137,
-                            columnNumber: 13
+                            lineNumber: 163,
+                            columnNumber: 15
                         }, this)
                     ]
                 }, platform, true, {
                     fileName: "[project]/app/connect/page.tsx",
-                    lineNumber: 132,
-                    columnNumber: 9
-                }, this))
+                    lineNumber: 142,
+                    columnNumber: 11
+                }, this);
+            })
         ]
     }, void 0, true, {
         fileName: "[project]/app/connect/page.tsx",
-        lineNumber: 129,
+        lineNumber: 135,
         columnNumber: 5
     }, this);
 }
-_s(ConnectSocial, "vP9uhEIzggYdMPqPTXXPmrQquZU=");
+_s(ConnectSocial, "OrZiUVAhbqwTtDTVf+ZFxdHhOCk=");
 _c = ConnectSocial;
 var _c;
 __turbopack_context__.k.register(_c, "ConnectSocial");

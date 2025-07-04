@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Get, HttpException, HttpStatus, Query, Req, Param, Patch, Put, NotFoundException, UseInterceptors, UploadedFiles, UploadedFile } from '@nestjs/common';
+import { Controller, Post, Body, Get, HttpException, HttpStatus, Query, Req, Param, Patch, Put, NotFoundException, UseInterceptors, UploadedFiles, UploadedFile, UseGuards } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { ContentService } from './content.service';
 import { GenerateContentDto } from './dto/generate-content.dto';
@@ -15,6 +15,7 @@ import { FileFieldsInterceptor, FileInterceptor, FilesInterceptor } from '@nestj
 import { CloudinaryStorage } from 'multer-storage-cloudinary';
 import * as multer from 'multer';
 import cloudinary from './../cloudinary/cloudinary.config';
+import { JwtAuthGuard } from 'src/auth/guards/Jwt.guard';
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   
@@ -81,6 +82,34 @@ async getAllContents(@Query() query: any) {
 
   return this.contentService.findAll(filter);
 }
+
+@Post('idea')
+async saveIdea(@Body('title') title: string) {
+  return this.contentService.saveContent({
+    title,
+    statut: 'idée', 
+  });
+}
+@Get('ideas')
+async getIdeas() {
+  return this.contentService.getDrafts();
+}
+
+
+
+// @Get('suggestions')
+// async getSuggestions() {
+//   const suggestions = await this.contentService.getSuggestionsFromRecentContents();
+//   return { suggestions };
+// }
+
+@Get('suggestions')
+async getGeneratedTitleSuggestions() {
+  const suggestions = await this.contentService.generateSimilarTitleSuggestions();
+  return { suggestions };
+}
+
+
 
 // @Post('generate-image')
 // async generateImage(@Body('prompt') prompt: string) {
@@ -238,6 +267,8 @@ async schedule(
 async publishContent(@Param('id') id: string) {
   return this.contentService.publishToSocialMedia(id);
 }
+
+
 
 
   

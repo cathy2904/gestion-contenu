@@ -154,6 +154,11 @@ async generateContent(title: string, style: string, length: string, provider: st
     return updated;
   }
 
+/// recuperer les idee
+async getDrafts(): Promise<Content[]> {
+  return this.contentModel.find({ statut: 'idée' }).sort({ createdAt: -1 }).exec();
+}
+
 
 
 async update(id: string, updateContentDto: UpdateContentDto): Promise<Content> {
@@ -302,19 +307,43 @@ async publishToSocialMedia(id: string) {
  
 
 
-//   async findAll(): Promise<Content[]> {
-//   try {
-//     const data = await this.contentModel.find().sort({ createdAt: -1 }).exec();
-//     console.log("✔️ Contenus trouvés :", data);
-//     return data;
-//   } catch (error) {
-//     console.error("❌ Erreur dans ContentService.findAll():", error);
-//     throw new InternalServerErrorException("Erreur serveur lors de la récupération des contenus");
-//   }
+
+// async getSuggestionsFromRecentContents(): Promise<string[]> {
+//   const recentContents = await this.contentModel
+//     .find()
+//     .sort({ createdAt: -1 })
+//     .limit(5)
+//     .lean(); // lean = meilleur perf
+
+//   // Extraire les titres
+//   const suggestions = recentContents.map((content) => content.title);
+//   return suggestions;
 // }
-// async findAll(): Promise<Content[]> {
-//     return this.contentModel.find().exec();  // ✅ Renvoyer la liste
-//   }
+
+
+async generateSimilarTitleSuggestions(): Promise<string[]> {
+  const recentContents = await this.contentModel
+    .find({}, 'title')
+    .sort({ createdAt: -1 })
+    .limit(5)
+    .lean(); //POUR LA PERFORMANCE
+
+  const recentTitles = recentContents.map((c) => c.title).join(', ');
+
+  const prompt = `Voici des titres récents : ${recentTitles}.
+Propose 10 nouveaux titres différents qui pourraient etre la suite ces titres existant, adaptés au même style de contenus.`;
+
+  const rawSuggestions = await this.callProviderAPI(prompt, 'gpt-4o'); // ou 'deepseek'
+
+  // Nettoie la réponse GPT
+  return rawSuggestions
+    .split('\n')
+    .map((line) => line.replace(/^\d+[\.\)]\s*/, '').trim())
+    .filter((title) => title.length > 5);
+}
+
+
+
 
 
 }

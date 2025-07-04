@@ -38,6 +38,7 @@ import { CloudinaryModule } from './cloudinary/cloudinary.module';
 
 @Module({
   imports: [
+    SocialModule,
      ScheduleModule.forRoot(),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'uploads'), // Path to the uploads directory

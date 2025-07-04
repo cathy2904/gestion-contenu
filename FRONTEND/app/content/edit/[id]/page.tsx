@@ -153,32 +153,32 @@ export default function EditContentPage() {
         </div>
 
         {/* Sélection des réseaux sociaux */}
-        <div className="flex gap-4 mt-4 items-center">
+        {/* <div className="flex gap-4 mt-4 items-center">
           <label className="flex items-center gap-1 cursor-pointer">
             <input
               type="checkbox"
               checked={selectedNetworks.includes('facebook')}
               onChange={() => toggleNetwork('facebook')}
-            />
-            <FaFacebook className="text-blue-600" /> Facebook
-          </label>
+            /> */}
+            {/* <FaFacebook className="text-blue-600" /> Facebook */}
+          {/* </label>
           <label className="flex items-center gap-1 cursor-pointer">
             <input
               type="checkbox"
               checked={selectedNetworks.includes('instagram')}
               onChange={() => toggleNetwork('instagram')}
-            />
-            <FaInstagram className="text-pink-500" /> Instagram
+            /> */}
+            {/* <FaInstagram className="text-pink-500" /> Instagram
           </label>
           <label className="flex items-center gap-1 cursor-pointer">
             <input
               type="checkbox"
               checked={selectedNetworks.includes('linkedin')}
               onChange={() => toggleNetwork('linkedin')}
-            />
-            <FaLinkedin className="text-blue-700" /> LinkedIn
-          </label>
-        </div>
+            /> */}
+            {/* <FaLinkedin className="text-blue-700" /> LinkedIn */}
+          {/* </label>
+        </div> */}
 
         <button
           type="submit"

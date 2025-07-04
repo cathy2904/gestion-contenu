@@ -3,6 +3,7 @@ export class GenerateContentDto {
   readonly style?: string;
   readonly length?: string;
   readonly provider: 'openai' | 'deepseek' | 'claude';
+   readonly statut?: 'brouillon' | 'programmé'| 'publié';
   readonly platform: string;
   readonly media: string;
 

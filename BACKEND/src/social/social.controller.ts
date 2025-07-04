@@ -1,6 +1,7 @@
-import { Controller, Get, Req, Res, Query } from '@nestjs/common';
+import { Controller, Get, Req, Res, Query, Post } from '@nestjs/common';
 import { SocialService } from './social.service';
 import { Response, Request } from 'express';
+import { Body } from '@nestjs/common';
 
 @Controller('auth')
 export class SocialController {
@@ -17,6 +18,23 @@ export class SocialController {
     await this.socialService.handleFacebookCallback(code);
     res.redirect(`${process.env.FRONTEND_URL}/connect`);
   }
+//   @Get('facebook/callback')
+// async facebookCallback(@Query('code') code: string, @Req() req: Request, @Res() res: Response) {
+//   const user = req.user as { _id: string };
+// const userId = user._id;
+
+//   await this.socialService.handleFacebookCallback(code, userId);
+//   res.redirect(`${process.env.FRONTEND_URL}/connect`);
+// }
+
+@Get('disconnect/facebook')
+async disconnectFacebook(@Req() req: Request) {
+ const user = req.user as { _id: string };
+const userId = user._id;
+
+  await this.socialService.disconnectFacebook(userId);
+  return { message: 'Facebook account disconnected' };
+}
 
   @Get('instagram')
   async instagramLogin(@Res() res: Response) {
@@ -46,6 +64,14 @@ export class SocialController {
   async status(@Req() req: Request) {
     return this.socialService.getStatus();
   }
+
+  @Post('publish')
+async publishToSocial(@Body() body: { platform: string, content: string }) {
+  return this.socialService.publishToSocial(body.platform, body.content);
+}
+
+  
+  
 }
 
 

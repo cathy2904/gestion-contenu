@@ -145,6 +145,49 @@ var { g: global, __dirname } = __turbopack_context__;
 //     </div>
 //   );
 // }
+// 'use client'
+// import { useEffect, useState } from 'react'
+// export default function ConnectSocial() {
+//   const [status, setStatus] = useState({
+//     facebook: false,
+//     instagram: false,
+//     linkedin: false,
+//   });
+//   useEffect(() => {
+//     const fetchStatus = async () => {
+//       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/social-status`, {
+//         credentials: 'include',
+//       });
+//       if (res.ok) {
+//         const data = await res.json();
+//         setStatus(data);
+//       }
+//     };
+//     fetchStatus();
+//   }, []);
+//   const connect = (platform: string) => {
+//     window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/api/auth/${platform}`;
+//   };
+//   return (
+//     <div className="space-y-4">
+//       {['facebook', 'instagram', 'linkedin'].map((platform) => (
+//         <div key={platform} className="flex items-center justify-between">
+//           <span className="capitalize">{platform}</span>
+//           {status[platform as keyof typeof status] ? (
+//             <span className="text-green-600">Connecté</span>
+//           ) : (
+//             <button
+//               onClick={() => connect(platform)}
+//               className="px-4 py-1 bg-blue-600 text-white rounded"
+//             >
+//               Connecter
+//             </button>
+//           )}
+//         </div>
+//       ))}
+//     </div>
+//   );
+// }
 __turbopack_context__.s({
     "default": (()=>ConnectSocial)
 });
@@ -159,100 +202,87 @@ function ConnectSocial() {
     const [status, setStatus] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])({
         facebook: false,
         instagram: false,
-        linkedin: false
-    });
-    const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(true);
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].get('/api/social-status').then((res)=>{
-            setStatus(res.data);
-            setLoading(false);
-        }).catch(()=>setLoading(false));
-    }, []);
-    const handlePost = async (platform)=>{
-        try {
-            const res = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].post(`/api/publish/${platform}`, {
-                message: '🎉 Mon premier post avec OAuth et GPT !'
-            });
-            alert(res.data.message);
-        } catch (err) {
-            alert('Erreur lors de la publication.');
+        linkedin: false,
+        displayNames: {
+            facebook: null,
+            instagram: null,
+            linkedin: null
         }
+    });
+    const fetchStatus = async ()=>{
+        const res = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].get('http://localhost:3000/auth/social-status', {
+            withCredentials: true
+        });
+        setStatus(res.data);
     };
-    if (loading) return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-        children: "Chargement..."
-    }, void 0, false, {
-        fileName: "[project]/app/connect/page.tsx",
-        lineNumber: 83,
-        columnNumber: 23
-    }, this);
+    const disconnect = async (platform)=>{
+        await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].get(`http://localhost:3000/auth/disconnect/${platform}`, {
+            withCredentials: true
+        });
+        fetchStatus();
+    };
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        fetchStatus();
+    }, []);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "max-w-xl mx-auto mt-10 p-6 border rounded",
         children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                className: "text-2xl font-bold mb-6",
-                children: "Connexion aux Réseaux Sociaux"
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                children: "Réseaux connectés :"
             }, void 0, false, {
                 fileName: "[project]/app/connect/page.tsx",
-                lineNumber: 87,
+                lineNumber: 129,
                 columnNumber: 7
             }, this),
             [
                 'facebook',
                 'instagram',
                 'linkedin'
-            ].map((platform)=>{
-                const isConnected = status[platform];
-                return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "mb-6",
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                            className: "text-lg capitalize",
-                            children: platform
-                        }, void 0, false, {
-                            fileName: "[project]/app/connect/page.tsx",
-                            lineNumber: 93,
-                            columnNumber: 13
-                        }, this),
-                        isConnected ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
+            ].map((platform)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    children: status[platform] ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        children: [
+                            "✅ ",
+                            platform,
+                            " connecté — ",
+                            status.displayNames[platform],
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                onClick: ()=>disconnect(platform),
+                                children: "Déconnecter"
+                            }, void 0, false, {
+                                fileName: "[project]/app/connect/page.tsx",
+                                lineNumber: 136,
+                                columnNumber: 15
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/app/connect/page.tsx",
+                        lineNumber: 134,
+                        columnNumber: 13
+                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                        href: `http://localhost:3000/auth/${platform}`,
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                             children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                    className: "text-green-600",
-                                    children: "✅ Connecté"
-                                }, void 0, false, {
-                                    fileName: "[project]/app/connect/page.tsx",
-                                    lineNumber: 96,
-                                    columnNumber: 17
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                    className: "mt-2 bg-blue-600 text-white px-4 py-2 rounded",
-                                    onClick: ()=>handlePost(platform),
-                                    children: "Publier un message"
-                                }, void 0, false, {
-                                    fileName: "[project]/app/connect/page.tsx",
-                                    lineNumber: 97,
-                                    columnNumber: 17
-                                }, this)
+                                "Connecter ",
+                                platform
                             ]
-                        }, void 0, true) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                            href: `/auth/${platform}`,
-                            className: "inline-block mt-2 bg-gray-700 text-white px-4 py-2 rounded",
-                            children: "Se connecter"
-                        }, void 0, false, {
+                        }, void 0, true, {
                             fileName: "[project]/app/connect/page.tsx",
-                            lineNumber: 105,
+                            lineNumber: 140,
                             columnNumber: 15
                         }, this)
-                    ]
-                }, platform, true, {
+                    }, void 0, false, {
+                        fileName: "[project]/app/connect/page.tsx",
+                        lineNumber: 139,
+                        columnNumber: 13
+                    }, this)
+                }, platform, false, {
                     fileName: "[project]/app/connect/page.tsx",
-                    lineNumber: 92,
-                    columnNumber: 11
-                }, this);
-            })
+                    lineNumber: 132,
+                    columnNumber: 9
+                }, this))
         ]
     }, void 0, true, {
         fileName: "[project]/app/connect/page.tsx",
-        lineNumber: 86,
+        lineNumber: 128,
         columnNumber: 5
     }, this);
 }

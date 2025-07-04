@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Editor from '@/app/components/Editor';
+import { useSearchParams } from 'next/navigation';
 
 interface Content {
   _id: string;
@@ -26,6 +27,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   // const [html, setHtml] = useState("<p>Contenu initial généré par GPT</p>");
+  const searchParams = useSearchParams();
 
 
   const handleGenerate = async () => {
@@ -81,9 +83,19 @@ export default function Home() {
   };
 
   useEffect(() => {
+  const t = searchParams.get('title');
+  if (t) setTitle(t);
+}, [searchParams]);
+  useEffect(() => {
     fetchContents();
   }, []);
 
+
+  useEffect(() => {
+  const params = new URLSearchParams(window.location.search);
+  const prefilledTitle = params.get('title');
+  if (prefilledTitle) setTitle(prefilledTitle);
+}, []);
 
   return (
     <main className="p-6 max-w-3xl mx-auto">

@@ -36,6 +36,10 @@ export default function ContentPage() {
   const [scheduleDate, setScheduleDate] = useState<string>('');
   const [scheduleTime, setScheduleTime] = useState<string>('');
   const [showFilters, setShowFilters] = useState(false);
+   const [suggestions, setSuggestions] = useState<string[]>([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [ideas, setIdeas] = useState<Content[]>([]);
+
   const router = useRouter();
 
   const fetchContents = async (page: number) => {
@@ -120,6 +124,37 @@ export default function ContentPage() {
     }
   };
 
+  useEffect(() => {
+  axios.get('http://localhost:3000/api/content/suggestions')
+    .then((res) => {
+      setSuggestions(res.data.suggestions || []);
+    })
+    .catch((err) => {
+      console.error('❌ Erreur lors du fetch des suggestions GPT :', err);
+    });
+}, []);
+
+  // Auto-slide
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((i) => (i + 1) % suggestions.length);
+    }, 6000);
+    return () => clearInterval(interval);
+  }, [suggestions]);
+
+  const fetchIdeas = async () => {
+  try {
+    const res = await axios.get('http://localhost:3000/api/content/ideas');
+    setIdeas(res.data);
+  } catch (err) {
+    console.error('Erreur chargement idées :', err);
+  }
+};
+
+useEffect(() => {
+  fetchIdeas();
+}, []);
+
   return (
     <Principal titre="Contents">
       <div className="p-4 md:p-6">
@@ -132,7 +167,28 @@ export default function ContentPage() {
           >
             Créer un contenu
           </Link>
+          <Link 
+            href="/content/idea" 
+            className="inline-flex items-center justify-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            Enregistrer idée
+          </Link>
         </div>
+
+       
+       {suggestions.length > 0 && (
+  <div className="bg-purple-100 text-purple-800 p-4 rounded mb-6 shadow text-center">
+     Essayez ce sujet :
+    {" "}
+    <Link
+      href={`/content/create?title=${encodeURIComponent(suggestions[currentIndex])}`}
+      className="underline font-semibold hover:text-purple-700 transition"
+    >
+      {suggestions[currentIndex]}
+    </Link>
+  </div>
+)}
+
 
         {/* Filters */}
         <div className="mb-6">
@@ -192,6 +248,28 @@ export default function ContentPage() {
           </div>
         ) : (
           <>
+
+          
+
+  {/* ✅ Étape 3 : Bloc des idées */}
+  <div className="bg-black-100 p-4 rounded mb-6">
+    <h2 className="text-xl font-semibold mb-3">vos iidées de publications  enregistrées</h2>
+    <div className="flex space-x-2 overflow-x-auto">
+      {ideas.map((idea) => (
+        <button
+          key={idea._id}
+          onClick={() => router.push(`/content/create?title=${encodeURIComponent(idea.title)}`)}
+          className="bg-black border px-3 py-2 rounded shadow text-sm whitespace-nowrap hover:bg-blue-100"
+        >
+          {idea.title}
+        </button>
+      ))}
+    </div>
+  </div>
+
+  
+
+
             {/* Desktop Table */}
             <div className="hidden lg:block overflow-x-auto">
               <table className="w-full bg-black rounded-lg shadow-sm border border-gray-200">
