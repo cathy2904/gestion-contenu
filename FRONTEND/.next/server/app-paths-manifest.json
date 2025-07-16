@@ -1,7 +1,9 @@
 {
+  "/_not-found/page": "app/_not-found/page.js",
   "/auth/login/page": "app/auth/login/page.js",
-  "/connect/page": "app/connect/page.js",
-  "/content/page": "app/content/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/page": "app/page.js"
+  "/page": "app/page.js",
+  "/upload/claude/page": "app/upload/claude/page.js",
+  "/upload/drafts/page": "app/upload/drafts/page.js",
+  "/upload/page": "app/upload/page.js"
 }

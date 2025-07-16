@@ -14,6 +14,9 @@ export class Document extends MongoDoc {
 
   @Prop()
   analysis: string;
+
+  @Prop()
+  provider: string;
 }
 
 export const DocumentSchema = SchemaFactory.createForClass(Document);

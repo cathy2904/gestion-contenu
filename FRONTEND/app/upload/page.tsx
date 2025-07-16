@@ -1,6 +1,7 @@
 'use client';
-import { Link } from 'lucide-react';
+// import { Link } from 'lucide-react';
 import { useState } from 'react';
+import Link from 'next/link';
 
 export default function UploadPage() {
   const [file, setFile] = useState<File | null>(null);
@@ -61,7 +62,12 @@ export default function UploadPage() {
           >
             voir la liste
           </Link>
-          
+          <Link 
+            href="/upload/claude"
+            className="inline-block mt-4 text-green-600 hover:text-green-800"
+          >
+            avec claude
+          </Link>
       <input
         type="text"
         value={title}

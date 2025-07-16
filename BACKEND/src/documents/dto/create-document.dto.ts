@@ -13,4 +13,9 @@ export class CreateDocumentDto {
 
   @IsString()
   analysis: string;
+
+  @IsString()
+  provider: string;
+
+
 }
