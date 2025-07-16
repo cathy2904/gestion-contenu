@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: votre-app-backend
+    runtime: node
+    buildCommand: npm install && npm run build
+    startCommand: npm run start:prod
+    envVars:
+      - key: PORT
+        value: 3000
+      - key: MONGODB_URI
+        value: mongodb+srv://yendoumamk:z6Gz6ZU8KssInqZi@my-cluster.t55q1.mongodb.net/post-db?retryWrites=true&w=majority&appName=my-cluster
+      - key: JWT_SECRET
+        value: monSuperSecret

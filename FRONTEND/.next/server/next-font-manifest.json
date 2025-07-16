@@ -1,31 +1,6 @@
 {
-  "app": {
-    "[project]/app/_not-found/page": [
-      "static/media/GeistMonoVF-s.p.a9159d35.woff",
-      "static/media/GeistVF-s.p.7fe29570.woff"
-    ],
-    "[project]/app/auth/login/page": [
-      "static/media/GeistMonoVF-s.p.a9159d35.woff",
-      "static/media/GeistVF-s.p.7fe29570.woff"
-    ],
-    "[project]/app/page": [
-      "static/media/GeistMonoVF-s.p.a9159d35.woff",
-      "static/media/GeistVF-s.p.7fe29570.woff"
-    ],
-    "[project]/app/upload/claude/page": [
-      "static/media/GeistMonoVF-s.p.a9159d35.woff",
-      "static/media/GeistVF-s.p.7fe29570.woff"
-    ],
-    "[project]/app/upload/drafts/page": [
-      "static/media/GeistMonoVF-s.p.a9159d35.woff",
-      "static/media/GeistVF-s.p.7fe29570.woff"
-    ],
-    "[project]/app/upload/page": [
-      "static/media/GeistMonoVF-s.p.a9159d35.woff",
-      "static/media/GeistVF-s.p.7fe29570.woff"
-    ]
-  },
-  "appUsingSizeAdjust": true,
+  "app": {},
+  "appUsingSizeAdjust": false,
   "pages": {},
   "pagesUsingSizeAdjust": false
 }
