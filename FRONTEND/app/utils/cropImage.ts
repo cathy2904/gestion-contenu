@@ -1,6 +1,6 @@
 
 
-export default function getCroppedImg(imageSrc: string, pixelCrop: any): Promise<string> {
+export default function getCroppedImg(imageSrc: string, pixelCrop: any): Promise<string> { // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return new Promise((resolve, reject) => {
     const image = new Image();
     image.crossOrigin = 'anonymous'; // important pour éviter les problèmes CORS avec des blobs

@@ -3,7 +3,7 @@
 import { createContext, useContext } from 'react';
 
 type AuthContextType = {
-  user: any;
+  user: any; // eslint-disable-next-line @typescript-eslint/no-unused-vars
   login: (email: string, password: string) => Promise<boolean>;
   register: (username: string, email: string, password: string) => Promise<boolean>;
   logout: () => void;

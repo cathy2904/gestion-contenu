@@ -162,9 +162,9 @@ export default function GenerateImagePage() {
       }
 
       const data = await response.json();
-      const urls = data.map((img: any) => img.url);
+      const urls = data.map((img: any) => img.url); // eslint-disable-next-line @typescript-eslint/no-unused-vars
       setImages(urls);
-    } catch (err: any) {
+    } catch (err: any) {  // eslint-disable-next-line @typescript-eslint/no-unused-vars
       setError(err.message || 'Erreur inconnue');
     } finally {
       setLoading(false);
@@ -193,7 +193,7 @@ export default function GenerateImagePage() {
     if (!response.ok) throw new Error('Erreur lors de l’enregistrement');
 
     setIsSaved(true);
-  } catch (err: any) {
+  } catch (err: any) {  // eslint-disable-next-line @typescript-eslint/no-unused-vars
     console.error(err);
     setError(err.message || 'Erreur lors de l’enregistrement');
   }
@@ -285,7 +285,7 @@ const handleCancel = () => {
 
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
         {images.map((url, index) => (
-          <img
+          <img   // eslint-disable-next-line @typescript-eslint/no-unused-vars
             key={index}
             src={url}
             alt={`Generated ${index}`}

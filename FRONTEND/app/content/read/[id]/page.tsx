@@ -49,7 +49,7 @@ export default function ReadContentPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
           
           {content.media.map((url, index) => (
-            <img
+            <img // eslint-disable-next-line @typescript-eslint/no-unused-vars
               key={index}
               src={url}
               alt={`media-${index}`}

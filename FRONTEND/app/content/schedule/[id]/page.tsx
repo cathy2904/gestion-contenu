@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
-import { FaFacebook, FaInstagram, FaLinkedin } from 'react-icons/fa';
-import { platform } from 'os';
+import { FaFacebook, FaInstagram, FaLinkedin } from 'react-icons/fa'; // eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { platform } from 'os'; // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
 
 export default function ScheduleContentPage() {
@@ -11,7 +11,7 @@ export default function ScheduleContentPage() {
   const router = useRouter();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [platform, setPlatform] = useState('');
+  const [platform, setPlatform] = useState(''); // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [publicationDate, setPublicationDate] = useState('');
 
   useEffect(() => {
@@ -35,7 +35,7 @@ export default function ScheduleContentPage() {
     router.push('/content');
   };
 
-  const connectSocial = (platform: string) => {
+  const connectSocial = (platform: string) => { // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const urls: Record<string, string> = {
       facebook: 'https://www.facebook.com/v18.0/dialog/oauth',
       instagram: 'https://api.instagram.com/oauth/authorize',

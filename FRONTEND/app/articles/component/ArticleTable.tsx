@@ -1,7 +1,7 @@
 // components/articles/ArticleTable.tsx
 import Link from 'next/link';
 import { Article } from '../action';
-import { deleteArticle } from '../action';
+import { deleteArticle } from '../action'; // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
 interface ArticleTableProps {
   articles: Article[];

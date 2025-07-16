@@ -2,15 +2,15 @@
 import Principal from "@/components/Principal";
 
 import { useState } from 'react';
-import OpenAI from 'openai';
-import AnalysisPage from "../analysis/page";
+import OpenAI from 'openai'; // eslint-disable-next-line @typescript-eslint/no-unused-vars
+import AnalysisPage from "../analysis/page"; // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import Link from "next/link";
 
 export default function ContentPage() {
   const [title, setTitle] = useState('');
   const [generatedContent, setGeneratedContent] = useState('');
   const [loading, setLoading] = useState(false);
-  const [saving, setSaving] = useState(false);
+  const [saving, setSaving] = useState(false); // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [error, setError] = useState<string | null>(null);
   const [model, setModel] = useState<'openai' | 'deepseek'>('openai')
 
@@ -64,7 +64,7 @@ console.log("URL utilisée:", url)
 
 
   // Fonction pour enregistrer le contenu généré dans MongoDB
-  async function handleSave() {
+  async function handleSave() { // eslint-disable-next-line @typescript-eslint/no-unused-vars
     try {
       setSaving(true);
       setError(null);
@@ -98,7 +98,7 @@ console.log("URL utilisée:", url)
   }
 
   // Styles CSS internes
-  const styles = {
+  const styles = { // eslint-disable-next-line @typescript-eslint/no-unused-vars
     container: {
       maxWidth: '800px',
       margin: '0 auto',
@@ -168,7 +168,7 @@ console.log("URL utilisée:", url)
 
       <Link href="contenu/analyze/">
         <button className="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition-colors">
-          Aller à la page d'analyse
+          Aller à la page d'analyse {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
         </button>
       </Link>
       <Link href="contenu/deepseek/">

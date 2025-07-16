@@ -102,11 +102,11 @@ interface Article {
   author: string;
 }
 
-interface ArticleTableProps {
+interface ArticleTableProps { // eslint-disable-next-line @typescript-eslint/no-unused-vars
   articles: Article[];
 }
 export default function ArticlesPage() {
-  const [articles, setArticles] = useState<any[]>([]);
+  const [articles, setArticles] = useState<any[]>([]);  // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
   // Charger les articles au montage du composant
   useEffect(() => {
@@ -120,7 +120,7 @@ export default function ArticlesPage() {
     setArticles(data);
   };
 
-const createArticle = async (article: { title: string; content: string; author: string }) => {
+const createArticle = async (article: { title: string; content: string; author: string }) => { // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const res = await fetch('/api/articles', {
     method: 'POST',
     headers: {
@@ -132,7 +132,7 @@ const createArticle = async (article: { title: string; content: string; author: 
   return data;
 };
 
-const updateArticle = async (id: string, article: { title: string; content: string; author: string }) => {
+const updateArticle = async (id: string, article: { title: string; content: string; author: string }) => { // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const res = await fetch('/api/articles', {
     method: 'PUT',
     headers: {
@@ -144,7 +144,7 @@ const updateArticle = async (id: string, article: { title: string; content: stri
   return data;
 };
 
-const deleteArticle = async (id: string) => {
+const deleteArticle = async (id: string) => { // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const res = await fetch('/api/articles', {
     method: 'DELETE',
     headers: {

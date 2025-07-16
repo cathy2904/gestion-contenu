@@ -13,7 +13,7 @@ export async function GET() {
     }
     const data = await res.json();
     return NextResponse.json(data);
-  } catch (error) {
+  } catch (error) { // eslint-disable-next-line @typescript-eslint/no-unused-vars
     return NextResponse.json(
       { message: 'Erreur lors de la récupération des articles' },
       { status: 500 }
@@ -37,7 +37,7 @@ export async function POST(request: Request) {
     }
     const data = await res.json();
     return NextResponse.json(data);
-  } catch (error) {
+  } catch (error) { // eslint-disable-next-line @typescript-eslint/no-unused-vars
     return NextResponse.json(
       { message: 'Erreur lors de la création de l\'article' },
       { status: 500 }
@@ -61,7 +61,7 @@ export async function PUT(request: Request) {
     }
     const data = await res.json();
     return NextResponse.json(data);
-  } catch (error) {
+  } catch (error) { // eslint-disable-next-line @typescript-eslint/no-unused-vars
     return NextResponse.json(
       { message: 'Erreur lors de la mise à jour de l\'article' },
       { status: 500 }
@@ -81,7 +81,7 @@ export async function DELETE(request: Request) {
     }
     const data = await res.json();
     return NextResponse.json(data);
-  } catch (error) {
+  } catch (error) { // eslint-disable-next-line @typescript-eslint/no-unused-vars
     return NextResponse.json(
       { message: 'Erreur lors de la suppression de l\'article' },
       { status: 500 }

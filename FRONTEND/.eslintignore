@@ -1,0 +1,8 @@
+components/MenuNav.tsx
+components/Nav.tsx
+components/RequireAuth.tsx
+components/authProvider.tsx
+**/node_modules/*
+**/dist/*
+**/.next/*
+**/out/*

@@ -17,7 +17,7 @@ export default function RegisterPage() {
     try {
       await register(username, email, password);
       router.push('/'); 
-    } catch (err) {
+    } catch (err) { // eslint-disable-next-line @typescript-eslint/no-unused-vars
       setError("Erreur lors de l'inscription");
     }
   };

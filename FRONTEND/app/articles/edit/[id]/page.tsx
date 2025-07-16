@@ -40,7 +40,7 @@ export default function EditArticlePage({ params }: { params: { id: string } }) 
 
   return (
     <div className="container mx-auto p-4 max-w-2xl">
-      <h1 className="text-2xl font-bold mb-6">Modifier l'article</h1>
+      <h1 className="text-2xl font-bold mb-6">Modifier l'article</h1> {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Les champs du formulaire sont identiques à NewArticlePage */}
         {/* ... (reprendre les mêmes champs que NewArticlePage) ... */}

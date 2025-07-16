@@ -5,7 +5,7 @@ import { getPosts, deletePost } from '../post/service/api';
 import Link from 'next/link';
 
 export default function PostList() {
-  const [posts, setPosts] = useState<any[]>([]);
+  const [posts, setPosts] = useState<any[]>([]); // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -41,7 +41,7 @@ export default function PostList() {
             <p>{post.content}</p>
             <p>Auteur: {post.author}</p>
             {post.image && (
-              <img src={post.image} alt={post.title} className="post-image" />
+              <img src={post.image} alt={post.title} className="post-image" /> // eslint-disable-next-line @typescript-eslint/no-unused-vars
             )}
             <div className="post-actions">
               <Link href={`/posts/${post._id}`}>

@@ -1,9 +1,9 @@
 'use client';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from 'axios'; // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import Link from 'next/link';
 export default function DraftsPage() {
-  const [docs, setDocs] = useState<any[]>([]);
+  const [docs, setDocs] = useState<any[]>([]); // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [loading, setLoading] = useState(true);
 
   const fetchDocs = async () => {

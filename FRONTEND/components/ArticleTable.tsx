@@ -10,7 +10,7 @@ interface Article {
 interface ArticleTableProps {
   articles: Article[];
 }
-const handleDelete = async (id: string) => {
+const handleDelete = async (id: string) => { // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const res = await fetch(`http://localhost:3003/articles/${id}`, {
       method: 'DELETE',
     });

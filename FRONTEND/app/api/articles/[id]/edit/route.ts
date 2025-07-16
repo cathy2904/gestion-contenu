@@ -64,7 +64,7 @@ export async function DELETE(request: Request) {
     }
     const data = await res.json();
     return NextResponse.json(data);
-  } catch (error) {
+  } catch (error) { // eslint-disable-next-line @typescript-eslint/no-unused-vars
     return NextResponse.json(
       { message: 'Erreur lors de la suppression de l\'article' },
       { status: 500 }

@@ -1,6 +1,7 @@
 import {  Card, Flex, VStack } from "@chakra-ui/react"
 // import { Avatar } from "@/components/ui/avatar"
 // import { IoIosMail } from "react-icons/io";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Button } from "@/components/ui/button"
 import LineChart, { GraphType } from "@/components/chart/Line"
 import Link from "next/link"

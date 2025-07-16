@@ -20,7 +20,7 @@ export default function LoginForm({ onCancel }: LoginFormProps) {
     try {
       await login(email, password);
       // Redirection is handled by the parent component via useAuth state
-    } catch (err: any) {
+    } catch (err: any) {   // eslint-disable-next-line @typescript-eslint/no-unused-vars
       setError(err.response?.data?.message || "Échec de la connexion. Veuillez vérifier vos identifiants.");
     } finally {
       setIsLoading(false);

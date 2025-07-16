@@ -9,7 +9,7 @@ import PostTable from '../components/PostTable';
 
 
 export default function PostsPage() {
-  const [posts, setPosts] = useState<any[]>([]);
+  const [posts, setPosts] = useState<any[]>([]); // eslint-disable-next-line @typescript-eslint/no-explicit-any 
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 

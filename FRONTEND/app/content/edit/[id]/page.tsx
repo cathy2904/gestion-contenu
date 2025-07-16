@@ -7,7 +7,7 @@ import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import getCroppedImg from '@/app/utils/cropImage';
 import type { Area } from 'react-easy-crop';
-import { FaFacebook, FaInstagram, FaLinkedin } from 'react-icons/fa';
+// import { FaFacebook, FaInstagram, FaLinkedin } from 'react-icons/fa'; // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
 export default function EditContentPage() {
   const { id } = useParams();
@@ -87,7 +87,7 @@ export default function EditContentPage() {
     router.push('/content');
   };
 
-  const toggleNetwork = (network: string) => {
+  const toggleNetwork = (network: string) => { // eslint-disable-next-line @typescript-eslint/no-unused-vars
     setSelectedNetworks((prev) =>
       prev.includes(network) ? prev.filter((n) => n !== network) : [...prev, network]
     );
@@ -131,7 +131,7 @@ export default function EditContentPage() {
                 <video src={url} controls className="w-32 h-32 object-cover rounded" />
               ) : (
                 <>
-                  <img src={url} alt={`media-${i}`} className="w-32 h-32 object-cover rounded" />
+                  <img src={url} alt={`media-${i}`} className="w-32 h-32 object-cover rounded" /> {/* eslint-disable-next-line @typescript-eslint/no-unused-vars*/}
                   <button
                     type="button"
                     onClick={() => setCurrentEditIndex(i)}

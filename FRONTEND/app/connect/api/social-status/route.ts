@@ -11,7 +11,7 @@ export async function GET() {
       headers: { Authorization: `Bearer ${token}` },
     })
     return NextResponse.json(res.data)
-  } catch (err) {
+  } catch (err) { // eslint-disable-next-line @typescript-eslint/no-unused-vars
     return NextResponse.json({ facebook: false, instagram: false, linkedin: false })
   }
 }

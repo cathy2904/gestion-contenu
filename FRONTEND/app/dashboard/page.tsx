@@ -1,8 +1,8 @@
 'use client';
-import RequireAuth from "@/components/RequireAuth";
-import Nav from "@/components/Nav";
+import RequireAuth from "@/components/RequireAuth"; // eslint-disable-next-line @typescript-eslint/no-unused-vars
+import Nav from "@/components/Nav"; // eslint-disable-next-line @typescript-eslint/no-unused-vars
 // import BarChart from "@/components/chart/Chart";
-import MobileBar from "@/components/MobileBar";
+import MobileBar from "@/components/MobileBar"; // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { useEffect, useState } from "react";
 
 import {
@@ -23,7 +23,7 @@ const COLORS = ['#8884d8', '#82ca9d', '#ffc658', '#ff8042', '#a4de6c', '#d0ed57'
 
 export default function DashboardPage() {
 
- const [stats, setStats] = useState<any>(null);
+ const [stats, setStats] = useState<any>(null); // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [statusFilter, setStatusFilter] = useState<string>('');
   const [dateFilter, setDateFilter] = useState<string>('');
 

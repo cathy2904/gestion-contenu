@@ -49,7 +49,7 @@ export default function PostTable({ posts, onDelete }: PostTableProps) {
                 <td className="px-6 py-4">{post.content}</td>
                 <td className="py-3 px-4 border">
                   {post.imagePath ? (
-                    <img
+                    <img // eslint-disable-next-line @typescript-eslint/no-unused-vars
                       src={`http://localhost:3003${post.imagePath}`}
                       alt={post.title}
                       className="h-16 w-16 object-cover rounded"

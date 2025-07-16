@@ -7,12 +7,12 @@ export default function EditPostForm({ id }: { id: string }) {
   const [content, setContent] = useState('');
   const [author, setAuthor] = useState('');
   const [imagePath, setImagePath] = useState('');
-  const [newImageFile, setNewImageFile] = useState<File | null>(null);
+  const [newImageFile, setNewImageFile] = useState<File | null>(null); // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const router = useRouter();
 
   // Charger les données existantes
   useEffect(() => {
-    fetch(`http://localhost:3003/api/posts/${id}`)
+    fetch(`http://localhost:3000/api/posts/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setTitle(data.title);
@@ -88,13 +88,13 @@ export default function EditPostForm({ id }: { id: string }) {
 
       {imagePath && (
         <div>
-          <img
+          <img // eslint-disable-next-line @typescript-eslint/no-unused-vars
             src={`http://localhost:3003${imagePath}`}
             alt="Image actuelle"
             width={200}
           />
           <br />
-          <button onClick={handleRemoveImage}>Supprimer l'image</button>
+          <button onClick={handleRemoveImage}>Supprimer l'image</button> {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
         </div>
       )}
 

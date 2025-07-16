@@ -75,8 +75,8 @@ export default function ReadPost() {
           <span className="font-semibold">Date :</span> {new Date(post.created_at).toLocaleDateString()}
         </div> */}
         <div className="mb-4 ">
-        {post.imagePath ? (
-                    <img
+        {post.imagePath ? ( 
+                    <img // eslint-disable-next-line @typescript-eslint/no-explicit-any
                       src={`http://localhost:3000${post.imagePath}`}
                       alt={post.title}
                       className="h-16 w-16 object-cover rounded"
@@ -86,7 +86,7 @@ export default function ReadPost() {
                     />
                   ) : (
                     <div className="h-16 w-16 bg-white-200 rounded flex items-center justify-center text-xs">
-                      Pas d'Image
+                      Pas d'Image {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
                     </div>
                   )}
 

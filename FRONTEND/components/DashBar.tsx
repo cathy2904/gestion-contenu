@@ -2,12 +2,12 @@
 
 import { HStack } from "@chakra-ui/react";
 import { FaChartPie } from "react-icons/fa";
-import { RiMenuAddLine, RiSoundModuleLine, RiMenuSearchLine } from "react-icons/ri";
-import { AiOutlineDashboard, AiOutlineSound } from "react-icons/ai";
-import { SlBookOpen } from "react-icons/sl";
-import { DiAptana } from "react-icons/di";
+import { RiMenuAddLine, RiSoundModuleLine, RiMenuSearchLine } from "react-icons/ri"; // eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { AiOutlineDashboard, AiOutlineSound } from "react-icons/ai"; // eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { SlBookOpen } from "react-icons/sl"; // eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { DiAptana } from "react-icons/di"; 
 import { MenuNav } from "./MenuNav";
-import { contents, markets } from "@/data/data";
+import { contents, markets } from "@/data/data";// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 

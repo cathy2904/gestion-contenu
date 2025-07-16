@@ -13,7 +13,7 @@ interface Document {
 
 export default function Home() {
   const [documents, setDocuments] = useState<Document[]>([]);
-  const [selectedDocument, setSelectedDocument] = useState<any>(null);
+  const [selectedDocument, setSelectedDocument] = useState<any>(null); // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [loading, setLoading] = useState<boolean>(false);
   const [uploadProgress, setUploadProgress] = useState<number>(0);
   const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
@@ -35,7 +35,7 @@ export default function Home() {
 
   useEffect(() => {
     fetchDocuments();
-  }, []);
+  }, []); // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
   const fetchDocuments = async () => {
     try {

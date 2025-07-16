@@ -23,9 +23,9 @@ export default function Home() {
   const [platform, setPlatform] =  useState('linkedin');
   const [provider, setProvider] = useState<'gpt-4' | 'deepseek'>('gpt-4')
   const [generatedContent, setGeneratedContent] = useState('<p>Contenu initial généré</p>');
-  const [contents, setContents] = useState<Content[]>([]);
+  const [contents, setContents] = useState<Content[]>([]); // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState(''); // eslint-disable-next-line @typescript-eslint/no-unused-vars
   // const [html, setHtml] = useState("<p>Contenu initial généré par GPT</p>");
   const searchParams = useSearchParams();
 

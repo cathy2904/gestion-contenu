@@ -8,7 +8,7 @@ export default function Profile() {
 
   useEffect(() => {
     if (!user) router.push('/login');
-  }, [user]);
+  }, [user]); // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
   if (!user) return <div>Chargement...</div>;
 

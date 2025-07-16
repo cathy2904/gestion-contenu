@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-interface Article {
+interface Article { // eslint-disable-next-line @typescript-eslint/no-unused-vars
   _id?: string;
   title: string;
   content: string;

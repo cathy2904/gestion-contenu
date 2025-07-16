@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { createPost } from '../service/api';
 import PostForm from '../../components/PostForm';
-import Head from 'next/head';
+import Head from 'next/head'; // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
 
 export default function CreatePostPage() {

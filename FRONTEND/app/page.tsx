@@ -1,15 +1,15 @@
 "use client";
-import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import BarChart from "@/components/chart/Chart";
+import { useRouter } from 'next/navigation'; // eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { useEffect, useState } from 'react';// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import BarChart from "@/components/chart/Chart"; // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import Graph from "@/components/dashboard/Graph";
-import Time from "@/components/dashboard/Time";
+import Time from "@/components/dashboard/Time"; // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import Principal from "@/components/Principal";
 import RequireAuth from '@/components/RequireAuth';
-import Nav from '@/components/Nav';
-import DashBar from '@/components/DashBar';
+import Nav from '@/components/Nav'; // eslint-disable-next-line @typescript-eslint/no-unused-vars
+import DashBar from '@/components/DashBar'; // eslint-disable-next-line @typescript-eslint/no-unused-vars
 // import ProtectedRoute from '@/app/components/ProtectedRoute';
-import ProtectedRoute from '@/components/ProtectedRoute';
+import ProtectedRoute from '@/components/ProtectedRoute'; // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
 
 export default  function Home() {

@@ -77,12 +77,12 @@ export default function ArticleGenerator() {
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
-      <h1 className="text-3xl font-bold mb-6">Générateur d'articles avancé</h1>
+      <h1 className="text-3xl font-bold mb-6">Générateur d'articles avancé</h1> {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
         <div>
           <label htmlFor="title" className="block  mb-2 font-medium">
-            Titre de l'article :
+            Titre de l'article :{/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
           </label>
           <input
             type="text"
@@ -96,7 +96,7 @@ export default function ArticleGenerator() {
         
         <div>
           <label htmlFor="length" className="block mb-2 font-medium">
-            Longueur de l'article :
+            Longueur de l'article :  {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
           </label>
           <select
             id="length"

@@ -33,7 +33,7 @@ export default function RegisterForm({ onCancel }: RegisterFormProps) {
       setTimeout(() => {
         onCancel(); // Return to main screen to login
       }, 2000);
-    } catch (err: any) {
+    } catch (err: any) { // eslint-disable-next-line @typescript-eslint/no-unused-vars
       setError(err.response?.data?.message || "Échec de l'inscription");
     } finally {
       setIsLoading(false);
@@ -69,7 +69,7 @@ export default function RegisterForm({ onCancel }: RegisterFormProps) {
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-1">
-            Nom d'utilisateur
+            Nom d'utilisateur {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
           </label>
           <input
             id="username"

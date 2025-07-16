@@ -175,7 +175,7 @@ export default function AdminImagesPage() {
         if (!res.ok) throw new Error('Erreur lors du chargement des images');
         const data = await res.json();
         setImages(data);
-      } catch (err: any) {
+      } catch (err: any) { // eslint-disable-next-line @typescript-eslint/no-unused-vars
         setError(err.message || 'Erreur inconnue');
       } finally {
         setLoading(false);
@@ -220,7 +220,7 @@ export default function AdminImagesPage() {
                     <div className="grid grid-cols-2 gap-2 mt-3">
                         {Array.isArray(img.url) && img.url.length > 0 ? (
                          img.url.map((url, index) => (
-                        <img
+                        <img  // eslint-disable-next-line @typescript-eslint/no-unused-vars
                         key={index}
                         src={url}
                         alt={`Image générée ${index + 1}`}

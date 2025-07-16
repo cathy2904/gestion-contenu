@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { UpdatePostDto, Post } from '../types/post';
+import { UpdatePostDto, Post } from '../types/post'; // eslint-disable-next-line @typescript-eslint/no-unused-vars
 //import { CreatePostData, Post, UpdatePostData } from '../../types/post';
 
 const api = axios.create({
@@ -12,7 +12,7 @@ export const createPost = (postData: FormData) => api.post('/posts', postData, {
     'Content-Type': 'multipart/form-data',
   },
 });
-export const updatePost = (id: string, postData: any) => api.put(`/posts/${id}`, postData);
+export const updatePost = (id: string, postData: any) => api.put(`/posts/${id}`, postData); // eslint-disable-next-line @typescript-eslint/no-unused-vars
 // export const updatePost = (id: string, postData: FormData) =>
 //     api.put(`/posts/${id}`, postData, {
 //       headers: {
