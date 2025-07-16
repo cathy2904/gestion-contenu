@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build -p $PORT",
-    "start": "next start",
+    "build": "next build",
+    "start": "next start -p $PORT",
     "lint": "next lint",
     "type": "module"
   },
