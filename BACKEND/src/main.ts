@@ -4,6 +4,9 @@ import { ValidationPipe } from '@nestjs/common';
 import * as express from 'express';
 import { join } from 'path';
 import * as cookieParser from 'cookie-parser';
+import * as dotenv from 'dotenv';
+import * as cors from 'cors';
+
 
 
 async function bootstrap() {
