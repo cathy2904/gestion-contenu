@@ -22,6 +22,8 @@ async function bootstrap() {
   
   app.enableCors({
      origin: (origin, callback) => {
+      dotenv.config();
+      
     const allowedOrigins = [
       'https://gestion-contenu-y6kt.onrender.com',
       'http://localhost:3001'

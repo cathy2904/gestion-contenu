@@ -73,7 +73,7 @@ function ConnectSocial() {
     // 🔁 Récupération du statut de connexion des réseaux
     const fetchStatus = async ()=>{
         try {
-            const res = await fetch(`${("TURBOPACK compile-time value", "http://localhost:3000")}/api/auth/social-status`, {
+            const res = await fetch(`${("TURBOPACK compile-time value", "https://gestion-contenu-bkd.onrender.com")}/api/auth/social-status`, {
                 credentials: 'include'
             });
             if (res.ok) {
@@ -86,12 +86,12 @@ function ConnectSocial() {
     };
     // 🔗 Redirection vers la page d'auth du réseau
     const connect = (platform)=>{
-        window.location.href = `${"TURBOPACK compile-time value", "http://localhost:3000"}/api/auth/${platform}`;
+        window.location.href = `${"TURBOPACK compile-time value", "https://gestion-contenu-bkd.onrender.com"}/api/auth/${platform}`;
     };
     // ❌ Déconnexion du réseau
     const disconnect = async (platform)=>{
         try {
-            const res = await fetch(`${("TURBOPACK compile-time value", "http://localhost:3000")}/api/auth/disconnect/${platform}`, {
+            const res = await fetch(`${("TURBOPACK compile-time value", "https://gestion-contenu-bkd.onrender.com")}/api/auth/disconnect/${platform}`, {
                 method: 'GET',
                 credentials: 'include'
             });
