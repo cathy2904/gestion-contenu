@@ -15,8 +15,8 @@ export default function LoginPage() {
     e.preventDefault();
     try {
       await login(email, password);
-      router.push('/');
-    } catch (err) { // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      router.push('/dashboard');
+    } catch (err) { 
       setError('Email ou mot de passe incorrect');
     }
   };
@@ -61,7 +61,7 @@ export default function LoginPage() {
         <p className="text-sm text-gray-400 mt-6 text-center">
           Pas de compte ?{" "}
           <Link href="/auth/register" className="text-[#4f46e5] hover:underline">
-            S'inscrire {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
+            S'inscrire 
           </Link>
         </p>
       </div>

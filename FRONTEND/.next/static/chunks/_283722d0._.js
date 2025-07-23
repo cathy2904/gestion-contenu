@@ -1,21 +1,19 @@
-(globalThis.TURBOPACK = globalThis.TURBOPACK || []).push(["static/chunks/_283722d0._.js", {
+(globalThis.TURBOPACK = globalThis.TURBOPACK || []).push([typeof document === "object" ? document.currentScript : undefined, {
 
 "[project]/app/geistsans_9fc57718.module.css [app-client] (css module)": ((__turbopack_context__) => {
 
-var { g: global, __dirname } = __turbopack_context__;
-{
 __turbopack_context__.v({
   "className": "geistsans_9fc57718-module__E7HqPG__className",
   "variable": "geistsans_9fc57718-module__E7HqPG__variable",
 });
-}}),
+}),
 "[project]/app/geistsans_9fc57718.js [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
-var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
+var { k: __turbopack_refresh__, m: module } = __turbopack_context__;
 {
 __turbopack_context__.s({
-    "default": (()=>__TURBOPACK__default__export__)
+    "default": ()=>__TURBOPACK__default__export__
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$geistsans_9fc57718$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__ = __turbopack_context__.i("[project]/app/geistsans_9fc57718.module.css [app-client] (css module)");
 ;
@@ -35,20 +33,18 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 }}),
 "[project]/app/geistmono_b9f59162.module.css [app-client] (css module)": ((__turbopack_context__) => {
 
-var { g: global, __dirname } = __turbopack_context__;
-{
 __turbopack_context__.v({
   "className": "geistmono_b9f59162-module__dmiviG__className",
   "variable": "geistmono_b9f59162-module__dmiviG__variable",
 });
-}}),
+}),
 "[project]/app/geistmono_b9f59162.js [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
-var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
+var { k: __turbopack_refresh__, m: module } = __turbopack_context__;
 {
 __turbopack_context__.s({
-    "default": (()=>__TURBOPACK__default__export__)
+    "default": ()=>__TURBOPACK__default__export__
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$geistmono_b9f59162$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__ = __turbopack_context__.i("[project]/app/geistmono_b9f59162.module.css [app-client] (css module)");
 ;
@@ -69,13 +65,13 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 "[project]/components/ui/color-mode.tsx [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
-var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
+var { k: __turbopack_refresh__, m: module } = __turbopack_context__;
 {
 __turbopack_context__.s({
-    "ColorModeIcon": (()=>ColorModeIcon),
-    "ColorModeProvider": (()=>ColorModeProvider),
-    "useColorMode": (()=>useColorMode),
-    "useColorModeValue": (()=>useColorModeValue)
+    "ColorModeIcon": ()=>ColorModeIcon,
+    "ColorModeProvider": ()=>ColorModeProvider,
+    "useColorMode": ()=>useColorMode,
+    "useColorModeValue": ()=>useColorModeValue
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 // import type { IconButtonProps } from "@chakra-ui/react"
@@ -180,10 +176,10 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 "[project]/components/ui/provider.tsx [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
-var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
+var { k: __turbopack_refresh__, m: module } = __turbopack_context__;
 {
 __turbopack_context__.s({
-    "Provider": (()=>Provider)
+    "Provider": ()=>Provider
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$chakra$2d$ui$2f$react$2f$dist$2f$esm$2f$styled$2d$system$2f$provider$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@chakra-ui/react/dist/esm/styled-system/provider.js [app-client] (ecmascript)");
@@ -219,10 +215,10 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 "[project]/components/ui/button.tsx [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
-var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
+var { k: __turbopack_refresh__, m: module } = __turbopack_context__;
 {
 __turbopack_context__.s({
-    "Button": (()=>Button)
+    "Button": ()=>Button
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$chakra$2d$ui$2f$react$2f$dist$2f$esm$2f$components$2f$center$2f$absolute$2d$center$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@chakra-ui/react/dist/esm/components/center/absolute-center.js [app-client] (ecmascript)");
@@ -233,7 +229,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 ;
 ;
 ;
-const Button = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["forwardRef"])(_c = function Button(props, ref) {
+const Button = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["forwardRef"](_c = function Button(props, ref) {
     const { loading, disabled, loadingText, children, ...rest } = props;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$chakra$2d$ui$2f$react$2f$dist$2f$esm$2f$components$2f$button$2f$button$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
         disabled: loading || disabled,
@@ -295,23 +291,23 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 "[project]/components/ui/menu.tsx [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
-var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
+var { k: __turbopack_refresh__, m: module } = __turbopack_context__;
 {
 __turbopack_context__.s({
-    "MenuArrow": (()=>MenuArrow),
-    "MenuCheckboxItem": (()=>MenuCheckboxItem),
-    "MenuContent": (()=>MenuContent),
-    "MenuContextTrigger": (()=>MenuContextTrigger),
-    "MenuItem": (()=>MenuItem),
-    "MenuItemCommand": (()=>MenuItemCommand),
-    "MenuItemGroup": (()=>MenuItemGroup),
-    "MenuItemText": (()=>MenuItemText),
-    "MenuRadioItem": (()=>MenuRadioItem),
-    "MenuRadioItemGroup": (()=>MenuRadioItemGroup),
-    "MenuRoot": (()=>MenuRoot),
-    "MenuSeparator": (()=>MenuSeparator),
-    "MenuTrigger": (()=>MenuTrigger),
-    "MenuTriggerItem": (()=>MenuTriggerItem)
+    "MenuArrow": ()=>MenuArrow,
+    "MenuCheckboxItem": ()=>MenuCheckboxItem,
+    "MenuContent": ()=>MenuContent,
+    "MenuContextTrigger": ()=>MenuContextTrigger,
+    "MenuItem": ()=>MenuItem,
+    "MenuItemCommand": ()=>MenuItemCommand,
+    "MenuItemGroup": ()=>MenuItemGroup,
+    "MenuItemText": ()=>MenuItemText,
+    "MenuRadioItem": ()=>MenuRadioItem,
+    "MenuRadioItemGroup": ()=>MenuRadioItemGroup,
+    "MenuRoot": ()=>MenuRoot,
+    "MenuSeparator": ()=>MenuSeparator,
+    "MenuTrigger": ()=>MenuTrigger,
+    "MenuTriggerItem": ()=>MenuTriggerItem
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$chakra$2d$ui$2f$react$2f$dist$2f$esm$2f$components$2f$center$2f$absolute$2d$center$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@chakra-ui/react/dist/esm/components/center/absolute-center.js [app-client] (ecmascript)");
@@ -324,7 +320,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$ico
 ;
 ;
 ;
-const MenuContent = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["forwardRef"])(_c = function MenuContent(props, ref) {
+const MenuContent = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["forwardRef"](_c = function MenuContent(props, ref) {
     const { portalled = true, portalRef, ...rest } = props;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$ark$2d$ui$2f$react$2f$dist$2f$components$2f$portal$2f$portal$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Portal"], {
         disabled: !portalled,
@@ -350,7 +346,7 @@ const MenuContent = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project
     }, this);
 });
 _c1 = MenuContent;
-const MenuArrow = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["forwardRef"])(_c2 = function MenuArrow(props, ref) {
+const MenuArrow = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["forwardRef"](_c2 = function MenuArrow(props, ref) {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$chakra$2d$ui$2f$react$2f$dist$2f$esm$2f$components$2f$menu$2f$namespace$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$2a$__as__Menu$3e$__["Menu"].Arrow, {
         ref: ref,
         ...props,
@@ -366,7 +362,7 @@ const MenuArrow = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5
     }, this);
 });
 _c3 = MenuArrow;
-const MenuCheckboxItem = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["forwardRef"])(_c4 = function MenuCheckboxItem(props, ref) {
+const MenuCheckboxItem = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["forwardRef"](_c4 = function MenuCheckboxItem(props, ref) {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$chakra$2d$ui$2f$react$2f$dist$2f$esm$2f$components$2f$menu$2f$namespace$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$2a$__as__Menu$3e$__["Menu"].CheckboxItem, {
         ref: ref,
         ...props,
@@ -392,7 +388,7 @@ const MenuCheckboxItem = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$pr
     }, this);
 });
 _c5 = MenuCheckboxItem;
-const MenuRadioItem = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["forwardRef"])(_c6 = function MenuRadioItem(props, ref) {
+const MenuRadioItem = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["forwardRef"](_c6 = function MenuRadioItem(props, ref) {
     const { children, ...rest } = props;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$chakra$2d$ui$2f$react$2f$dist$2f$esm$2f$components$2f$menu$2f$namespace$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$2a$__as__Menu$3e$__["Menu"].RadioItem, {
         ps: "8",
@@ -434,7 +430,7 @@ const MenuRadioItem = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$proje
     }, this);
 });
 _c7 = MenuRadioItem;
-const MenuItemGroup = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["forwardRef"])(_c8 = function MenuItemGroup(props, ref) {
+const MenuItemGroup = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["forwardRef"](_c8 = function MenuItemGroup(props, ref) {
     const { title, children, ...rest } = props;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$chakra$2d$ui$2f$react$2f$dist$2f$esm$2f$components$2f$menu$2f$namespace$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$2a$__as__Menu$3e$__["Menu"].ItemGroup, {
         ref: ref,
@@ -457,7 +453,7 @@ const MenuItemGroup = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$proje
     }, this);
 });
 _c9 = MenuItemGroup;
-const MenuTriggerItem = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["forwardRef"])(_c10 = function MenuTriggerItem(props, ref) {
+const MenuTriggerItem = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["forwardRef"](_c10 = function MenuTriggerItem(props, ref) {
     const { startIcon, children, ...rest } = props;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$chakra$2d$ui$2f$react$2f$dist$2f$esm$2f$components$2f$menu$2f$namespace$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$2a$__as__Menu$3e$__["Menu"].TriggerItem, {
         ref: ref,
@@ -506,12 +502,13 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 "[project]/app/contexts/authProvider.tsx [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
-var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
+var { k: __turbopack_refresh__, m: module } = __turbopack_context__;
 {
 __turbopack_context__.s({
-    "AuthProvider": (()=>AuthProvider),
-    "useAuth": (()=>useAuth)
+    "AuthProvider": ()=>AuthProvider,
+    "useAuth": ()=>useAuth
 });
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = /*#__PURE__*/ __turbopack_context__.i("[project]/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/navigation.js [app-client] (ecmascript)");
@@ -523,18 +520,20 @@ var _s = __turbopack_context__.k.signature(), _s1 = __turbopack_context__.k.sign
 ;
 ;
 const AuthContext = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createContext"])(null);
-function AuthProvider({ children }) {
+function AuthProvider(param) {
+    let { children } = param;
     _s();
     const [user, setUser] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
-    const [mounted, setMounted] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false); // ← ajout
+    const [mounted, setMounted] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
+    const API_URL = ("TURBOPACK compile-time value", "http://localhost:3000");
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "AuthProvider.useEffect": ()=>{
             const checkAuth = {
                 "AuthProvider.useEffect.checkAuth": async ()=>{
                     try {
-                        const res = await fetch('http://localhost:3000/api/users/profile', {
+                        const res = await fetch("".concat(API_URL, "/api/users/profile"), {
                             credentials: 'include'
                         });
                         if (res.ok) {
@@ -544,20 +543,23 @@ function AuthProvider({ children }) {
                     } finally{
                         setLoading(false);
                         setMounted(true); // ← on indique que le montage est terminé
+                        console.log("API_URL =", API_URL);
                     }
                 }
             }["AuthProvider.useEffect.checkAuth"];
             checkAuth();
         }
-    }["AuthProvider.useEffect"], []);
+    }["AuthProvider.useEffect"], [
+        API_URL
+    ]);
     const login = async (email, password)=>{
-        const res = await fetch('http://localhost:3000/api/auth/login', {
+        const res = await fetch("".concat(API_URL, "/api/auth/login"), {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                email: email.trim(),
+                email,
                 password
             }),
             credentials: 'include'
@@ -571,10 +573,13 @@ function AuthProvider({ children }) {
             email: data.user.email,
             role: data.user.role
         });
-        router.push('/');
+        (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$cookies$2d$next$2f$lib$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["setCookie"])('auth-token', data.token, {
+            secure: true
+        });
+        router.push('/dashboard');
     };
     const register = async (username, email, password)=>{
-        const res = await fetch('http://localhost:3000/api/auth/register', {
+        const res = await fetch("".concat(API_URL, "/api/auth/register"), {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -590,7 +595,7 @@ function AuthProvider({ children }) {
         await login(email, password);
     };
     const logout = async ()=>{
-        await fetch('http://localhost:3000/api/auth/logout', {
+        await fetch("".concat(API_URL, "/api/auth/logout"), {
             method: 'POST',
             credentials: 'include'
         });
@@ -610,7 +615,7 @@ function AuthProvider({ children }) {
         children: children
     }, void 0, false, {
         fileName: "[project]/app/contexts/authProvider.tsx",
-        lineNumber: 93,
+        lineNumber: 96,
         columnNumber: 5
     }, this);
 }
@@ -636,10 +641,10 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 "[project]/components/MenuNav.tsx [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
-var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
+var { k: __turbopack_refresh__, m: module } = __turbopack_context__;
 {
 __turbopack_context__.s({
-    "MenuNav": (()=>MenuNav)
+    "MenuNav": ()=>MenuNav
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/button.tsx [app-client] (ecmascript)");
@@ -655,7 +660,8 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
-const MenuNav = ({ menus })=>{
+const MenuNav = (param)=>{
+    let { menus } = param;
     _s();
     const { user, logout } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$contexts$2f$authProvider$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAuth"])();
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -673,18 +679,18 @@ const MenuNav = ({ menus })=>{
                                     fileName: "[project]/components/MenuNav.tsx",
                                     lineNumber: 21,
                                     columnNumber: 25
-                                }, this)
+                                }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/MenuNav.tsx",
                             lineNumber: 20,
                             columnNumber: 11
-                        }, this)
+                        }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/components/MenuNav.tsx",
                         lineNumber: 19,
                         columnNumber: 9
-                    }, this),
+                    }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$menu$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MenuContent"], {
                         children: men.menu.map((part, key)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$menu$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MenuItem"], {
                                 value: part.value,
@@ -698,23 +704,23 @@ const MenuNav = ({ menus })=>{
                                     fileName: "[project]/components/MenuNav.tsx",
                                     lineNumber: 26,
                                     columnNumber: 56
-                                }, this)
+                                }, ("TURBOPACK compile-time value", void 0))
                             }, key, false, {
                                 fileName: "[project]/components/MenuNav.tsx",
                                 lineNumber: 26,
                                 columnNumber: 17
-                            }, this))
+                            }, ("TURBOPACK compile-time value", void 0)))
                     }, void 0, false, {
                         fileName: "[project]/components/MenuNav.tsx",
                         lineNumber: 24,
                         columnNumber: 9
-                    }, this)
+                    }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, index, true, {
                 fileName: "[project]/components/MenuNav.tsx",
                 lineNumber: 18,
                 columnNumber: 9
-            }, this))
+            }, ("TURBOPACK compile-time value", void 0)))
     }, void 0, false);
 };
 _s(MenuNav, "SlSPRKmTohGnoLiiApupaRii2Oc=", false, function() {
@@ -732,12 +738,12 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 "[project]/data/data.ts [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
-var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
+var { k: __turbopack_refresh__, m: module } = __turbopack_context__;
 {
 __turbopack_context__.s({
-    "contents": (()=>contents),
-    "markets": (()=>markets),
-    "menunav": (()=>menunav)
+    "contents": ()=>contents,
+    "markets": ()=>markets,
+    "menunav": ()=>menunav
 });
 const menunav = [
     {
@@ -796,10 +802,10 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 "[project]/components/Nav.tsx [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
-var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
+var { k: __turbopack_refresh__, m: module } = __turbopack_context__;
 {
 __turbopack_context__.s({
-    "default": (()=>Nav)
+    "default": ()=>Nav
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/image.js [app-client] (ecmascript)");
@@ -913,20 +919,20 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 "[project]/components/DashBar.tsx [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
-var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
+var { k: __turbopack_refresh__, m: module } = __turbopack_context__;
 {
 __turbopack_context__.s({
-    "dashs": (()=>dashs),
-    "default": (()=>DashBar)
+    "dashs": ()=>dashs,
+    "default": ()=>DashBar
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$chakra$2d$ui$2f$react$2f$dist$2f$esm$2f$components$2f$stack$2f$h$2d$stack$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@chakra-ui/react/dist/esm/components/stack/h-stack.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react-icons/fa/index.mjs [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$ri$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react-icons/ri/index.mjs [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$ai$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react-icons/ai/index.mjs [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$ri$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react-icons/ri/index.mjs [app-client] (ecmascript)"); // eslint-disable-next-line @typescript-eslint/no-unused-vars
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$ai$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react-icons/ai/index.mjs [app-client] (ecmascript)"); // eslint-disable-next-line @typescript-eslint/no-unused-vars
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$di$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react-icons/di/index.mjs [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$MenuNav$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/MenuNav.tsx [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$data$2f$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/data/data.ts [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$data$2f$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/data/data.ts [app-client] (ecmascript)"); // eslint-disable-next-line @typescript-eslint/no-unused-vars
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/client/app-dir/link.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/navigation.js [app-client] (ecmascript)");
 ;
@@ -950,7 +956,7 @@ const dashs = [
             fileName: "[project]/components/DashBar.tsx",
             lineNumber: 23,
             columnNumber: 11
-        }, this),
+        }, ("TURBOPACK compile-time value", void 0)),
         link: "/"
     },
     // {
@@ -981,14 +987,14 @@ const dashs = [
             fileName: "[project]/components/DashBar.tsx",
             lineNumber: 49,
             columnNumber: 11
-        }, this),
+        }, ("TURBOPACK compile-time value", void 0)),
         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$ri$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["RiMenuAddLine"], {
             className: "w-6 h-8"
         }, void 0, false, {
             fileName: "[project]/components/DashBar.tsx",
             lineNumber: 50,
             columnNumber: 11
-        }, this),
+        }, ("TURBOPACK compile-time value", void 0)),
         link: "/content"
     },
     // {
@@ -1004,7 +1010,7 @@ const dashs = [
             fileName: "[project]/components/DashBar.tsx",
             lineNumber: 62,
             columnNumber: 11
-        }, this),
+        }, ("TURBOPACK compile-time value", void 0)),
         link: "/dashboard"
     },
     {
@@ -1015,7 +1021,7 @@ const dashs = [
             fileName: "[project]/components/DashBar.tsx",
             lineNumber: 67,
             columnNumber: 11
-        }, this),
+        }, ("TURBOPACK compile-time value", void 0)),
         link: "/upload/drafts"
     },
     {
@@ -1026,7 +1032,7 @@ const dashs = [
             fileName: "[project]/components/DashBar.tsx",
             lineNumber: 72,
             columnNumber: 11
-        }, this),
+        }, ("TURBOPACK compile-time value", void 0)),
         link: "/upload"
     },
     // {
@@ -1042,7 +1048,7 @@ const dashs = [
             fileName: "[project]/components/DashBar.tsx",
             lineNumber: 82,
             columnNumber: 11
-        }, this),
+        }, ("TURBOPACK compile-time value", void 0)),
         link: "/users"
     },
     {
@@ -1053,7 +1059,7 @@ const dashs = [
             fileName: "[project]/components/DashBar.tsx",
             lineNumber: 87,
             columnNumber: 11
-        }, this),
+        }, ("TURBOPACK compile-time value", void 0)),
         link: "/connect"
     }
 ];
@@ -1071,12 +1077,12 @@ function DashBar() {
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
             className: "space-y-8 text-xl",
             children: dashs.map((dash, key)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                    className: ` hover:text-white hover:py-3 hover:px-6 hover:bg-[#2c2c2c] rounded-xl ${pathname === dash.link ? "text-[#48d80b] bg-[#2c2c2c] py-3 px-6 rounded-xl" : ""}`,
+                    className: " hover:text-white hover:py-3 hover:px-6 hover:bg-[#2c2c2c] rounded-xl ".concat(pathname === dash.link ? "text-[#48d80b] bg-[#2c2c2c] py-3 px-6 rounded-xl" : ""),
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "flex space-x-3",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                children: dash?.icon
+                                children: dash === null || dash === void 0 ? void 0 : dash.icon
                             }, void 0, false, {
                                 fileName: "[project]/components/DashBar.tsx",
                                 lineNumber: 106,
@@ -1134,10 +1140,10 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 "[project]/components/MenuOverlay.tsx [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
-var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
+var { k: __turbopack_refresh__, m: module } = __turbopack_context__;
 {
 __turbopack_context__.s({
-    "default": (()=>__TURBOPACK__default__export__)
+    "default": ()=>__TURBOPACK__default__export__
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/navigation.js [app-client] (ecmascript)");
@@ -1153,24 +1159,25 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
-const MenuOverlay = ({ dashs })=>{
+const MenuOverlay = (param)=>{
+    let { dashs } = param;
     _s();
     const pathname = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["usePathname"])();
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
         className: "flex flex-col p-4   w-full space-y-2 ",
         children: [
             dashs.map((dash, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                    className: ` hover:text-white hover:py-3 hover:px-6 hover:bg-[#2c2c2c] rounded-xl ${pathname === dash.link ? "text-[#48d80b] bg-[#2c2c2c] py-3 px-6 rounded-xl" : ""}`,
+                    className: " hover:text-white hover:py-3 hover:px-6 hover:bg-[#2c2c2c] rounded-xl ".concat(pathname === dash.link ? "text-[#48d80b] bg-[#2c2c2c] py-3 px-6 rounded-xl" : ""),
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "flex space-x-3",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                children: dash?.icon
+                                children: dash === null || dash === void 0 ? void 0 : dash.icon
                             }, void 0, false, {
                                 fileName: "[project]/components/MenuOverlay.tsx",
                                 lineNumber: 23,
                                 columnNumber: 11
-                            }, this),
+                            }, ("TURBOPACK compile-time value", void 0)),
                             dash.title && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                 href: dash.link,
                                 children: dash.title
@@ -1178,25 +1185,25 @@ const MenuOverlay = ({ dashs })=>{
                                 fileName: "[project]/components/MenuOverlay.tsx",
                                 lineNumber: 24,
                                 columnNumber: 26
-                            }, this),
+                            }, ("TURBOPACK compile-time value", void 0)),
                             dash.node && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 children: dash.node
                             }, void 0, false, {
                                 fileName: "[project]/components/MenuOverlay.tsx",
                                 lineNumber: 25,
                                 columnNumber: 25
-                            }, this)
+                            }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/MenuOverlay.tsx",
                         lineNumber: 22,
                         columnNumber: 9
-                    }, this)
+                    }, ("TURBOPACK compile-time value", void 0))
                 }, index, false, {
                     fileName: "[project]/components/MenuOverlay.tsx",
                     lineNumber: 16,
                     columnNumber: 9
-                }, this)),
+                }, ("TURBOPACK compile-time value", void 0))),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "flex items-center space-x-2",
                 children: [
@@ -1211,12 +1218,12 @@ const MenuOverlay = ({ dashs })=>{
                                     fileName: "[project]/components/MenuOverlay.tsx",
                                     lineNumber: 31,
                                     columnNumber: 19
-                                }, this)
+                                }, ("TURBOPACK compile-time value", void 0))
                             }, void 0, false, {
                                 fileName: "[project]/components/MenuOverlay.tsx",
                                 lineNumber: 31,
                                 columnNumber: 13
-                            }, this),
+                            }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                 className: "font-bold",
                                 children: "Upgrade"
@@ -1224,13 +1231,13 @@ const MenuOverlay = ({ dashs })=>{
                                 fileName: "[project]/components/MenuOverlay.tsx",
                                 lineNumber: 32,
                                 columnNumber: 13
-                            }, this)
+                            }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/MenuOverlay.tsx",
                         lineNumber: 30,
                         columnNumber: 9
-                    }, this),
+                    }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$chakra$2d$ui$2f$react$2f$dist$2f$esm$2f$components$2f$button$2f$button$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
                         w: 40,
                         rounded: "2xl",
@@ -1246,12 +1253,12 @@ const MenuOverlay = ({ dashs })=>{
                                     fileName: "[project]/components/MenuOverlay.tsx",
                                     lineNumber: 35,
                                     columnNumber: 61
-                                }, this)
+                                }, ("TURBOPACK compile-time value", void 0))
                             }, void 0, false, {
                                 fileName: "[project]/components/MenuOverlay.tsx",
                                 lineNumber: 35,
                                 columnNumber: 17
-                            }, this),
+                            }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                 className: "font-bold",
                                 children: "Plugin"
@@ -1259,25 +1266,25 @@ const MenuOverlay = ({ dashs })=>{
                                 fileName: "[project]/components/MenuOverlay.tsx",
                                 lineNumber: 36,
                                 columnNumber: 17
-                            }, this)
+                            }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/MenuOverlay.tsx",
                         lineNumber: 34,
                         columnNumber: 9
-                    }, this)
+                    }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/MenuOverlay.tsx",
                 lineNumber: 29,
                 columnNumber: 7
-            }, this)
+            }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/components/MenuOverlay.tsx",
         lineNumber: 14,
         columnNumber: 5
-    }, this);
+    }, ("TURBOPACK compile-time value", void 0));
 };
 _s(MenuOverlay, "xbyQPtUVMO7MNj7WjJlpdWqRcTo=", false, function() {
     return [
@@ -1295,10 +1302,10 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 "[project]/components/MobileBar.tsx [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
-var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
+var { k: __turbopack_refresh__, m: module } = __turbopack_context__;
 {
 __turbopack_context__.s({
-    "default": (()=>MobileBar)
+    "default": ()=>MobileBar
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
@@ -1381,10 +1388,10 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 "[project]/app/layout.tsx [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
-var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
+var { k: __turbopack_refresh__, m: module } = __turbopack_context__;
 {
 __turbopack_context__.s({
-    "default": (()=>RootLayout)
+    "default": ()=>RootLayout
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$geistsans_9fc57718$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/app/geistsans_9fc57718.js [app-client] (ecmascript)");
@@ -1394,6 +1401,9 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Nav$2e$tsx__$5
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$DashBar$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/DashBar.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$MobileBar$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/MobileBar.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$contexts$2f$authProvider$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/app/contexts/authProvider.tsx [app-client] (ecmascript)");
+// import Principal from "@/components/Principal"; // eslint-disable-next-line @typescript-eslint/no-unused-vars
+// import { ChakraProvider } from "@chakra-ui/react"; // eslint-disable-next-line @typescript-eslint/no-unused-vars
+// import ProtectedRoute from "@/components/ProtectedRoute";
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/navigation.js [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
@@ -1407,7 +1417,8 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
-function RootLayout({ children }) {
+function RootLayout(param) {
+    let { children } = param;
     _s();
     // const pathname = usePathname(); // Récupérer le chemin actuel
     // // Conditionner l'affichage des composants seulement si on n'est pas sur les pages de login ou register
@@ -1418,7 +1429,7 @@ function RootLayout({ children }) {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("html", {
             lang: "en",
             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("body", {
-                className: `${__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$geistsans_9fc57718$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].variable} antialiased bg-[#0e0e0e] text-[#ececec]`,
+                className: "".concat(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$geistsans_9fc57718$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].variable, " antialiased bg-[#0e0e0e] text-[#ececec]"),
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$contexts$2f$authProvider$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AuthProvider"], {
                     children: children
                 }, void 0, false, {
@@ -1441,7 +1452,7 @@ function RootLayout({ children }) {
         lang: "en",
         suppressHydrationWarning: true,
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("body", {
-            className: `${__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$geistsans_9fc57718$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].variable} ${__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$geistmono_b9f59162$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].variable} antialiased bg-[#0e0e0e] text-[#ececec]`,
+            className: "".concat(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$geistsans_9fc57718$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].variable, " ").concat(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$geistmono_b9f59162$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].variable, " antialiased bg-[#0e0e0e] text-[#ececec]"),
             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$contexts$2f$authProvider$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AuthProvider"], {
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$provider$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Provider"], {
                     children: [

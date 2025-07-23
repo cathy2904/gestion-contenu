@@ -2,5 +2,5 @@
   "version": 3,
   "sources": [],
   "sections": [
-    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file://C%3A/Users/komba/Gestion-contenu/FRONTEND/app/auth/layout.tsx"],"sourcesContent":["'use client';\r\n\r\nexport default function AuthLayout({ children }: { children: React.ReactNode }) {\r\n  return (\r\n    <div className=\"min-h-screen flex items-center justify-center bg-gray-100\">\r\n      {children}\r\n    </div>\r\n  );\r\n}\r\n"],"names":[],"mappings":";;;;AAAA;;AAEe,SAAS,WAAW,EAAE,QAAQ,EAAiC;IAC5E,qBACE,8OAAC;QAAI,WAAU;kBACZ;;;;;;AAGP","debugId":null}}]
+    {"offset": {"line": 5, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/komba/Gestion-contenu/FRONTEND/app/auth/layout.tsx"],"sourcesContent":["'use client';\r\n\r\nexport default function AuthLayout({ children }: { children: React.ReactNode }) {\r\n  return (\r\n    <div className=\"min-h-screen flex items-center justify-center bg-gray-100\">\r\n      {children}\r\n    </div>\r\n  );\r\n}\r\n"],"names":[],"mappings":";;;;AAAA;;AAEe,SAAS,WAAW,EAAE,QAAQ,EAAiC;IAC5E,qBACE,8OAAC;QAAI,WAAU;kBACZ;;;;;;AAGP","debugId":null}}]
 }

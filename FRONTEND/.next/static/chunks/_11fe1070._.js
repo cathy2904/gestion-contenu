@@ -1,12 +1,12 @@
-(globalThis.TURBOPACK = globalThis.TURBOPACK || []).push(["static/chunks/_11fe1070._.js", {
+(globalThis.TURBOPACK = globalThis.TURBOPACK || []).push([typeof document === "object" ? document.currentScript : undefined, {
 
 "[project]/components/chart/Line.tsx [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
-var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
+var { k: __turbopack_refresh__, m: module } = __turbopack_context__;
 {
 __turbopack_context__.s({
-    "default": (()=>__TURBOPACK__default__export__)
+    "default": ()=>__TURBOPACK__default__export__
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$shared$2f$lib$2f$app$2d$dynamic$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/shared/lib/app-dynamic.js [app-client] (ecmascript)");
@@ -25,7 +25,8 @@ const Line = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f
     ssr: false
 });
 _c = Line;
-const LineChart = ({ graph })=>{
+const LineChart = (param)=>{
+    let { graph } = param;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "-ml-3",
         style: {
@@ -39,12 +40,12 @@ const LineChart = ({ graph })=>{
             fileName: "[project]/components/chart/Line.tsx",
             lineNumber: 64,
             columnNumber: 7
-        }, this)
+        }, ("TURBOPACK compile-time value", void 0))
     }, void 0, false, {
         fileName: "[project]/components/chart/Line.tsx",
         lineNumber: 63,
         columnNumber: 5
-    }, this);
+    }, ("TURBOPACK compile-time value", void 0));
 };
 _c1 = LineChart;
 const __TURBOPACK__default__export__ = LineChart;
@@ -58,10 +59,10 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 "[project]/components/DashCard.tsx [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
-var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
+var { k: __turbopack_refresh__, m: module } = __turbopack_context__;
 {
 __turbopack_context__.s({
-    "DashCard": (()=>DashCard)
+    "DashCard": ()=>DashCard
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$chakra$2d$ui$2f$react$2f$dist$2f$esm$2f$components$2f$card$2f$namespace$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$2a$__as__Card$3e$__ = __turbopack_context__.i("[project]/node_modules/@chakra-ui/react/dist/esm/components/card/namespace.js [app-client] (ecmascript) <export * as Card>");
@@ -75,7 +76,8 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$chart$2f$Line$
 ;
 ;
 ;
-const DashCard = ({ graphic })=>{
+const DashCard = (param)=>{
+    let { graphic } = param;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$chakra$2d$ui$2f$react$2f$dist$2f$esm$2f$components$2f$card$2f$namespace$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$2a$__as__Card$3e$__["Card"].Root, {
         justifyContent: "center",
         bg: "#121212",
@@ -103,7 +105,7 @@ const DashCard = ({ graphic })=>{
                             fileName: "[project]/components/DashCard.tsx",
                             lineNumber: 20,
                             columnNumber: 11
-                        }, this),
+                        }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$chakra$2d$ui$2f$react$2f$dist$2f$esm$2f$components$2f$stack$2f$v$2d$stack$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["VStack"], {
                             spaceY: "-1",
                             children: [
@@ -116,7 +118,7 @@ const DashCard = ({ graphic })=>{
                                     fileName: "[project]/components/DashCard.tsx",
                                     lineNumber: 22,
                                     columnNumber: 13
-                                }, this),
+                                }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     className: "text-white text-xs",
                                     children: "Derniere mise a jour"
@@ -124,19 +126,19 @@ const DashCard = ({ graphic })=>{
                                     fileName: "[project]/components/DashCard.tsx",
                                     lineNumber: 23,
                                     columnNumber: 13
-                                }, this)
+                                }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/DashCard.tsx",
                             lineNumber: 21,
                             columnNumber: 11
-                        }, this)
+                        }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/DashCard.tsx",
                     lineNumber: 19,
                     columnNumber: 9
-                }, this),
+                }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$chart$2f$Line$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                         graph: graphic.graph
@@ -144,12 +146,12 @@ const DashCard = ({ graphic })=>{
                         fileName: "[project]/components/DashCard.tsx",
                         lineNumber: 28,
                         columnNumber: 11
-                    }, this)
+                    }, ("TURBOPACK compile-time value", void 0))
                 }, void 0, false, {
                     fileName: "[project]/components/DashCard.tsx",
                     lineNumber: 27,
                     columnNumber: 9
-                }, this),
+                }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "flex -mt-20 justify-around",
                     children: [
@@ -165,7 +167,7 @@ const DashCard = ({ graphic })=>{
                             fileName: "[project]/components/DashCard.tsx",
                             lineNumber: 32,
                             columnNumber: 13
-                        }, this),
+                        }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
                             p: -2,
                             w: "16",
@@ -181,24 +183,24 @@ const DashCard = ({ graphic })=>{
                             fileName: "[project]/components/DashCard.tsx",
                             lineNumber: 33,
                             columnNumber: 13
-                        }, this)
+                        }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/DashCard.tsx",
                     lineNumber: 31,
                     columnNumber: 9
-                }, this)
+                }, ("TURBOPACK compile-time value", void 0))
             ]
         }, void 0, true, {
             fileName: "[project]/components/DashCard.tsx",
             lineNumber: 18,
             columnNumber: 7
-        }, this)
+        }, ("TURBOPACK compile-time value", void 0))
     }, void 0, false, {
         fileName: "[project]/components/DashCard.tsx",
         lineNumber: 17,
         columnNumber: 5
-    }, this);
+    }, ("TURBOPACK compile-time value", void 0));
 };
 _c = DashCard;
 var _c;
@@ -210,10 +212,10 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 "[project]/components/dashboard/Graph.tsx [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
-var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
+var { k: __turbopack_refresh__, m: module } = __turbopack_context__;
 {
 __turbopack_context__.s({
-    "default": (()=>Graph)
+    "default": ()=>Graph
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$chakra$2d$ui$2f$react$2f$dist$2f$esm$2f$components$2f$flex$2f$flex$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@chakra-ui/react/dist/esm/components/flex/flex.js [app-client] (ecmascript)");
@@ -236,7 +238,7 @@ const graphics = [
             fileName: "[project]/components/dashboard/Graph.tsx",
             lineNumber: 12,
             columnNumber: 15
-        }, this),
+        }, ("TURBOPACK compile-time value", void 0)),
         title: "Email Envoye",
         number: "12 364",
         percentage: "5%",
@@ -302,7 +304,7 @@ const graphics = [
             fileName: "[project]/components/dashboard/Graph.tsx",
             lineNumber: 61,
             columnNumber: 15
-        }, this),
+        }, ("TURBOPACK compile-time value", void 0)),
         title: "Ventes obtenues",
         number: "98 637",
         percentage: "5%",
@@ -368,7 +370,7 @@ const graphics = [
             fileName: "[project]/components/dashboard/Graph.tsx",
             lineNumber: 110,
             columnNumber: 15
-        }, this),
+        }, ("TURBOPACK compile-time value", void 0)),
         title: "Nouveaux clients",
         number: "32 908",
         percentage: "5%",
@@ -436,7 +438,7 @@ const graphics = [
             fileName: "[project]/components/dashboard/Graph.tsx",
             lineNumber: 159,
             columnNumber: 15
-        }, this),
+        }, ("TURBOPACK compile-time value", void 0)),
         title: "Trafic",
         number: "1M",
         percentage: "5%",
@@ -530,14 +532,15 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 "[project]/components/Principal.tsx [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
-var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
+var { k: __turbopack_refresh__, m: module } = __turbopack_context__;
 {
 __turbopack_context__.s({
-    "default": (()=>Principal)
+    "default": ()=>Principal
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 ;
-function Principal({ titre, children }) {
+function Principal(param) {
+    let { titre, children } = param;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: " w-full md:w-5/6 bg-[#121313] p-3 md:p-6  space-y-4 overflow-hidden h-auto",
         children: [
@@ -577,10 +580,10 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 "[project]/components/RequireAuth.tsx [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
-var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
+var { k: __turbopack_refresh__, m: module } = __turbopack_context__;
 {
 __turbopack_context__.s({
-    "default": (()=>RequireAuth)
+    "default": ()=>RequireAuth
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
@@ -592,7 +595,8 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
-function RequireAuth({ children }) {
+function RequireAuth(param) {
+    let { children } = param;
     _s();
     const { user } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$contexts$2f$authProvider$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAuth"])();
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
@@ -625,10 +629,10 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 "[project]/app/page.tsx [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
-var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
+var { k: __turbopack_refresh__, m: module } = __turbopack_context__;
 {
 __turbopack_context__.s({
-    "default": (()=>Home)
+    "default": ()=>Home
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$dashboard$2f$Graph$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/dashboard/Graph.tsx [app-client] (ecmascript)");
@@ -674,12 +678,7 @@ function Home() {
         lineNumber: 27,
         columnNumber: 5
     }, this);
-} // import Posts from './post/page'
- // export default function Home() {
- //   return (
- //         <Posts />
- //   )
- // }
+}
 _c = Home;
 var _c;
 __turbopack_context__.k.register(_c, "Home");

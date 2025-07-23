@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from 'next/navigation';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+
 import { Button } from '@/components/ui/button';
 import { Calendar, Eye, Pencil, Trash2, Filter, ChevronDown } from "lucide-react";
 
@@ -30,7 +30,7 @@ export default function ContentPage() {
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [user, setUser] = useState(''); // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [user, setUser] = useState('');
   const [style, setStyle] = useState('');
   const [date, setDate] = useState('');
   const [selectedContentId, setSelectedContentId] = useState<string | null>(null);
@@ -69,9 +69,9 @@ export default function ContentPage() {
 
   useEffect(() => {
     fetchContents(page);
-  }, [page, user, style, date]); // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  }, [page, user, style, date]);
 
-  const handlePublish = async (id: string) => { // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const handlePublish = async (id: string) => {
     try {
       await axios.put(`http://localhost:3000/api/content/${id}/publish`);
       fetchContents(page);
@@ -304,7 +304,7 @@ useEffect(() => {
                       </td>
                       <td className="px-4 py-3">
                         {item.media ? (
-                          <img src={item.media} alt="Media" className="w-12 h-12 object-cover rounded-lg" />  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                          <img src={item.media} alt="Media" className="w-12 h-12 object-cover rounded-lg" />
                         ) : (
                           <span className="text-white-400 italic text-sm">Aucune</span>
                         )}
@@ -386,7 +386,7 @@ useEffect(() => {
 
                   {item.media && (
                     <div className="mb-4">
-                      <img src={item.media} alt="Media" className="w-20 h-20 object-cover rounded-lg" /> {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
+                      <img src={item.media} alt="Media" className="w-20 h-20 object-cover rounded-lg" />
                     </div>
                   )}
 

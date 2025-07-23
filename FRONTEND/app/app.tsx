@@ -26,7 +26,7 @@ export default function HomePage() {
             Se connecter
           </Link>
           <Link href="/auth/register" className="auth-btn register-btn">
-           S'inscrire {/*  // eslint-disable-next-line @typescript-eslint/no-unused-vars */}
+            S'inscrire
           </Link>
         </div>
       )}

@@ -1,7 +1,8 @@
 'use client';
 import { createContext, useContext, useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { setCookie, deleteCookie } from 'cookies-next'; // eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { setCookie, deleteCookie } from 'cookies-next';
+
 
 interface User {
   id: string;
@@ -23,13 +24,13 @@ const AuthContext = createContext<AuthContextType | null>(null);
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
-  const [mounted, setMounted] = useState(false); // ← ajout
+  const [mounted, setMounted] = useState(false); 
   const router = useRouter();
-
+  const API_URL = process.env.NEXT_PUBLIC_API_URL ;
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await fetch('http://localhost:3000/api/users/profile', {
+        const res = await fetch(`${API_URL}/api/users/profile`, {
           credentials: 'include'
         });
         if (res.ok) {
@@ -39,16 +40,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       } finally {
         setLoading(false);
         setMounted(true); // ← on indique que le montage est terminé
+        console.log("API_URL =", API_URL);
       }
     };
     checkAuth();
-  }, []);
+  }, [API_URL]);
 
   const login = async (email: string, password: string) => {
-    const res = await fetch('http://localhost:3000/api/auth/login', {
+    const res = await fetch(`${API_URL}/api/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email.trim(), password }),
+      body: JSON.stringify({ email , password }),
       credentials: 'include'
     });
     if (!res.ok) throw new Error('Login failed');
@@ -62,12 +64,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       email: data.user.email,
       role: data.user.role,
     });
+    setCookie('auth-token', data.token, { secure: true })
 
-    router.push('/');
+    router.push('/dashboard');
   };
 
   const register = async (username: string, email: string, password: string) => {
-    const res = await fetch('http://localhost:3000/api/auth/register', {
+    const res = await fetch(`${API_URL}/api/auth/register`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, email, password }),
@@ -78,7 +81,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   const logout = async () => {
-    await fetch('http://localhost:3000/api/auth/logout', {
+    await fetch(`${API_URL}/api/auth/logout`, {
       method: 'POST',
       credentials: 'include'
     });

@@ -1,5 +1,5 @@
 'use client';
-import type { Metadata } from "next"; // eslint-disable-next-line @typescript-eslint/no-unused-vars
+// import type { Metadata } from "next"; // eslint-disable-next-line @typescript-eslint/no-unused-vars
 // import { usePathname } from "next/navigation";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -8,9 +8,9 @@ import Nav from "@/components/Nav";
 import DashBar from "@/components/DashBar";
 import MobileBar from "@/components/MobileBar";
 import { AuthProvider } from "./contexts/authProvider";
-import Principal from "@/components/Principal"; // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { ChakraProvider } from "@chakra-ui/react"; // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import ProtectedRoute from "@/components/ProtectedRoute"; // eslint-disable-next-line @typescript-eslint/no-unused-vars
+// import Principal from "@/components/Principal"; // eslint-disable-next-line @typescript-eslint/no-unused-vars
+// import { ChakraProvider } from "@chakra-ui/react"; // eslint-disable-next-line @typescript-eslint/no-unused-vars
+// import ProtectedRoute from "@/components/ProtectedRoute";
 import { usePathname } from "next/navigation";
 // import { usePathname } from "next/navigation";
 // import { extendTheme } from "@chakra-ui/theme-tools";

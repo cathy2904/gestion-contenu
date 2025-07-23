@@ -4,7 +4,8 @@ import Nav from "@/components/Nav"; // eslint-disable-next-line @typescript-esli
 // import BarChart from "@/components/chart/Chart";
 import MobileBar from "@/components/MobileBar"; // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { useEffect, useState } from "react";
-
+import { motion } from 'framer-motion';
+import { FiActivity, FiTrendingUp, FiLoader } from 'react-icons/fi';
 import {
   PieChart,
   Pie,
@@ -42,7 +43,50 @@ export default function DashboardPage() {
 }, [statusFilter, dateFilter]);
 
 
-  if (!stats) return <p className="p-6 text-lg">Chargement des statistiques...</p>;
+const LoadingAnimation = () => {
+  return (
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="flex flex-col items-center justify-center p-8 space-y-6"
+    >
+      <motion.div
+        animate={{ rotate: 360 }}
+        transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+        className="text-4xl text-indigo-600"
+      >
+        <FiLoader />
+      </motion.div>
+
+      <motion.div
+        initial={{ y: 20 }}
+        animate={{ y: 0 }}
+        transition={{ 
+          y: { repeat: Infinity, duration: 1.5, repeatType: "reverse" } 
+        }}
+        className="flex space-x-4"
+      >
+        <FiActivity className="text-xl text-pink-500" />
+        <FiTrendingUp className="text-xl text-blue-500" />
+      </motion.div>
+
+      <motion.p
+        initial={{ opacity: 0.5 }}
+        animate={{ opacity: 1 }}
+        transition={{ 
+          opacity: { duration: 1, repeat: Infinity, repeatType: "reverse" }
+        }}
+        className="text-lg font-medium text-gray-600"
+      >
+        Préparation de vos données...
+      </motion.p>
+    </motion.div>
+  );
+};
+
+  // if (!stats) return <p className="p-6 text-lg">Chargement des statistiques...</p>;
+  if (!stats) return <LoadingAnimation />;
 
   return (
     // <RequireAuth>
@@ -54,14 +98,14 @@ export default function DashboardPage() {
     //   </div>
     // </RequireAuth>
 
-      <div className="p-6">
+      <div className="p-12">
       <h1 className="text-3xl font-bold mb-6">📊 Dashboard des contenus</h1>
 
       <div className="flex gap-4 mb-6">
         <select
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
-          className="border rounded p-2"
+          className="border rounded p-2" 
         >
           <option value="">Tous les statuts</option>
           <option value="brouillon">Brouillon</option>
@@ -128,38 +172,3 @@ export default function DashboardPage() {
 }
 
 
-
-// 'use client';
-// import { useAuth } from '../contexts/authProvider';
-// import { useEffect } from 'react';
-// import { useRouter } from 'next/navigation';
-
-// export default function DashboardPage() {
-//   const { user, loading, logout } = useAuth();
-//   const router = useRouter();
-
-//   useEffect(() => {
-//     if (!loading && !user) {
-//       router.push('/auth/login');
-//     }
-//   }, [user, loading]);
-
-//   if (loading || !user) {
-//     return <div>Chargement...</div>;
-//   }
-  
-
-//   return (
-//     <main className="dashboard">
-//       <h1>Tableau de Bord</h1>
-//       <p>Bienvenue, {user.username} ({user.email})</p>
-//       <p>Tu es connecté ({user.username})</p>
-//       <p>tes infos {JSON.stringify(user)}</p>
-//       <button onClick={logout} className="logout-btn">
-//         Déconnexion
-//       </button>
-      
-//       {/* Ajoutez ici le contenu de votre dashboard */}
-//     </main>
-//   );
-// }
