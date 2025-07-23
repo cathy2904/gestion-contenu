@@ -151,18 +151,7 @@ async create(
   
 // }
 
-// @Patch(':id')
-//   @UseInterceptors(FileInterceptor('image'))
-//   async update(
-//     @Param('id') id: string,
-//     @Body() updatePostDto: UpdatePostDto,
-//     @UploadedFile() file: Express.Multer.File,
-//   ) {
-//     if (file) {
-//       updatePostDto.imagePath = `uploads/${file.filename}`;
-//     }
-//     return this.postService.update(id, updatePostDto);
-//   }
+
 
 
    
@@ -197,65 +186,12 @@ async create(
     return this.postService.remove(id);
   }
 
-  // @Get()
-  // findAll(): Promise<PostModel[]> {
-  //   return this.postService.findAll();
-  // }
+  
 
-  // @Get(':id')
-  // findOne(@Param('id') id: string): Promise<PostModel> {
-  //   return this.postService.findOne(id);
-  // }
-
-  // @Put(':id')
-  // update(
-  //   @Param('id') id: string,
-  //   @Body() updatePostDto: UpdatePostDto,
-  // ): Promise<PostModel> {
-  //   return this.postService.update(id, updatePostDto);
-  // }
-
-  // @Delete(':id')
-  // remove(@Param('id') id: string): Promise<PostModel> {
-  //   return this.postService.remove(id);
-  // }
+  
 }
 
 
 
 
 
-
-
-// import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common';
-// import { PostService } from './post.service';
-
-// @Controller('posts')
-// export class PostController {
-//   constructor(private readonly postsService: PostService) {}
-
-//   @Post()
-//   create(@Body() createPostDto: any) {
-//     return this.postsService.create(createPostDto);
-//   }
-
-//   @Get()
-//   findAll() {
-//     return this.postsService.findAll();
-//   }
-
-//   @Get(':id')
-//   findOne(@Param('id') id: string) {
-//     return this.postsService.findOne(id);
-//   }
-
-//   @Put(':id')
-//   update(@Param('id') id: string, @Body() updatePostDto: any) {
-//     return this.postsService.update(id, updatePostDto);
-//   }
-
-//   @Delete(':id')
-//   remove(@Param('id') id: string) {
-//     return this.postsService.remove(id);
-//   }
-// }
