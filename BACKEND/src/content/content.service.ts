@@ -15,6 +15,7 @@ const removeMarkdown = require('remove-markdown');
 import { Cron, CronExpression } from '@nestjs/schedule';
 import { UpdateScheduleDto } from './dto/update-schedule.dto';
 import { UpdateContentDto } from './dto/update-content.dto';
+import { SocialService } from 'src/social/social.service';
 
 @Injectable()
 export class ContentService {
@@ -23,7 +24,10 @@ export class ContentService {
     apiKey: process.env.OPENAI_API_KEY,
   });
   constructor(private readonly mongoService: MongoService,
-     @InjectModel('Content') private readonly contentModel: Model<Content>) {}
+     @InjectModel('Content') private readonly contentModel: Model<Content>,
+    //  @InjectModel('Social') private readonly SocialModel: Model<Social>,
+    //  private readonly socialService: SocialService
+    ) {}
   
 
   private async getCollection(): Promise<Collection<Document>> {
@@ -280,6 +284,35 @@ async getStats(statut?: string, date?: string) {
   }
 }
 
+async findScheduledToPublish(): Promise<Content[]> {
+  const now = new Date();
+  return this.contentModel.find({
+    publicationDate: { $lte: now },
+    published: false,
+    platform: 'facebook',
+  });
+}
+
+//  @Cron(CronExpression.EVERY_MINUTE)
+//   async checkAndPublishScheduledContent() {
+//     const now = new Date();
+//     const contents = await this.contentModel.find({
+//       publicationDate: { $lte: now },
+//       statut: 'planifié',
+//     });
+
+//     for (const content of contents) {
+//       try {
+//         await this.socialService.publishToSocial(content.platform, content.content);
+
+//         content.statut = 'publié';
+//         await content.save();
+//       } catch (error) {
+//         console.error(`Erreur lors de la publication de ${content._id}`, error.message);
+//       }
+//     }
+//   }
+
 
 async publishToSocialMedia(id: string) {
   const content = await this.contentModel.findById(id);
@@ -299,11 +332,7 @@ async publishToSocialMedia(id: string) {
   //   }
   }
 
-  // content.statut = 'publié';
-  // content.publicationDate = new Date();
-  // return content.save();
-// }
-
+  
  
 
 

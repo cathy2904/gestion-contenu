@@ -11,6 +11,7 @@ export const ContentSchema = new Schema({
   schedule: Date,
    statut: { type: String, enum: ['idée', 'brouillon', 'programmé', 'publié'], default: 'brouillon' },
    publicationDate: {type: Date, required: false},
+   publish:{type: Boolean, default: false  },
     platform: { type: String, enum: ['linkedin', 'facebook', 'instagram', 'twiter'] },
   user: { type: Types.ObjectId, ref: 'Users' },
   media: [{ type: String }],

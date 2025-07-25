@@ -35,14 +35,6 @@ export default function ScheduleContentPage() {
     router.push('/content');
   };
 
-  const connectSocial = (platform: string) => { // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const urls: Record<string, string> = {
-      facebook: 'https://www.facebook.com/v18.0/dialog/oauth',
-      instagram: 'https://api.instagram.com/oauth/authorize',
-      linkedin: 'https://www.linkedin.com/oauth/v2/authorization',
-    };
-    window.open(urls[platform], '_blank');
-  };
 
   return (
     <div className="p-6 max-w-xl mx-auto">
@@ -81,29 +73,7 @@ export default function ScheduleContentPage() {
           required
         />
 
-         {/* <div className="flex justify-between items-center gap-3 mt-4">
-          <button
-            type="button"
-            className="flex items-center gap-2 px-3 py-2 bg-blue-600 text-white rounded"
-            onClick={() => connectSocial('facebook')}
-          >
-            <FaFacebook /> Connecter Facebook
-          </button>
-          <button
-            type="button"
-            className="flex items-center gap-2 px-3 py-2 bg-pink-600 text-white rounded"
-            onClick={() => connectSocial('instagram')}
-          >
-            <FaInstagram /> Connecter Instagram
-          </button>
-          <button
-            type="button"
-            className="flex items-center gap-2 px-3 py-2 bg-blue-800 text-white rounded"
-            onClick={() => connectSocial('linkedin')}
-          >
-            <FaLinkedin /> Connecter LinkedIn
-          </button>
-        </div> */}
+         
         <button
           type="submit"
           className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
